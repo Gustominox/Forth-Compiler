@@ -7,7 +7,7 @@
 
 import sys
 import ply.yacc as yacc
-from aula11_mistas_lex import tokens
+from listas_mistas_lex import tokens
 
 def p_list(p):
     "LIST : LPAREN ELS RPAREN"
@@ -48,19 +48,19 @@ def p_el_id(p):
 
 def p_error(p):
     print("Syntax error!")
-    parser.exito = False
+    parser.sucesso = False
 
 parser = yacc.yacc()
 
 for linha in sys.stdin:
-    parser.exito = True
+    parser.sucesso = True
     parser.conta = 0
     parser.cntP = 0
     parser.cntN = 0
     parser.soma = 0
     parser.pals = []
     out = parser.parse(linha)
-    if parser.exito:
+    if parser.sucesso:
        print("Lista sintetizada de Booleanos: ",out)
        print ("Informação final relativa ao processamento da frase analisada:")
        print("O total de elementos é : ", parser.conta)
@@ -73,12 +73,12 @@ for linha in sys.stdin:
 #parser.cntN = 0
 #parser.soma = 0
 #parser.pals = []
-#arser.exito = True
+#arser.sucesso = True
 #fonte = ""
 #for linha in sys.stdin:
     #fonte += linha
 #parser.parse(fonte)
-#if parser.exito:
+#if parser.sucesso:
 #    print ("Parsing teminou com sucesso!")
 #    print ("Informação final relativa ao processamento da frase analisada:")
 #    print("O total de elementos é : ", parser.conta)
