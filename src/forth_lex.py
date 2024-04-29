@@ -1,41 +1,76 @@
 import ply.lex as lex
 
-import sys
-
+# List of token names
 tokens = (
+    'NUMBER',
+    'PLUS',
+    'MINUS',
+    'TIMES',
+    'DIVIDE',
+    'DUP',
+    'DROP',
+    'SWAP',
+    'OVER',
     'LPAREN',
     'RPAREN',
-    'VIRG',
-    'ID',
-    'NUM',
-    'BOOL'
 )
 
-t_LPAREN = r'\('
-t_RPAREN = r'\)'
-t_VIRG   = r','
-t_ID     = r'\w+'
+# Regular expression rules for simple tokens
+t_PLUS    = r'\+'
+t_MINUS   = r'-'
+t_TIMES   = r'\*'
+t_DIVIDE  = r'/'
+t_LPAREN  = r'\('
+t_RPAREN  = r'\)'
+t_DUP     = r'DUP'
+t_DROP    = r'DROP'
+t_SWAP    = r'SWAP'
+t_OVER    = r'OVER'
 
-def t_NUM(t):
+# A regular expression rule with action code
+def t_NUMBER(t):
     r'\d+'
-    t.value = int(t.value)
+    t.value = int(t.value)    
     return t
 
-def t_BOOL(t):
-    r'(?i)true|false'
-    t.value = t.value.upper()
-    return t
-    
+# Define a rule to track line numbers
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
 
+# A string containing ignored characters (spaces and tabs)
+t_ignore  = ' \t'
 
-t_ignore = ' \r\n\t'
-
+# Error handling rule for illegal tokens
 def t_error(t):
-    print('Illegal character: ' + t.value[0])
-    return
+    print(f"Illegal token '{t.value}' at line {t.lineno}, position {find_column(t)}")
+    raise Exception("Lexer stopped due to error")
 
-lexer = lex.lex() # cria um AnaLex especifico a partir da especificação acima usando o gerador 'lex' do objeto 'lex'
+# Function to find column position of token
+def find_column(token):
+    line_start = token.lexer.lexdata.rfind('\n', 0, token.lexpos) + 1
+    return token.lexpos - line_start + 1
 
+# Build the lexer
+lexer = lex.lex()
+
+# Test the lexer
+data = '''
+10 DUP * 5 + * dup'''
+# Give the lexer some input
+lexer.input(data)
+
+# Tokenize
+try:
+    while True:
+        tok = lexer.token()
+        if not tok: 
+            break      # No more input
+        # print(tok)
+except Exception as e:
+    print(e)
+
+    
 # Reading input
 # for linha in sys.stdin:
 #    lexer.input(linha) 
@@ -43,4 +78,3 @@ lexer = lex.lex() # cria um AnaLex especifico a partir da especificação acima 
 #    while tok:
 #        print(tok)
 #        tok = lexer.token()
-
