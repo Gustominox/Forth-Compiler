@@ -2,11 +2,13 @@ import ply.lex as lex
 
 # List of token names
 tokens = (
-    'NUMBER',
+    'INT',
+    'FLOAT',
     'PLUS',
     'MINUS',
-    'TIMES',
+    'TIMES', 
     'DIVIDE',
+    'PONTO',
     'DUP',
     'DROP',
     'SWAP',
@@ -20,6 +22,7 @@ t_PLUS    = r'\+'
 t_MINUS   = r'-'
 t_TIMES   = r'\*'
 t_DIVIDE  = r'/'
+t_PONTO   = r'\.'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
 t_DUP     = r'DUP'
@@ -27,10 +30,16 @@ t_DROP    = r'DROP'
 t_SWAP    = r'SWAP'
 t_OVER    = r'OVER'
 
-# A regular expression rule with action code
-def t_NUMBER(t):
+# Regular expression for floats
+def t_FLOAT(t):
+    r'\d+\.\d+'
+    t.value = float(t.value)  # Convert to float
+    return t
+
+# Regular expression for integers
+def t_INT(t):
     r'\d+'
-    t.value = int(t.value)    
+    t.value = int(t.value)  # Convert to integer
     return t
 
 # Define a rule to track line numbers
@@ -55,26 +64,10 @@ def find_column(token):
 lexer = lex.lex()
 
 # Test the lexer
-data = '''
-10 DUP * 5 + * dup'''
+data = '''30.5 5 - .'''
 # Give the lexer some input
 lexer.input(data)
 
-# Tokenize
-try:
-    while True:
-        tok = lexer.token()
-        if not tok: 
-            break      # No more input
-        # print(tok)
-except Exception as e:
-    print(e)
-
-    
-# Reading input
-# for linha in sys.stdin:
-#    lexer.input(linha) 
-#    tok = lexer.token()
-#    while tok:
-#        print(tok)
-#        tok = lexer.token()
+# Print tokens
+# for token in lexer:
+    # print(token)

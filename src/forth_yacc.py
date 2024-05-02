@@ -1,86 +1,115 @@
-#
-# (1)
-# (aahah)
-# (True,false)
-# (1,aa, 2, bbb, TRUE, 3,False)
-#
-
-import sys
 import ply.yacc as yacc
+
+# Get the token list from the lexer module
 from forth_lex import tokens
 
-def p_list(p):
-    "LIST : LPAREN ELS RPAREN"
-    p[0] = p[2]
-    if (parser.cntN != parser.cntP):
-        print("Erro Semantico: O número de PALAVRAS e INTEIROS é Diferente!")
+# Assembly code output
+assembly_code = []
 
-def p_els_varios(p):
-    "ELS : ELS VIRG EL"
-    parser.conta += 1
-    p[0] = p[1]
-    if (p[3] != []):
-       p[0].append(p[3])
+stack = []
 
-def p_els_um(p):
-    "ELS : EL"
-    parser.conta = 1
-    if (p[1]):
-        p[0] = [p[1]]
+# Grammar rules for postfix expressions
+
+def p_axioma(p):
+    '''axioma   : expression
+                | expression ponto'''
+                
+def p_ponto(p):
+    '''ponto : PONTO'''
+    valor = stack.pop()
+    if valor == "INT":
+        assembly_code.append(f'WRITEI')
     else:
-        p[0] = []
+        assembly_code.append(f'WRITEF')
+         
+    
 
-def p_el_num(p):
-    "EL : NUM"
-    parser.soma += p[1]
-    parser.cntN += 1
-    p[0] = []
+def p_expression_arithmetic(p):
+    '''expression : int int operationi
+                  | float float operationf
+                  | float int operationf
+                  | int float operationf
+                  '''
+    
+def p_int(p):
+    '''int : INT'''
+    assembly_code.append(f'PUSHI {p[1]}')  
+    stack.append("INT")
+    print(" Push the integer onto the stack")
 
-def p_el_bool(p):
-    "EL : BOOL"
-    p[0] = p[1]
+def p_float(p):
+    '''float : FLOAT'''
+    assembly_code.append(f'PUSHF {p[1]}')  # Push the float onto the stack
+    stack.append("FLOAT")
 
-def p_el_id(p):
-    "EL : ID"
-    parser.pals.append(p[1])
-    parser.cntP += 1
-    p[0] = []
+def p_operationi_plus(p):
+    '''operationi : PLUS'''
+    assembly_code.append('ADD')  # Addition operation
+    stack.pop()  
+    stack.pop()
+    stack.append("INT")
 
+def p_operationi_minus(p):
+    '''operationi : MINUS'''
+    assembly_code.append('SUB')
+    stack.pop()  
+    stack.pop()
+    stack.append("INT")
+    print(" Subtraction operation")
+
+def p_operationi_times(p):
+    '''operationi : TIMES'''
+    assembly_code.append('MUL')  # Multiplication operation
+    stack.pop()  
+    stack.pop()
+    stack.append("INT")
+    
+def p_operationi_divide(p):
+    '''operationi : DIVIDE'''
+    assembly_code.append('DIV')  # Division operation
+    stack.pop()  
+    stack.pop()
+    stack.append("INT")
+    
+def p_operationf_plus(p):
+    '''operationf : PLUS'''
+    assembly_code.append('FADD')  # Addition operation
+    stack.pop()  
+    stack.pop()
+    stack.append("FLOAT")
+    
+def p_operationf_minus(p):
+    '''operationf : MINUS'''
+    assembly_code.append('FSUB')  # Subtraction operation
+    stack.pop()  
+    stack.pop()
+    stack.append("FLOAT")
+    
+def p_operationf_times(p):
+    '''operationf : TIMES'''
+    assembly_code.append('FMUL')  # Multiplication operation
+    stack.pop()  
+    stack.pop()
+    stack.append("FLOAT")
+    
+def p_operationf_divide(p):
+    '''operationf : DIVIDE'''
+    assembly_code.append('FDIV')  # Division operation
+    stack.pop()  
+    stack.pop()
+    stack.append("FLOAT")
+                  
 def p_error(p):
-    print("Syntax error!")
-    parser.sucesso = False
+    print("Syntax error at line", p.lineno)
 
+# Build the parser
 parser = yacc.yacc()
 
-for linha in sys.stdin:
-    parser.sucesso = True
-    parser.conta = 0
-    parser.cntP = 0
-    parser.cntN = 0
-    parser.soma = 0
-    parser.pals = []
-    out = parser.parse(linha)
-    if parser.sucesso:
-       print("Lista sintetizada de Booleanos: ",out)
-       print ("Informação final relativa ao processamento da frase analisada:")
-       print("O total de elementos é : ", parser.conta)
-       print("A soma é : ", parser.soma)
-       print("As palavras são : ", parser.pals)
+# Test the parser
+data = '''30.0 5 - .'''
+parser.parse(data)
 
-
-#parser.conta = 0
-#parser.cntP = 0
-#parser.cntN = 0
-#parser.soma = 0
-#parser.pals = []
-#arser.sucesso = True
-#fonte = ""
-#for linha in sys.stdin:
-    #fonte += linha
-#parser.parse(fonte)
-#if parser.sucesso:
-#    print ("Parsing teminou com sucesso!")
-#    print ("Informação final relativa ao processamento da frase analisada:")
-#    print("O total de elementos é : ", parser.conta)
-#    print("A soma é : ", parser.soma)
-#    print("As palavras são : ", parser.pals)
+# Print the generated assembly code
+print("Assembly code:")
+for instruction in assembly_code:
+    print(instruction)

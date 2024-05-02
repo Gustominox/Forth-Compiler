@@ -1,129 +1,317 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
+Unused terminals:
+
+    DROP
+    DUP
+    LPAREN
+    OVER
+    RPAREN
+    SWAP
+
 Grammar
 
-Rule 0     S' -> LIST
-Rule 1     LIST -> LPAREN ELS RPAREN
-Rule 2     ELS -> ELS VIRG EL
-Rule 3     ELS -> EL
-Rule 4     EL -> NUM
-Rule 5     EL -> BOOL
-Rule 6     EL -> ID
+Rule 0     S' -> axioma
+Rule 1     axioma -> expression
+Rule 2     axioma -> expression ponto
+Rule 3     ponto -> PONTO
+Rule 4     expression -> int int operationi
+Rule 5     expression -> float float operationf
+Rule 6     expression -> float int operationf
+Rule 7     expression -> int float operationf
+Rule 8     int -> INT
+Rule 9     float -> FLOAT
+Rule 10    operationi -> PLUS
+Rule 11    operationi -> MINUS
+Rule 12    operationi -> TIMES
+Rule 13    operationi -> DIVIDE
+Rule 14    operationf -> PLUS
+Rule 15    operationf -> MINUS
+Rule 16    operationf -> TIMES
+Rule 17    operationf -> DIVIDE
 
 Terminals, with rules where they appear
 
-BOOL                 : 5
-ID                   : 6
-LPAREN               : 1
-NUM                  : 4
-RPAREN               : 1
-VIRG                 : 2
+DIVIDE               : 13 17
+DROP                 : 
+DUP                  : 
+FLOAT                : 9
+INT                  : 8
+LPAREN               : 
+MINUS                : 11 15
+OVER                 : 
+PLUS                 : 10 14
+PONTO                : 3
+RPAREN               : 
+SWAP                 : 
+TIMES                : 12 16
 error                : 
 
 Nonterminals, with rules where they appear
 
-EL                   : 2 3
-ELS                  : 1 2
-LIST                 : 0
+axioma               : 0
+expression           : 1 2
+float                : 5 5 6 7
+int                  : 4 4 6 7
+operationf           : 5 6 7
+operationi           : 4
+ponto                : 2
 
 Parsing method: LALR
 
 state 0
 
-    (0) S' -> . LIST
-    (1) LIST -> . LPAREN ELS RPAREN
+    (0) S' -> . axioma
+    (1) axioma -> . expression
+    (2) axioma -> . expression ponto
+    (4) expression -> . int int operationi
+    (5) expression -> . float float operationf
+    (6) expression -> . float int operationf
+    (7) expression -> . int float operationf
+    (8) int -> . INT
+    (9) float -> . FLOAT
 
-    LPAREN          shift and go to state 2
+    INT             shift and go to state 5
+    FLOAT           shift and go to state 6
 
-    LIST                           shift and go to state 1
+    axioma                         shift and go to state 1
+    expression                     shift and go to state 2
+    int                            shift and go to state 3
+    float                          shift and go to state 4
 
 state 1
 
-    (0) S' -> LIST .
+    (0) S' -> axioma .
 
 
 
 state 2
 
-    (1) LIST -> LPAREN . ELS RPAREN
-    (2) ELS -> . ELS VIRG EL
-    (3) ELS -> . EL
-    (4) EL -> . NUM
-    (5) EL -> . BOOL
-    (6) EL -> . ID
+    (1) axioma -> expression .
+    (2) axioma -> expression . ponto
+    (3) ponto -> . PONTO
 
-    NUM             shift and go to state 5
-    BOOL            shift and go to state 6
-    ID              shift and go to state 7
+    $end            reduce using rule 1 (axioma -> expression .)
+    PONTO           shift and go to state 8
 
-    ELS                            shift and go to state 3
-    EL                             shift and go to state 4
+    ponto                          shift and go to state 7
 
 state 3
 
-    (1) LIST -> LPAREN ELS . RPAREN
-    (2) ELS -> ELS . VIRG EL
+    (4) expression -> int . int operationi
+    (7) expression -> int . float operationf
+    (8) int -> . INT
+    (9) float -> . FLOAT
 
-    RPAREN          shift and go to state 8
-    VIRG            shift and go to state 9
+    INT             shift and go to state 5
+    FLOAT           shift and go to state 6
 
+    int                            shift and go to state 9
+    float                          shift and go to state 10
 
 state 4
 
-    (3) ELS -> EL .
+    (5) expression -> float . float operationf
+    (6) expression -> float . int operationf
+    (9) float -> . FLOAT
+    (8) int -> . INT
 
-    RPAREN          reduce using rule 3 (ELS -> EL .)
-    VIRG            reduce using rule 3 (ELS -> EL .)
+    FLOAT           shift and go to state 6
+    INT             shift and go to state 5
 
+    float                          shift and go to state 11
+    int                            shift and go to state 12
 
 state 5
 
-    (4) EL -> NUM .
+    (8) int -> INT .
 
-    RPAREN          reduce using rule 4 (EL -> NUM .)
-    VIRG            reduce using rule 4 (EL -> NUM .)
+    INT             reduce using rule 8 (int -> INT .)
+    FLOAT           reduce using rule 8 (int -> INT .)
+    PLUS            reduce using rule 8 (int -> INT .)
+    MINUS           reduce using rule 8 (int -> INT .)
+    TIMES           reduce using rule 8 (int -> INT .)
+    DIVIDE          reduce using rule 8 (int -> INT .)
 
 
 state 6
 
-    (5) EL -> BOOL .
+    (9) float -> FLOAT .
 
-    RPAREN          reduce using rule 5 (EL -> BOOL .)
-    VIRG            reduce using rule 5 (EL -> BOOL .)
+    FLOAT           reduce using rule 9 (float -> FLOAT .)
+    INT             reduce using rule 9 (float -> FLOAT .)
+    PLUS            reduce using rule 9 (float -> FLOAT .)
+    MINUS           reduce using rule 9 (float -> FLOAT .)
+    TIMES           reduce using rule 9 (float -> FLOAT .)
+    DIVIDE          reduce using rule 9 (float -> FLOAT .)
 
 
 state 7
 
-    (6) EL -> ID .
+    (2) axioma -> expression ponto .
 
-    RPAREN          reduce using rule 6 (EL -> ID .)
-    VIRG            reduce using rule 6 (EL -> ID .)
+    $end            reduce using rule 2 (axioma -> expression ponto .)
 
 
 state 8
 
-    (1) LIST -> LPAREN ELS RPAREN .
+    (3) ponto -> PONTO .
 
-    $end            reduce using rule 1 (LIST -> LPAREN ELS RPAREN .)
+    $end            reduce using rule 3 (ponto -> PONTO .)
 
 
 state 9
 
-    (2) ELS -> ELS VIRG . EL
-    (4) EL -> . NUM
-    (5) EL -> . BOOL
-    (6) EL -> . ID
+    (4) expression -> int int . operationi
+    (10) operationi -> . PLUS
+    (11) operationi -> . MINUS
+    (12) operationi -> . TIMES
+    (13) operationi -> . DIVIDE
 
-    NUM             shift and go to state 5
-    BOOL            shift and go to state 6
-    ID              shift and go to state 7
+    PLUS            shift and go to state 14
+    MINUS           shift and go to state 15
+    TIMES           shift and go to state 16
+    DIVIDE          shift and go to state 17
 
-    EL                             shift and go to state 10
+    operationi                     shift and go to state 13
 
 state 10
 
-    (2) ELS -> ELS VIRG EL .
+    (7) expression -> int float . operationf
+    (14) operationf -> . PLUS
+    (15) operationf -> . MINUS
+    (16) operationf -> . TIMES
+    (17) operationf -> . DIVIDE
 
-    RPAREN          reduce using rule 2 (ELS -> ELS VIRG EL .)
-    VIRG            reduce using rule 2 (ELS -> ELS VIRG EL .)
+    PLUS            shift and go to state 19
+    MINUS           shift and go to state 20
+    TIMES           shift and go to state 21
+    DIVIDE          shift and go to state 22
+
+    operationf                     shift and go to state 18
+
+state 11
+
+    (5) expression -> float float . operationf
+    (14) operationf -> . PLUS
+    (15) operationf -> . MINUS
+    (16) operationf -> . TIMES
+    (17) operationf -> . DIVIDE
+
+    PLUS            shift and go to state 19
+    MINUS           shift and go to state 20
+    TIMES           shift and go to state 21
+    DIVIDE          shift and go to state 22
+
+    operationf                     shift and go to state 23
+
+state 12
+
+    (6) expression -> float int . operationf
+    (14) operationf -> . PLUS
+    (15) operationf -> . MINUS
+    (16) operationf -> . TIMES
+    (17) operationf -> . DIVIDE
+
+    PLUS            shift and go to state 19
+    MINUS           shift and go to state 20
+    TIMES           shift and go to state 21
+    DIVIDE          shift and go to state 22
+
+    operationf                     shift and go to state 24
+
+state 13
+
+    (4) expression -> int int operationi .
+
+    PONTO           reduce using rule 4 (expression -> int int operationi .)
+    $end            reduce using rule 4 (expression -> int int operationi .)
+
+
+state 14
+
+    (10) operationi -> PLUS .
+
+    PONTO           reduce using rule 10 (operationi -> PLUS .)
+    $end            reduce using rule 10 (operationi -> PLUS .)
+
+
+state 15
+
+    (11) operationi -> MINUS .
+
+    PONTO           reduce using rule 11 (operationi -> MINUS .)
+    $end            reduce using rule 11 (operationi -> MINUS .)
+
+
+state 16
+
+    (12) operationi -> TIMES .
+
+    PONTO           reduce using rule 12 (operationi -> TIMES .)
+    $end            reduce using rule 12 (operationi -> TIMES .)
+
+
+state 17
+
+    (13) operationi -> DIVIDE .
+
+    PONTO           reduce using rule 13 (operationi -> DIVIDE .)
+    $end            reduce using rule 13 (operationi -> DIVIDE .)
+
+
+state 18
+
+    (7) expression -> int float operationf .
+
+    PONTO           reduce using rule 7 (expression -> int float operationf .)
+    $end            reduce using rule 7 (expression -> int float operationf .)
+
+
+state 19
+
+    (14) operationf -> PLUS .
+
+    PONTO           reduce using rule 14 (operationf -> PLUS .)
+    $end            reduce using rule 14 (operationf -> PLUS .)
+
+
+state 20
+
+    (15) operationf -> MINUS .
+
+    PONTO           reduce using rule 15 (operationf -> MINUS .)
+    $end            reduce using rule 15 (operationf -> MINUS .)
+
+
+state 21
+
+    (16) operationf -> TIMES .
+
+    PONTO           reduce using rule 16 (operationf -> TIMES .)
+    $end            reduce using rule 16 (operationf -> TIMES .)
+
+
+state 22
+
+    (17) operationf -> DIVIDE .
+
+    PONTO           reduce using rule 17 (operationf -> DIVIDE .)
+    $end            reduce using rule 17 (operationf -> DIVIDE .)
+
+
+state 23
+
+    (5) expression -> float float operationf .
+
+    PONTO           reduce using rule 5 (expression -> float float operationf .)
+    $end            reduce using rule 5 (expression -> float float operationf .)
+
+
+state 24
+
+    (6) expression -> float int operationf .
+
+    PONTO           reduce using rule 6 (expression -> float int operationf .)
+    $end            reduce using rule 6 (expression -> float int operationf .)
 

@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'BOOL ID LPAREN NUM RPAREN VIRGLIST : LPAREN ELS RPARENELS : ELS VIRG ELELS : ELEL : NUMEL : BOOLEL : ID'
+_lr_signature = 'DIVIDE DROP DUP FLOAT INT LPAREN MINUS OVER PLUS PONTO RPAREN SWAP TIMESaxioma   : expression\n                | expression pontoponto : PONTOexpression : int int operationi\n                  | float float operationf\n                  | float int operationf\n                  | int float operationf\n                  int : INTfloat : FLOAToperationi : PLUSoperationi : MINUSoperationi : TIMESoperationi : DIVIDEoperationf : PLUSoperationf : MINUSoperationf : TIMESoperationf : DIVIDE'
     
-_lr_action_items = {'LPAREN':([0,],[2,]),'$end':([1,8,],[0,-1,]),'NUM':([2,9,],[5,5,]),'BOOL':([2,9,],[6,6,]),'ID':([2,9,],[7,7,]),'RPAREN':([3,4,5,6,7,10,],[8,-3,-4,-5,-6,-2,]),'VIRG':([3,4,5,6,7,10,],[9,-3,-4,-5,-6,-2,]),}
+_lr_action_items = {'INT':([0,3,4,5,6,],[5,5,5,-8,-9,]),'FLOAT':([0,3,4,5,6,],[6,6,6,-8,-9,]),'$end':([1,2,7,8,13,14,15,16,17,18,19,20,21,22,23,24,],[0,-1,-2,-3,-4,-10,-11,-12,-13,-7,-14,-15,-16,-17,-5,-6,]),'PONTO':([2,13,14,15,16,17,18,19,20,21,22,23,24,],[8,-4,-10,-11,-12,-13,-7,-14,-15,-16,-17,-5,-6,]),'PLUS':([5,6,9,10,11,12,],[-8,-9,14,19,19,19,]),'MINUS':([5,6,9,10,11,12,],[-8,-9,15,20,20,20,]),'TIMES':([5,6,9,10,11,12,],[-8,-9,16,21,21,21,]),'DIVIDE':([5,6,9,10,11,12,],[-8,-9,17,22,22,22,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'LIST':([0,],[1,]),'ELS':([2,],[3,]),'EL':([2,9,],[4,10,]),}
+_lr_goto_items = {'axioma':([0,],[1,]),'expression':([0,],[2,]),'int':([0,3,4,],[3,9,12,]),'float':([0,3,4,],[4,10,11,]),'ponto':([2,],[7,]),'operationi':([9,],[13,]),'operationf':([10,11,12,],[18,23,24,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,11 +26,22 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> LIST","S'",1,None,None,None),
-  ('LIST -> LPAREN ELS RPAREN','LIST',3,'p_list','forth_yacc.py',13),
-  ('ELS -> ELS VIRG EL','ELS',3,'p_els_varios','forth_yacc.py',19),
-  ('ELS -> EL','ELS',1,'p_els_um','forth_yacc.py',26),
-  ('EL -> NUM','EL',1,'p_el_num','forth_yacc.py',34),
-  ('EL -> BOOL','EL',1,'p_el_bool','forth_yacc.py',40),
-  ('EL -> ID','EL',1,'p_el_id','forth_yacc.py',44),
+  ("S' -> axioma","S'",1,None,None,None),
+  ('axioma -> expression','axioma',1,'p_axioma','forth_yacc.py',12),
+  ('axioma -> expression ponto','axioma',2,'p_axioma','forth_yacc.py',13),
+  ('ponto -> PONTO','ponto',1,'p_ponto','forth_yacc.py',16),
+  ('expression -> int int operationi','expression',3,'p_expression_arithmetic','forth_yacc.py',21),
+  ('expression -> float float operationf','expression',3,'p_expression_arithmetic','forth_yacc.py',22),
+  ('expression -> float int operationf','expression',3,'p_expression_arithmetic','forth_yacc.py',23),
+  ('expression -> int float operationf','expression',3,'p_expression_arithmetic','forth_yacc.py',24),
+  ('int -> INT','int',1,'p_int','forth_yacc.py',28),
+  ('float -> FLOAT','float',1,'p_float','forth_yacc.py',32),
+  ('operationi -> PLUS','operationi',1,'p_operationi_plus','forth_yacc.py',36),
+  ('operationi -> MINUS','operationi',1,'p_operationi_minus','forth_yacc.py',40),
+  ('operationi -> TIMES','operationi',1,'p_operationi_times','forth_yacc.py',44),
+  ('operationi -> DIVIDE','operationi',1,'p_operationi_divide','forth_yacc.py',48),
+  ('operationf -> PLUS','operationf',1,'p_operationf_plus','forth_yacc.py',52),
+  ('operationf -> MINUS','operationf',1,'p_operationf_minus','forth_yacc.py',56),
+  ('operationf -> TIMES','operationf',1,'p_operationf_times','forth_yacc.py',60),
+  ('operationf -> DIVIDE','operationf',1,'p_operationf_divide','forth_yacc.py',64),
 ]
