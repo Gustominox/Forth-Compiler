@@ -1,5 +1,5 @@
 import ply.lex as lex
-
+import sys
 # List of token names
 tokens = (
     'INT',
@@ -64,6 +64,14 @@ def find_column(token):
 
 # Build the lexer
 lexer = lex.lex()
+
+# Reading input
+# for linha in sys.stdin:
+#    lexer.input(linha) 
+#    tok = lexer.token()
+#    while tok:
+    #    print(tok)
+    #    tok = lexer.token()
 
 # Test the lexer
 # data = '''30.5 5 - .'''

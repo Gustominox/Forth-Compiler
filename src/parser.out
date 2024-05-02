@@ -14,50 +14,56 @@ Grammar
 Rule 0     S' -> axioma
 Rule 1     axioma -> axioma ponto
 Rule 2     axioma -> expression
-Rule 3     ponto -> PONTO
-Rule 4     expression -> int int operationi
-Rule 5     expression -> float float operationf
-Rule 6     expression -> float int operationf
-Rule 7     expression -> int float operationf
-Rule 8     int -> INT
-Rule 9     float -> FLOAT
-Rule 10    operationi -> PLUS
-Rule 11    operationi -> MINUS
-Rule 12    operationi -> TIMES
-Rule 13    operationi -> DIVIDE
-Rule 14    operationi -> MOD
-Rule 15    operationf -> PLUS
-Rule 16    operationf -> MINUS
-Rule 17    operationf -> TIMES
-Rule 18    operationf -> DIVIDE
+Rule 3     axioma -> variable_list
+Rule 4     ponto -> PONTO
+Rule 5     expression -> int int operationi
+Rule 6     expression -> float float operationf
+Rule 7     expression -> float int operationf
+Rule 8     expression -> int float operationf
+Rule 9     int -> INT
+Rule 10    float -> FLOAT
+Rule 11    variable_list -> int variable_list
+Rule 12    variable_list -> float variable_list
+Rule 13    variable_list -> int
+Rule 14    variable_list -> float
+Rule 15    operationi -> PLUS
+Rule 16    operationi -> MINUS
+Rule 17    operationi -> TIMES
+Rule 18    operationi -> DIVIDE
+Rule 19    operationi -> MOD
+Rule 20    operationf -> PLUS
+Rule 21    operationf -> MINUS
+Rule 22    operationf -> TIMES
+Rule 23    operationf -> DIVIDE
 
 Terminals, with rules where they appear
 
-DIVIDE               : 13 18
+DIVIDE               : 18 23
 DROP                 : 
 DUP                  : 
-FLOAT                : 9
-INT                  : 8
+FLOAT                : 10
+INT                  : 9
 LPAREN               : 
-MINUS                : 11 16
-MOD                  : 14
+MINUS                : 16 21
+MOD                  : 19
 OVER                 : 
-PLUS                 : 10 15
-PONTO                : 3
+PLUS                 : 15 20
+PONTO                : 4
 RPAREN               : 
 SWAP                 : 
-TIMES                : 12 17
+TIMES                : 17 22
 error                : 
 
 Nonterminals, with rules where they appear
 
 axioma               : 1 0
 expression           : 2
-float                : 5 5 6 7
-int                  : 4 4 6 7
-operationf           : 5 6 7
-operationi           : 4
+float                : 6 6 7 8 12 14
+int                  : 5 5 7 8 11 13
+operationf           : 6 7 8
+operationi           : 5
 ponto                : 1
+variable_list        : 3 11 12
 
 Parsing method: LALR
 
@@ -66,30 +72,36 @@ state 0
     (0) S' -> . axioma
     (1) axioma -> . axioma ponto
     (2) axioma -> . expression
-    (4) expression -> . int int operationi
-    (5) expression -> . float float operationf
-    (6) expression -> . float int operationf
-    (7) expression -> . int float operationf
-    (8) int -> . INT
-    (9) float -> . FLOAT
+    (3) axioma -> . variable_list
+    (5) expression -> . int int operationi
+    (6) expression -> . float float operationf
+    (7) expression -> . float int operationf
+    (8) expression -> . int float operationf
+    (11) variable_list -> . int variable_list
+    (12) variable_list -> . float variable_list
+    (13) variable_list -> . int
+    (14) variable_list -> . float
+    (9) int -> . INT
+    (10) float -> . FLOAT
 
-    INT             shift and go to state 5
-    FLOAT           shift and go to state 6
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
 
     axioma                         shift and go to state 1
     expression                     shift and go to state 2
-    int                            shift and go to state 3
-    float                          shift and go to state 4
+    variable_list                  shift and go to state 3
+    int                            shift and go to state 4
+    float                          shift and go to state 5
 
 state 1
 
     (0) S' -> axioma .
     (1) axioma -> axioma . ponto
-    (3) ponto -> . PONTO
+    (4) ponto -> . PONTO
 
-    PONTO           shift and go to state 8
+    PONTO           shift and go to state 9
 
-    ponto                          shift and go to state 7
+    ponto                          shift and go to state 8
 
 state 2
 
@@ -101,56 +113,86 @@ state 2
 
 state 3
 
-    (4) expression -> int . int operationi
-    (7) expression -> int . float operationf
-    (8) int -> . INT
-    (9) float -> . FLOAT
+    (3) axioma -> variable_list .
 
-    INT             shift and go to state 5
-    FLOAT           shift and go to state 6
+    PONTO           reduce using rule 3 (axioma -> variable_list .)
+    $end            reduce using rule 3 (axioma -> variable_list .)
 
-    int                            shift and go to state 9
-    float                          shift and go to state 10
 
 state 4
 
-    (5) expression -> float . float operationf
-    (6) expression -> float . int operationf
-    (9) float -> . FLOAT
-    (8) int -> . INT
+    (5) expression -> int . int operationi
+    (8) expression -> int . float operationf
+    (11) variable_list -> int . variable_list
+    (13) variable_list -> int .
+    (9) int -> . INT
+    (10) float -> . FLOAT
+    (11) variable_list -> . int variable_list
+    (12) variable_list -> . float variable_list
+    (13) variable_list -> . int
+    (14) variable_list -> . float
 
-    FLOAT           shift and go to state 6
-    INT             shift and go to state 5
+    PONTO           reduce using rule 13 (variable_list -> int .)
+    $end            reduce using rule 13 (variable_list -> int .)
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
 
+    int                            shift and go to state 10
     float                          shift and go to state 11
-    int                            shift and go to state 12
+    variable_list                  shift and go to state 12
 
 state 5
 
-    (8) int -> INT .
+    (6) expression -> float . float operationf
+    (7) expression -> float . int operationf
+    (12) variable_list -> float . variable_list
+    (14) variable_list -> float .
+    (10) float -> . FLOAT
+    (9) int -> . INT
+    (11) variable_list -> . int variable_list
+    (12) variable_list -> . float variable_list
+    (13) variable_list -> . int
+    (14) variable_list -> . float
 
-    INT             reduce using rule 8 (int -> INT .)
-    FLOAT           reduce using rule 8 (int -> INT .)
-    PLUS            reduce using rule 8 (int -> INT .)
-    MINUS           reduce using rule 8 (int -> INT .)
-    TIMES           reduce using rule 8 (int -> INT .)
-    DIVIDE          reduce using rule 8 (int -> INT .)
-    MOD             reduce using rule 8 (int -> INT .)
+    PONTO           reduce using rule 14 (variable_list -> float .)
+    $end            reduce using rule 14 (variable_list -> float .)
+    FLOAT           shift and go to state 7
+    INT             shift and go to state 6
 
+    float                          shift and go to state 13
+    int                            shift and go to state 14
+    variable_list                  shift and go to state 15
 
 state 6
 
-    (9) float -> FLOAT .
+    (9) int -> INT .
 
-    FLOAT           reduce using rule 9 (float -> FLOAT .)
-    INT             reduce using rule 9 (float -> FLOAT .)
-    PLUS            reduce using rule 9 (float -> FLOAT .)
-    MINUS           reduce using rule 9 (float -> FLOAT .)
-    TIMES           reduce using rule 9 (float -> FLOAT .)
-    DIVIDE          reduce using rule 9 (float -> FLOAT .)
+    INT             reduce using rule 9 (int -> INT .)
+    FLOAT           reduce using rule 9 (int -> INT .)
+    PONTO           reduce using rule 9 (int -> INT .)
+    $end            reduce using rule 9 (int -> INT .)
+    PLUS            reduce using rule 9 (int -> INT .)
+    MINUS           reduce using rule 9 (int -> INT .)
+    TIMES           reduce using rule 9 (int -> INT .)
+    DIVIDE          reduce using rule 9 (int -> INT .)
+    MOD             reduce using rule 9 (int -> INT .)
 
 
 state 7
+
+    (10) float -> FLOAT .
+
+    FLOAT           reduce using rule 10 (float -> FLOAT .)
+    INT             reduce using rule 10 (float -> FLOAT .)
+    PONTO           reduce using rule 10 (float -> FLOAT .)
+    $end            reduce using rule 10 (float -> FLOAT .)
+    PLUS            reduce using rule 10 (float -> FLOAT .)
+    MINUS           reduce using rule 10 (float -> FLOAT .)
+    TIMES           reduce using rule 10 (float -> FLOAT .)
+    DIVIDE          reduce using rule 10 (float -> FLOAT .)
+
+
+state 8
 
     (1) axioma -> axioma ponto .
 
@@ -158,176 +200,292 @@ state 7
     $end            reduce using rule 1 (axioma -> axioma ponto .)
 
 
-state 8
-
-    (3) ponto -> PONTO .
-
-    PONTO           reduce using rule 3 (ponto -> PONTO .)
-    $end            reduce using rule 3 (ponto -> PONTO .)
-
-
 state 9
 
-    (4) expression -> int int . operationi
-    (10) operationi -> . PLUS
-    (11) operationi -> . MINUS
-    (12) operationi -> . TIMES
-    (13) operationi -> . DIVIDE
-    (14) operationi -> . MOD
+    (4) ponto -> PONTO .
 
-    PLUS            shift and go to state 14
-    MINUS           shift and go to state 15
-    TIMES           shift and go to state 16
-    DIVIDE          shift and go to state 17
-    MOD             shift and go to state 18
+    PONTO           reduce using rule 4 (ponto -> PONTO .)
+    $end            reduce using rule 4 (ponto -> PONTO .)
 
-    operationi                     shift and go to state 13
 
 state 10
 
-    (7) expression -> int float . operationf
-    (15) operationf -> . PLUS
-    (16) operationf -> . MINUS
-    (17) operationf -> . TIMES
-    (18) operationf -> . DIVIDE
+    (5) expression -> int int . operationi
+    (11) variable_list -> int . variable_list
+    (13) variable_list -> int .
+    (15) operationi -> . PLUS
+    (16) operationi -> . MINUS
+    (17) operationi -> . TIMES
+    (18) operationi -> . DIVIDE
+    (19) operationi -> . MOD
+    (11) variable_list -> . int variable_list
+    (12) variable_list -> . float variable_list
+    (13) variable_list -> . int
+    (14) variable_list -> . float
+    (9) int -> . INT
+    (10) float -> . FLOAT
 
-    PLUS            shift and go to state 20
-    MINUS           shift and go to state 21
-    TIMES           shift and go to state 22
-    DIVIDE          shift and go to state 23
+    PONTO           reduce using rule 13 (variable_list -> int .)
+    $end            reduce using rule 13 (variable_list -> int .)
+    PLUS            shift and go to state 18
+    MINUS           shift and go to state 19
+    TIMES           shift and go to state 20
+    DIVIDE          shift and go to state 21
+    MOD             shift and go to state 22
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
 
-    operationf                     shift and go to state 19
+    int                            shift and go to state 16
+    operationi                     shift and go to state 17
+    variable_list                  shift and go to state 12
+    float                          shift and go to state 23
 
 state 11
 
-    (5) expression -> float float . operationf
-    (15) operationf -> . PLUS
-    (16) operationf -> . MINUS
-    (17) operationf -> . TIMES
-    (18) operationf -> . DIVIDE
+    (8) expression -> int float . operationf
+    (12) variable_list -> float . variable_list
+    (14) variable_list -> float .
+    (20) operationf -> . PLUS
+    (21) operationf -> . MINUS
+    (22) operationf -> . TIMES
+    (23) operationf -> . DIVIDE
+    (11) variable_list -> . int variable_list
+    (12) variable_list -> . float variable_list
+    (13) variable_list -> . int
+    (14) variable_list -> . float
+    (9) int -> . INT
+    (10) float -> . FLOAT
 
-    PLUS            shift and go to state 20
-    MINUS           shift and go to state 21
-    TIMES           shift and go to state 22
-    DIVIDE          shift and go to state 23
+    PONTO           reduce using rule 14 (variable_list -> float .)
+    $end            reduce using rule 14 (variable_list -> float .)
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+    TIMES           shift and go to state 27
+    DIVIDE          shift and go to state 28
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
 
+    int                            shift and go to state 16
+    float                          shift and go to state 23
     operationf                     shift and go to state 24
+    variable_list                  shift and go to state 15
 
 state 12
 
-    (6) expression -> float int . operationf
-    (15) operationf -> . PLUS
-    (16) operationf -> . MINUS
-    (17) operationf -> . TIMES
-    (18) operationf -> . DIVIDE
+    (11) variable_list -> int variable_list .
 
-    PLUS            shift and go to state 20
-    MINUS           shift and go to state 21
-    TIMES           shift and go to state 22
-    DIVIDE          shift and go to state 23
+    PONTO           reduce using rule 11 (variable_list -> int variable_list .)
+    $end            reduce using rule 11 (variable_list -> int variable_list .)
 
-    operationf                     shift and go to state 25
 
 state 13
 
-    (4) expression -> int int operationi .
+    (6) expression -> float float . operationf
+    (12) variable_list -> float . variable_list
+    (14) variable_list -> float .
+    (20) operationf -> . PLUS
+    (21) operationf -> . MINUS
+    (22) operationf -> . TIMES
+    (23) operationf -> . DIVIDE
+    (11) variable_list -> . int variable_list
+    (12) variable_list -> . float variable_list
+    (13) variable_list -> . int
+    (14) variable_list -> . float
+    (9) int -> . INT
+    (10) float -> . FLOAT
 
-    PONTO           reduce using rule 4 (expression -> int int operationi .)
-    $end            reduce using rule 4 (expression -> int int operationi .)
+    PONTO           reduce using rule 14 (variable_list -> float .)
+    $end            reduce using rule 14 (variable_list -> float .)
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+    TIMES           shift and go to state 27
+    DIVIDE          shift and go to state 28
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
 
+    float                          shift and go to state 23
+    operationf                     shift and go to state 29
+    variable_list                  shift and go to state 15
+    int                            shift and go to state 16
 
 state 14
 
-    (10) operationi -> PLUS .
+    (7) expression -> float int . operationf
+    (11) variable_list -> int . variable_list
+    (13) variable_list -> int .
+    (20) operationf -> . PLUS
+    (21) operationf -> . MINUS
+    (22) operationf -> . TIMES
+    (23) operationf -> . DIVIDE
+    (11) variable_list -> . int variable_list
+    (12) variable_list -> . float variable_list
+    (13) variable_list -> . int
+    (14) variable_list -> . float
+    (9) int -> . INT
+    (10) float -> . FLOAT
 
-    PONTO           reduce using rule 10 (operationi -> PLUS .)
-    $end            reduce using rule 10 (operationi -> PLUS .)
+    PONTO           reduce using rule 13 (variable_list -> int .)
+    $end            reduce using rule 13 (variable_list -> int .)
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+    TIMES           shift and go to state 27
+    DIVIDE          shift and go to state 28
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
 
+    float                          shift and go to state 23
+    int                            shift and go to state 16
+    operationf                     shift and go to state 30
+    variable_list                  shift and go to state 12
 
 state 15
 
-    (11) operationi -> MINUS .
+    (12) variable_list -> float variable_list .
 
-    PONTO           reduce using rule 11 (operationi -> MINUS .)
-    $end            reduce using rule 11 (operationi -> MINUS .)
+    PONTO           reduce using rule 12 (variable_list -> float variable_list .)
+    $end            reduce using rule 12 (variable_list -> float variable_list .)
 
 
 state 16
 
-    (12) operationi -> TIMES .
+    (11) variable_list -> int . variable_list
+    (13) variable_list -> int .
+    (11) variable_list -> . int variable_list
+    (12) variable_list -> . float variable_list
+    (13) variable_list -> . int
+    (14) variable_list -> . float
+    (9) int -> . INT
+    (10) float -> . FLOAT
 
-    PONTO           reduce using rule 12 (operationi -> TIMES .)
-    $end            reduce using rule 12 (operationi -> TIMES .)
+    PONTO           reduce using rule 13 (variable_list -> int .)
+    $end            reduce using rule 13 (variable_list -> int .)
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
 
+    int                            shift and go to state 16
+    variable_list                  shift and go to state 12
+    float                          shift and go to state 23
 
 state 17
 
-    (13) operationi -> DIVIDE .
+    (5) expression -> int int operationi .
 
-    PONTO           reduce using rule 13 (operationi -> DIVIDE .)
-    $end            reduce using rule 13 (operationi -> DIVIDE .)
+    PONTO           reduce using rule 5 (expression -> int int operationi .)
+    $end            reduce using rule 5 (expression -> int int operationi .)
 
 
 state 18
 
-    (14) operationi -> MOD .
+    (15) operationi -> PLUS .
 
-    PONTO           reduce using rule 14 (operationi -> MOD .)
-    $end            reduce using rule 14 (operationi -> MOD .)
+    PONTO           reduce using rule 15 (operationi -> PLUS .)
+    $end            reduce using rule 15 (operationi -> PLUS .)
 
 
 state 19
 
-    (7) expression -> int float operationf .
+    (16) operationi -> MINUS .
 
-    PONTO           reduce using rule 7 (expression -> int float operationf .)
-    $end            reduce using rule 7 (expression -> int float operationf .)
+    PONTO           reduce using rule 16 (operationi -> MINUS .)
+    $end            reduce using rule 16 (operationi -> MINUS .)
 
 
 state 20
 
-    (15) operationf -> PLUS .
+    (17) operationi -> TIMES .
 
-    PONTO           reduce using rule 15 (operationf -> PLUS .)
-    $end            reduce using rule 15 (operationf -> PLUS .)
+    PONTO           reduce using rule 17 (operationi -> TIMES .)
+    $end            reduce using rule 17 (operationi -> TIMES .)
 
 
 state 21
 
-    (16) operationf -> MINUS .
+    (18) operationi -> DIVIDE .
 
-    PONTO           reduce using rule 16 (operationf -> MINUS .)
-    $end            reduce using rule 16 (operationf -> MINUS .)
+    PONTO           reduce using rule 18 (operationi -> DIVIDE .)
+    $end            reduce using rule 18 (operationi -> DIVIDE .)
 
 
 state 22
 
-    (17) operationf -> TIMES .
+    (19) operationi -> MOD .
 
-    PONTO           reduce using rule 17 (operationf -> TIMES .)
-    $end            reduce using rule 17 (operationf -> TIMES .)
+    PONTO           reduce using rule 19 (operationi -> MOD .)
+    $end            reduce using rule 19 (operationi -> MOD .)
 
 
 state 23
 
-    (18) operationf -> DIVIDE .
+    (12) variable_list -> float . variable_list
+    (14) variable_list -> float .
+    (11) variable_list -> . int variable_list
+    (12) variable_list -> . float variable_list
+    (13) variable_list -> . int
+    (14) variable_list -> . float
+    (9) int -> . INT
+    (10) float -> . FLOAT
 
-    PONTO           reduce using rule 18 (operationf -> DIVIDE .)
-    $end            reduce using rule 18 (operationf -> DIVIDE .)
+    PONTO           reduce using rule 14 (variable_list -> float .)
+    $end            reduce using rule 14 (variable_list -> float .)
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
 
+    float                          shift and go to state 23
+    variable_list                  shift and go to state 15
+    int                            shift and go to state 16
 
 state 24
 
-    (5) expression -> float float operationf .
+    (8) expression -> int float operationf .
 
-    PONTO           reduce using rule 5 (expression -> float float operationf .)
-    $end            reduce using rule 5 (expression -> float float operationf .)
+    PONTO           reduce using rule 8 (expression -> int float operationf .)
+    $end            reduce using rule 8 (expression -> int float operationf .)
 
 
 state 25
 
-    (6) expression -> float int operationf .
+    (20) operationf -> PLUS .
 
-    PONTO           reduce using rule 6 (expression -> float int operationf .)
-    $end            reduce using rule 6 (expression -> float int operationf .)
+    PONTO           reduce using rule 20 (operationf -> PLUS .)
+    $end            reduce using rule 20 (operationf -> PLUS .)
+
+
+state 26
+
+    (21) operationf -> MINUS .
+
+    PONTO           reduce using rule 21 (operationf -> MINUS .)
+    $end            reduce using rule 21 (operationf -> MINUS .)
+
+
+state 27
+
+    (22) operationf -> TIMES .
+
+    PONTO           reduce using rule 22 (operationf -> TIMES .)
+    $end            reduce using rule 22 (operationf -> TIMES .)
+
+
+state 28
+
+    (23) operationf -> DIVIDE .
+
+    PONTO           reduce using rule 23 (operationf -> DIVIDE .)
+    $end            reduce using rule 23 (operationf -> DIVIDE .)
+
+
+state 29
+
+    (6) expression -> float float operationf .
+
+    PONTO           reduce using rule 6 (expression -> float float operationf .)
+    $end            reduce using rule 6 (expression -> float float operationf .)
+
+
+state 30
+
+    (7) expression -> float int operationf .
+
+    PONTO           reduce using rule 7 (expression -> float int operationf .)
+    $end            reduce using rule 7 (expression -> float int operationf .)
 

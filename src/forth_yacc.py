@@ -6,13 +6,13 @@ from forth_lex import tokens
 # Assembly code output
 assembly_code = []
 
+# stack de dados
 stack = []
-
-# Grammar rules for postfix expressions
 
 def p_axioma(p):
     '''axioma   : axioma ponto
-                | expression'''
+                | expression
+                | variable_list'''
 
 def p_ponto(p):
     '''ponto : PONTO'''
@@ -41,6 +41,17 @@ def p_float(p):
     '''float : FLOAT'''
     assembly_code.append(f'PUSHF {p[1]}')  # Push the float onto the stack
     stack.append("FLOAT")
+
+def p_variable_list(p):
+    '''variable_list : int variable_list
+                     | float variable_list
+                     | int
+                     | float'''
+    # Handle the case when only variables are inputted
+
+# def p_variable(p):
+    # '''variable : int
+                # | float'''
 
 def p_operationi_plus(p):
     '''operationi : PLUS'''
@@ -120,7 +131,7 @@ def find_column(input, token):
 parser = yacc.yacc()
 
 # Test the parser
-data = '''20.0 20 + .'''
+data = '''20 20 + .'''
 parser.parse(data)
 
 # Print the generated assembly code

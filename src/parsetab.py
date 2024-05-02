@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'DIVIDE DROP DUP FLOAT INT LPAREN MINUS MOD OVER PLUS PONTO RPAREN SWAP TIMESaxioma   : axioma ponto\n                | expressionponto : PONTOexpression : int int operationi\n                  | float float operationf\n                  | float int operationf\n                  | int float operationf\n                  int : INTfloat : FLOAToperationi : PLUSoperationi : MINUSoperationi : TIMESoperationi : DIVIDEoperationi : MODoperationf : PLUSoperationf : MINUSoperationf : TIMESoperationf : DIVIDE'
+_lr_signature = 'DIVIDE DROP DUP FLOAT INT LPAREN MINUS MOD OVER PLUS PONTO RPAREN SWAP TIMESaxioma   : axioma ponto\n                | expression\n                | variable_listponto : PONTOexpression : int int operationi\n                  | float float operationf\n                  | float int operationf\n                  | int float operationf\n                  int : INTfloat : FLOATvariable_list : int variable_list\n                     | float variable_list\n                     | int\n                     | floatoperationi : PLUSoperationi : MINUSoperationi : TIMESoperationi : DIVIDEoperationi : MODoperationf : PLUSoperationf : MINUSoperationf : TIMESoperationf : DIVIDE'
     
-_lr_action_items = {'INT':([0,3,4,5,6,],[5,5,5,-8,-9,]),'FLOAT':([0,3,4,5,6,],[6,6,6,-8,-9,]),'$end':([1,2,7,8,13,14,15,16,17,18,19,20,21,22,23,24,25,],[0,-2,-1,-3,-4,-10,-11,-12,-13,-14,-7,-15,-16,-17,-18,-5,-6,]),'PONTO':([1,2,7,8,13,14,15,16,17,18,19,20,21,22,23,24,25,],[8,-2,-1,-3,-4,-10,-11,-12,-13,-14,-7,-15,-16,-17,-18,-5,-6,]),'PLUS':([5,6,9,10,11,12,],[-8,-9,14,20,20,20,]),'MINUS':([5,6,9,10,11,12,],[-8,-9,15,21,21,21,]),'TIMES':([5,6,9,10,11,12,],[-8,-9,16,22,22,22,]),'DIVIDE':([5,6,9,10,11,12,],[-8,-9,17,23,23,23,]),'MOD':([5,9,],[-8,18,]),}
+_lr_action_items = {'INT':([0,4,5,6,7,10,11,13,14,16,23,],[6,6,6,-9,-10,6,6,6,6,6,6,]),'FLOAT':([0,4,5,6,7,10,11,13,14,16,23,],[7,7,7,-9,-10,7,7,7,7,7,7,]),'$end':([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,],[0,-2,-3,-13,-14,-9,-10,-1,-4,-13,-14,-11,-14,-13,-12,-13,-5,-15,-16,-17,-18,-19,-14,-8,-20,-21,-22,-23,-6,-7,]),'PONTO':([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,],[9,-2,-3,-13,-14,-9,-10,-1,-4,-13,-14,-11,-14,-13,-12,-13,-5,-15,-16,-17,-18,-19,-14,-8,-20,-21,-22,-23,-6,-7,]),'PLUS':([6,7,10,11,13,14,],[-9,-10,18,25,25,25,]),'MINUS':([6,7,10,11,13,14,],[-9,-10,19,26,26,26,]),'TIMES':([6,7,10,11,13,14,],[-9,-10,20,27,27,27,]),'DIVIDE':([6,7,10,11,13,14,],[-9,-10,21,28,28,28,]),'MOD':([6,10,],[-9,22,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'axioma':([0,],[1,]),'expression':([0,],[2,]),'int':([0,3,4,],[3,9,12,]),'float':([0,3,4,],[4,10,11,]),'ponto':([1,],[7,]),'operationi':([9,],[13,]),'operationf':([10,11,12,],[19,24,25,]),}
+_lr_goto_items = {'axioma':([0,],[1,]),'expression':([0,],[2,]),'variable_list':([0,4,5,10,11,13,14,16,23,],[3,12,15,12,15,15,12,12,15,]),'int':([0,4,5,10,11,13,14,16,23,],[4,10,14,16,16,16,16,16,16,]),'float':([0,4,5,10,11,13,14,16,23,],[5,11,13,23,23,23,23,23,23,]),'ponto':([1,],[8,]),'operationi':([10,],[17,]),'operationf':([11,13,14,],[24,29,30,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,8 +27,9 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> axioma","S'",1,None,None,None),
-  ('axioma -> axioma ponto','axioma',2,'p_axioma','forth_yacc.py',14),
-  ('axioma -> expression','axioma',1,'p_axioma','forth_yacc.py',15),
+  ('axioma -> axioma ponto','axioma',2,'p_axioma','forth_yacc.py',13),
+  ('axioma -> expression','axioma',1,'p_axioma','forth_yacc.py',14),
+  ('axioma -> variable_list','axioma',1,'p_axioma','forth_yacc.py',15),
   ('ponto -> PONTO','ponto',1,'p_ponto','forth_yacc.py',18),
   ('expression -> int int operationi','expression',3,'p_expression_arithmetic','forth_yacc.py',27),
   ('expression -> float float operationf','expression',3,'p_expression_arithmetic','forth_yacc.py',28),
@@ -36,13 +37,17 @@ _lr_productions = [
   ('expression -> int float operationf','expression',3,'p_expression_arithmetic','forth_yacc.py',30),
   ('int -> INT','int',1,'p_int','forth_yacc.py',35),
   ('float -> FLOAT','float',1,'p_float','forth_yacc.py',41),
-  ('operationi -> PLUS','operationi',1,'p_operationi_plus','forth_yacc.py',46),
-  ('operationi -> MINUS','operationi',1,'p_operationi_minus','forth_yacc.py',53),
-  ('operationi -> TIMES','operationi',1,'p_operationi_times','forth_yacc.py',61),
-  ('operationi -> DIVIDE','operationi',1,'p_operationi_divide','forth_yacc.py',68),
-  ('operationi -> MOD','operationi',1,'p_operationi_mod','forth_yacc.py',75),
-  ('operationf -> PLUS','operationf',1,'p_operationf_plus','forth_yacc.py',82),
-  ('operationf -> MINUS','operationf',1,'p_operationf_minus','forth_yacc.py',89),
-  ('operationf -> TIMES','operationf',1,'p_operationf_times','forth_yacc.py',96),
-  ('operationf -> DIVIDE','operationf',1,'p_operationf_divide','forth_yacc.py',103),
+  ('variable_list -> int variable_list','variable_list',2,'p_variable_list','forth_yacc.py',46),
+  ('variable_list -> float variable_list','variable_list',2,'p_variable_list','forth_yacc.py',47),
+  ('variable_list -> int','variable_list',1,'p_variable_list','forth_yacc.py',48),
+  ('variable_list -> float','variable_list',1,'p_variable_list','forth_yacc.py',49),
+  ('operationi -> PLUS','operationi',1,'p_operationi_plus','forth_yacc.py',57),
+  ('operationi -> MINUS','operationi',1,'p_operationi_minus','forth_yacc.py',64),
+  ('operationi -> TIMES','operationi',1,'p_operationi_times','forth_yacc.py',72),
+  ('operationi -> DIVIDE','operationi',1,'p_operationi_divide','forth_yacc.py',79),
+  ('operationi -> MOD','operationi',1,'p_operationi_mod','forth_yacc.py',86),
+  ('operationf -> PLUS','operationf',1,'p_operationf_plus','forth_yacc.py',93),
+  ('operationf -> MINUS','operationf',1,'p_operationf_minus','forth_yacc.py',100),
+  ('operationf -> TIMES','operationf',1,'p_operationf_times','forth_yacc.py',107),
+  ('operationf -> DIVIDE','operationf',1,'p_operationf_divide','forth_yacc.py',114),
 ]
