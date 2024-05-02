@@ -1,5 +1,5 @@
 import ply.yacc as yacc
-
+yacc.debug = True
 # Get the token list from the lexer module
 from forth_lex import tokens
 
@@ -11,18 +11,17 @@ stack = []
 # Grammar rules for postfix expressions
 
 def p_axioma(p):
-    '''axioma   : expression
-                | expression ponto'''
-                
+    '''axioma   : axioma ponto
+                | expression'''
+
 def p_ponto(p):
     '''ponto : PONTO'''
     valor = stack.pop()
     if valor == "INT":
         assembly_code.append(f'WRITEI')
-    else:
+    elif valor == "FLOAT":
         assembly_code.append(f'WRITEF')
-         
-    
+
 
 def p_expression_arithmetic(p):
     '''expression : int int operationi
@@ -30,6 +29,7 @@ def p_expression_arithmetic(p):
                   | float int operationf
                   | int float operationf
                   '''
+
     
 def p_int(p):
     '''int : INT'''
@@ -70,6 +70,13 @@ def p_operationi_divide(p):
     stack.pop()  
     stack.pop()
     stack.append("INT")
+
+def p_operationi_mod(p):
+    '''operationi : MOD'''
+    assembly_code.append('MOD')  # Addition operation
+    stack.pop()  
+    stack.pop()
+    stack.append("INT")
     
 def p_operationf_plus(p):
     '''operationf : PLUS'''
@@ -98,15 +105,22 @@ def p_operationf_divide(p):
     stack.pop()  
     stack.pop()
     stack.append("FLOAT")
-                  
+                 
 def p_error(p):
-    print("Syntax error at line", p.lineno)
+    if p:
+        print("Syntax error at line", p.lineno, "column", find_column(data, p))
+    else:
+        print("Syntax error: unexpected end of input")
+
+def find_column(input, token):
+    line_start = input.rfind('\n', 0, token.lexpos) + 1
+    return (token.lexpos - line_start) + 1
 
 # Build the parser
 parser = yacc.yacc()
 
 # Test the parser
-data = '''30.0 5 - .'''
+data = '''20.0 20 + .'''
 parser.parse(data)
 
 # Print the generated assembly code

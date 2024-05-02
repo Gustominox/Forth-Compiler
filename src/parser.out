@@ -12,8 +12,8 @@ Unused terminals:
 Grammar
 
 Rule 0     S' -> axioma
-Rule 1     axioma -> expression
-Rule 2     axioma -> expression ponto
+Rule 1     axioma -> axioma ponto
+Rule 2     axioma -> expression
 Rule 3     ponto -> PONTO
 Rule 4     expression -> int int operationi
 Rule 5     expression -> float float operationf
@@ -25,45 +25,47 @@ Rule 10    operationi -> PLUS
 Rule 11    operationi -> MINUS
 Rule 12    operationi -> TIMES
 Rule 13    operationi -> DIVIDE
-Rule 14    operationf -> PLUS
-Rule 15    operationf -> MINUS
-Rule 16    operationf -> TIMES
-Rule 17    operationf -> DIVIDE
+Rule 14    operationi -> MOD
+Rule 15    operationf -> PLUS
+Rule 16    operationf -> MINUS
+Rule 17    operationf -> TIMES
+Rule 18    operationf -> DIVIDE
 
 Terminals, with rules where they appear
 
-DIVIDE               : 13 17
+DIVIDE               : 13 18
 DROP                 : 
 DUP                  : 
 FLOAT                : 9
 INT                  : 8
 LPAREN               : 
-MINUS                : 11 15
+MINUS                : 11 16
+MOD                  : 14
 OVER                 : 
-PLUS                 : 10 14
+PLUS                 : 10 15
 PONTO                : 3
 RPAREN               : 
 SWAP                 : 
-TIMES                : 12 16
+TIMES                : 12 17
 error                : 
 
 Nonterminals, with rules where they appear
 
-axioma               : 0
-expression           : 1 2
+axioma               : 1 0
+expression           : 2
 float                : 5 5 6 7
 int                  : 4 4 6 7
 operationf           : 5 6 7
 operationi           : 4
-ponto                : 2
+ponto                : 1
 
 Parsing method: LALR
 
 state 0
 
     (0) S' -> . axioma
-    (1) axioma -> . expression
-    (2) axioma -> . expression ponto
+    (1) axioma -> . axioma ponto
+    (2) axioma -> . expression
     (4) expression -> . int int operationi
     (5) expression -> . float float operationf
     (6) expression -> . float int operationf
@@ -82,19 +84,20 @@ state 0
 state 1
 
     (0) S' -> axioma .
-
-
-
-state 2
-
-    (1) axioma -> expression .
-    (2) axioma -> expression . ponto
+    (1) axioma -> axioma . ponto
     (3) ponto -> . PONTO
 
-    $end            reduce using rule 1 (axioma -> expression .)
     PONTO           shift and go to state 8
 
     ponto                          shift and go to state 7
+
+state 2
+
+    (2) axioma -> expression .
+
+    PONTO           reduce using rule 2 (axioma -> expression .)
+    $end            reduce using rule 2 (axioma -> expression .)
+
 
 state 3
 
@@ -132,6 +135,7 @@ state 5
     MINUS           reduce using rule 8 (int -> INT .)
     TIMES           reduce using rule 8 (int -> INT .)
     DIVIDE          reduce using rule 8 (int -> INT .)
+    MOD             reduce using rule 8 (int -> INT .)
 
 
 state 6
@@ -148,15 +152,17 @@ state 6
 
 state 7
 
-    (2) axioma -> expression ponto .
+    (1) axioma -> axioma ponto .
 
-    $end            reduce using rule 2 (axioma -> expression ponto .)
+    PONTO           reduce using rule 1 (axioma -> axioma ponto .)
+    $end            reduce using rule 1 (axioma -> axioma ponto .)
 
 
 state 8
 
     (3) ponto -> PONTO .
 
+    PONTO           reduce using rule 3 (ponto -> PONTO .)
     $end            reduce using rule 3 (ponto -> PONTO .)
 
 
@@ -167,58 +173,60 @@ state 9
     (11) operationi -> . MINUS
     (12) operationi -> . TIMES
     (13) operationi -> . DIVIDE
+    (14) operationi -> . MOD
 
     PLUS            shift and go to state 14
     MINUS           shift and go to state 15
     TIMES           shift and go to state 16
     DIVIDE          shift and go to state 17
+    MOD             shift and go to state 18
 
     operationi                     shift and go to state 13
 
 state 10
 
     (7) expression -> int float . operationf
-    (14) operationf -> . PLUS
-    (15) operationf -> . MINUS
-    (16) operationf -> . TIMES
-    (17) operationf -> . DIVIDE
+    (15) operationf -> . PLUS
+    (16) operationf -> . MINUS
+    (17) operationf -> . TIMES
+    (18) operationf -> . DIVIDE
 
-    PLUS            shift and go to state 19
-    MINUS           shift and go to state 20
-    TIMES           shift and go to state 21
-    DIVIDE          shift and go to state 22
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    TIMES           shift and go to state 22
+    DIVIDE          shift and go to state 23
 
-    operationf                     shift and go to state 18
+    operationf                     shift and go to state 19
 
 state 11
 
     (5) expression -> float float . operationf
-    (14) operationf -> . PLUS
-    (15) operationf -> . MINUS
-    (16) operationf -> . TIMES
-    (17) operationf -> . DIVIDE
+    (15) operationf -> . PLUS
+    (16) operationf -> . MINUS
+    (17) operationf -> . TIMES
+    (18) operationf -> . DIVIDE
 
-    PLUS            shift and go to state 19
-    MINUS           shift and go to state 20
-    TIMES           shift and go to state 21
-    DIVIDE          shift and go to state 22
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    TIMES           shift and go to state 22
+    DIVIDE          shift and go to state 23
 
-    operationf                     shift and go to state 23
+    operationf                     shift and go to state 24
 
 state 12
 
     (6) expression -> float int . operationf
-    (14) operationf -> . PLUS
-    (15) operationf -> . MINUS
-    (16) operationf -> . TIMES
-    (17) operationf -> . DIVIDE
+    (15) operationf -> . PLUS
+    (16) operationf -> . MINUS
+    (17) operationf -> . TIMES
+    (18) operationf -> . DIVIDE
 
-    PLUS            shift and go to state 19
-    MINUS           shift and go to state 20
-    TIMES           shift and go to state 21
-    DIVIDE          shift and go to state 22
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    TIMES           shift and go to state 22
+    DIVIDE          shift and go to state 23
 
-    operationf                     shift and go to state 24
+    operationf                     shift and go to state 25
 
 state 13
 
@@ -262,45 +270,53 @@ state 17
 
 state 18
 
+    (14) operationi -> MOD .
+
+    PONTO           reduce using rule 14 (operationi -> MOD .)
+    $end            reduce using rule 14 (operationi -> MOD .)
+
+
+state 19
+
     (7) expression -> int float operationf .
 
     PONTO           reduce using rule 7 (expression -> int float operationf .)
     $end            reduce using rule 7 (expression -> int float operationf .)
 
 
-state 19
-
-    (14) operationf -> PLUS .
-
-    PONTO           reduce using rule 14 (operationf -> PLUS .)
-    $end            reduce using rule 14 (operationf -> PLUS .)
-
-
 state 20
 
-    (15) operationf -> MINUS .
+    (15) operationf -> PLUS .
 
-    PONTO           reduce using rule 15 (operationf -> MINUS .)
-    $end            reduce using rule 15 (operationf -> MINUS .)
+    PONTO           reduce using rule 15 (operationf -> PLUS .)
+    $end            reduce using rule 15 (operationf -> PLUS .)
 
 
 state 21
 
-    (16) operationf -> TIMES .
+    (16) operationf -> MINUS .
 
-    PONTO           reduce using rule 16 (operationf -> TIMES .)
-    $end            reduce using rule 16 (operationf -> TIMES .)
+    PONTO           reduce using rule 16 (operationf -> MINUS .)
+    $end            reduce using rule 16 (operationf -> MINUS .)
 
 
 state 22
 
-    (17) operationf -> DIVIDE .
+    (17) operationf -> TIMES .
 
-    PONTO           reduce using rule 17 (operationf -> DIVIDE .)
-    $end            reduce using rule 17 (operationf -> DIVIDE .)
+    PONTO           reduce using rule 17 (operationf -> TIMES .)
+    $end            reduce using rule 17 (operationf -> TIMES .)
 
 
 state 23
+
+    (18) operationf -> DIVIDE .
+
+    PONTO           reduce using rule 18 (operationf -> DIVIDE .)
+    $end            reduce using rule 18 (operationf -> DIVIDE .)
+
+
+state 24
 
     (5) expression -> float float operationf .
 
@@ -308,7 +324,7 @@ state 23
     $end            reduce using rule 5 (expression -> float float operationf .)
 
 
-state 24
+state 25
 
     (6) expression -> float int operationf .
 

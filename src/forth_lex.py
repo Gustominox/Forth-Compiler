@@ -8,6 +8,7 @@ tokens = (
     'MINUS',
     'TIMES', 
     'DIVIDE',
+    'MOD',
     'PONTO',
     'DUP',
     'DROP',
@@ -22,6 +23,7 @@ t_PLUS    = r'\+'
 t_MINUS   = r'-'
 t_TIMES   = r'\*'
 t_DIVIDE  = r'/'
+t_MOD     = r'%'
 t_PONTO   = r'\.'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
@@ -64,10 +66,11 @@ def find_column(token):
 lexer = lex.lex()
 
 # Test the lexer
-data = '''30.5 5 - .'''
+# data = '''30.5 5 - .'''
 # Give the lexer some input
-lexer.input(data)
+
+# lexer.input(data)
 
 # Print tokens
 # for token in lexer:
-    # print(token)
+#     print(token)
