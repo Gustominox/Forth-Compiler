@@ -14,10 +14,13 @@ tokens = (
     'DROP',
     'SWAP',
     'OVER',
-    'LPAREN',
-    'RPAREN',
+    'COMMENT',
+#    'LPAREN',
+#    'RPAREN',
+    'COLON',   
+    'SEMICOLON',  
+    'WORD'  
 )
-
 # Regular expression rules for simple tokens
 t_PLUS    = r'\+'
 t_MINUS   = r'-'
@@ -25,12 +28,15 @@ t_TIMES   = r'\*'
 t_DIVIDE  = r'/'
 t_MOD     = r'%'
 t_PONTO   = r'\.'
-t_LPAREN  = r'\('
-t_RPAREN  = r'\)'
+t_COMMENT = r'\([^)]*\)'
+# t_LPAREN  = r'\('
+# t_RPAREN  = r'\)'
 t_DUP     = r'DUP'
 t_DROP    = r'DROP'
 t_SWAP    = r'SWAP'
 t_OVER    = r'OVER'
+t_COLON   = r':'
+t_SEMICOLON = r';'
 
 # Regular expression for floats
 def t_FLOAT(t):
@@ -42,6 +48,11 @@ def t_FLOAT(t):
 def t_INT(t):
     r'\d+'
     t.value = int(t.value)  # Convert to integer
+    return t
+
+# Regular expression for words
+def t_WORD(t):
+    r'[a-zA-Z_][a-zA-Z0-9_]*'  # Start with a letter or underscore, followed by letters, digits, hyphens, underscores, or dots
     return t
 
 # Define a rule to track line numbers

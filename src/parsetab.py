@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'DIVIDE DROP DUP FLOAT INT LPAREN MINUS MOD OVER PLUS PONTO RPAREN SWAP TIMESaxioma   : axioma ponto\n                | expression\n                | variable_listponto : PONTOexpression : int int operationi\n                  | float float operationf\n                  | float int operationf\n                  | int float operationf\n                  int : INTfloat : FLOATvariable_list : int variable_list\n                     | float variable_list\n                     | int\n                     | floatoperationi : PLUSoperationi : MINUSoperationi : TIMESoperationi : DIVIDEoperationi : MODoperationf : PLUSoperationf : MINUSoperationf : TIMESoperationf : DIVIDE'
+_lr_signature = 'COLON COMMENT DIVIDE DROP DUP FLOAT INT MINUS MOD OVER PLUS PONTO SEMICOLON SWAP TIMES WORDaxioma   : axioma ponto\n                | axioma COMMENT\n                | axioma expression\n                | axioma definition\n                | axioma variable_list\n                | emptyempty :ponto : PONTOexpression : int int operationi\n                  | float float operationf\n                  | float int operationf\n                  | int float operationf\n                  int : INTfloat : FLOATvariable_list : int variable_list\n                     | float variable_list\n                     | int\n                     | floatdefinition : COLON WORD COMMENT code SEMICOLONcode : expressionoperationi : PLUSoperationi : MINUSoperationi : TIMESoperationi : DIVIDEoperationi : MODoperationf : PLUSoperationf : MINUSoperationf : TIMESoperationf : DIVIDE'
     
-_lr_action_items = {'INT':([0,4,5,6,7,10,11,13,14,16,23,],[6,6,6,-9,-10,6,6,6,6,6,6,]),'FLOAT':([0,4,5,6,7,10,11,13,14,16,23,],[7,7,7,-9,-10,7,7,7,7,7,7,]),'$end':([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,],[0,-2,-3,-13,-14,-9,-10,-1,-4,-13,-14,-11,-14,-13,-12,-13,-5,-15,-16,-17,-18,-19,-14,-8,-20,-21,-22,-23,-6,-7,]),'PONTO':([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,],[9,-2,-3,-13,-14,-9,-10,-1,-4,-13,-14,-11,-14,-13,-12,-13,-5,-15,-16,-17,-18,-19,-14,-8,-20,-21,-22,-23,-6,-7,]),'PLUS':([6,7,10,11,13,14,],[-9,-10,18,25,25,25,]),'MINUS':([6,7,10,11,13,14,],[-9,-10,19,26,26,26,]),'TIMES':([6,7,10,11,13,14,],[-9,-10,20,27,27,27,]),'DIVIDE':([6,7,10,11,13,14,],[-9,-10,21,28,28,28,]),'MOD':([6,10,],[-9,22,]),}
+_lr_action_items = {'COMMENT':([0,1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,41,],[-7,4,-6,-1,-2,-3,-4,-5,-8,-17,-18,-13,-14,-17,-18,-15,-18,-17,-16,36,-17,-9,-21,-22,-23,-24,-25,-18,-12,-26,-27,-28,-29,-10,-11,-19,]),'PONTO':([0,1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,41,],[-7,8,-6,-1,-2,-3,-4,-5,-8,-17,-18,-13,-14,-17,-18,-15,-18,-17,-16,-17,-9,-21,-22,-23,-24,-25,-18,-12,-26,-27,-28,-29,-10,-11,-19,]),'COLON':([0,1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,41,],[-7,11,-6,-1,-2,-3,-4,-5,-8,-17,-18,-13,-14,-17,-18,-15,-18,-17,-16,-17,-9,-21,-22,-23,-24,-25,-18,-12,-26,-27,-28,-29,-10,-11,-19,]),'INT':([0,1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,39,40,41,],[-7,12,-6,-1,-2,-3,-4,-5,-8,12,12,-13,-14,12,12,-15,12,12,-16,12,-9,-21,-22,-23,-24,-25,12,-12,-26,-27,-28,-29,-10,-11,12,12,12,-19,]),'FLOAT':([0,1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,39,40,41,],[-7,13,-6,-1,-2,-3,-4,-5,-8,13,13,-13,-14,13,13,-15,13,13,-16,13,-9,-21,-22,-23,-24,-25,13,-12,-26,-27,-28,-29,-10,-11,13,13,13,-19,]),'$end':([0,1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,41,],[-7,0,-6,-1,-2,-3,-4,-5,-8,-17,-18,-13,-14,-17,-18,-15,-18,-17,-16,-17,-9,-21,-22,-23,-24,-25,-18,-12,-26,-27,-28,-29,-10,-11,-19,]),'WORD':([11,],[20,]),'PLUS':([12,13,14,15,17,18,42,43,44,45,],[-13,-14,23,30,30,30,23,30,30,30,]),'MINUS':([12,13,14,15,17,18,42,43,44,45,],[-13,-14,24,31,31,31,24,31,31,31,]),'TIMES':([12,13,14,15,17,18,42,43,44,45,],[-13,-14,25,32,32,32,25,32,32,32,]),'DIVIDE':([12,13,14,15,17,18,42,43,44,45,],[-13,-14,26,33,33,33,26,33,33,33,]),'MOD':([12,14,42,],[-13,27,27,]),'SEMICOLON':([22,23,24,25,26,27,29,30,31,32,33,34,35,37,38,],[-9,-21,-22,-23,-24,-25,-12,-26,-27,-28,-29,-10,-11,41,-20,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'axioma':([0,],[1,]),'expression':([0,],[2,]),'variable_list':([0,4,5,10,11,13,14,16,23,],[3,12,15,12,15,15,12,12,15,]),'int':([0,4,5,10,11,13,14,16,23,],[4,10,14,16,16,16,16,16,16,]),'float':([0,4,5,10,11,13,14,16,23,],[5,11,13,23,23,23,23,23,23,]),'ponto':([1,],[8,]),'operationi':([10,],[17,]),'operationf':([11,13,14,],[24,29,30,]),}
+_lr_goto_items = {'axioma':([0,],[1,]),'empty':([0,],[2,]),'ponto':([1,],[3,]),'expression':([1,36,],[5,38,]),'definition':([1,],[6,]),'variable_list':([1,9,10,14,15,17,18,21,28,],[7,16,19,16,19,19,16,16,19,]),'int':([1,9,10,14,15,17,18,21,28,36,39,40,],[9,14,18,21,21,21,21,21,21,39,42,45,]),'float':([1,9,10,14,15,17,18,21,28,36,39,40,],[10,15,17,28,28,28,28,28,28,40,43,44,]),'operationi':([14,42,],[22,22,]),'operationf':([15,17,18,43,44,45,],[29,34,35,29,34,35,]),'code':([36,],[37,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,27 +27,33 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> axioma","S'",1,None,None,None),
-  ('axioma -> axioma ponto','axioma',2,'p_axioma','forth_yacc.py',13),
-  ('axioma -> expression','axioma',1,'p_axioma','forth_yacc.py',14),
-  ('axioma -> variable_list','axioma',1,'p_axioma','forth_yacc.py',15),
-  ('ponto -> PONTO','ponto',1,'p_ponto','forth_yacc.py',18),
-  ('expression -> int int operationi','expression',3,'p_expression_arithmetic','forth_yacc.py',27),
-  ('expression -> float float operationf','expression',3,'p_expression_arithmetic','forth_yacc.py',28),
-  ('expression -> float int operationf','expression',3,'p_expression_arithmetic','forth_yacc.py',29),
-  ('expression -> int float operationf','expression',3,'p_expression_arithmetic','forth_yacc.py',30),
-  ('int -> INT','int',1,'p_int','forth_yacc.py',35),
-  ('float -> FLOAT','float',1,'p_float','forth_yacc.py',41),
-  ('variable_list -> int variable_list','variable_list',2,'p_variable_list','forth_yacc.py',46),
-  ('variable_list -> float variable_list','variable_list',2,'p_variable_list','forth_yacc.py',47),
-  ('variable_list -> int','variable_list',1,'p_variable_list','forth_yacc.py',48),
-  ('variable_list -> float','variable_list',1,'p_variable_list','forth_yacc.py',49),
-  ('operationi -> PLUS','operationi',1,'p_operationi_plus','forth_yacc.py',57),
-  ('operationi -> MINUS','operationi',1,'p_operationi_minus','forth_yacc.py',64),
-  ('operationi -> TIMES','operationi',1,'p_operationi_times','forth_yacc.py',72),
-  ('operationi -> DIVIDE','operationi',1,'p_operationi_divide','forth_yacc.py',79),
-  ('operationi -> MOD','operationi',1,'p_operationi_mod','forth_yacc.py',86),
-  ('operationf -> PLUS','operationf',1,'p_operationf_plus','forth_yacc.py',93),
-  ('operationf -> MINUS','operationf',1,'p_operationf_minus','forth_yacc.py',100),
-  ('operationf -> TIMES','operationf',1,'p_operationf_times','forth_yacc.py',107),
-  ('operationf -> DIVIDE','operationf',1,'p_operationf_divide','forth_yacc.py',114),
+  ('axioma -> axioma ponto','axioma',2,'p_axioma','forth_yacc_wordDef.py',16),
+  ('axioma -> axioma COMMENT','axioma',2,'p_axioma','forth_yacc_wordDef.py',17),
+  ('axioma -> axioma expression','axioma',2,'p_axioma','forth_yacc_wordDef.py',18),
+  ('axioma -> axioma definition','axioma',2,'p_axioma','forth_yacc_wordDef.py',19),
+  ('axioma -> axioma variable_list','axioma',2,'p_axioma','forth_yacc_wordDef.py',20),
+  ('axioma -> empty','axioma',1,'p_axioma','forth_yacc_wordDef.py',21),
+  ('empty -> <empty>','empty',0,'p_empty','forth_yacc_wordDef.py',24),
+  ('ponto -> PONTO','ponto',1,'p_ponto','forth_yacc_wordDef.py',28),
+  ('expression -> int int operationi','expression',3,'p_expression_arithmetic','forth_yacc_wordDef.py',37),
+  ('expression -> float float operationf','expression',3,'p_expression_arithmetic','forth_yacc_wordDef.py',38),
+  ('expression -> float int operationf','expression',3,'p_expression_arithmetic','forth_yacc_wordDef.py',39),
+  ('expression -> int float operationf','expression',3,'p_expression_arithmetic','forth_yacc_wordDef.py',40),
+  ('int -> INT','int',1,'p_int','forth_yacc_wordDef.py',45),
+  ('float -> FLOAT','float',1,'p_float','forth_yacc_wordDef.py',51),
+  ('variable_list -> int variable_list','variable_list',2,'p_variable_list','forth_yacc_wordDef.py',56),
+  ('variable_list -> float variable_list','variable_list',2,'p_variable_list','forth_yacc_wordDef.py',57),
+  ('variable_list -> int','variable_list',1,'p_variable_list','forth_yacc_wordDef.py',58),
+  ('variable_list -> float','variable_list',1,'p_variable_list','forth_yacc_wordDef.py',59),
+  ('definition -> COLON WORD COMMENT code SEMICOLON','definition',5,'p_definition','forth_yacc_wordDef.py',63),
+  ('code -> expression','code',1,'p_code','forth_yacc_wordDef.py',67),
+  ('operationi -> PLUS','operationi',1,'p_operationi_plus','forth_yacc_wordDef.py',70),
+  ('operationi -> MINUS','operationi',1,'p_operationi_minus','forth_yacc_wordDef.py',77),
+  ('operationi -> TIMES','operationi',1,'p_operationi_times','forth_yacc_wordDef.py',85),
+  ('operationi -> DIVIDE','operationi',1,'p_operationi_divide','forth_yacc_wordDef.py',92),
+  ('operationi -> MOD','operationi',1,'p_operationi_mod','forth_yacc_wordDef.py',99),
+  ('operationf -> PLUS','operationf',1,'p_operationf_plus','forth_yacc_wordDef.py',106),
+  ('operationf -> MINUS','operationf',1,'p_operationf_minus','forth_yacc_wordDef.py',113),
+  ('operationf -> TIMES','operationf',1,'p_operationf_times','forth_yacc_wordDef.py',120),
+  ('operationf -> DIVIDE','operationf',1,'p_operationf_divide','forth_yacc_wordDef.py',127),
 ]

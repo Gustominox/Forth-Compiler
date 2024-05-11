@@ -9,10 +9,18 @@ assembly_code = []
 # stack de dados
 stack = []
 
+
 def p_axioma(p):
     '''axioma   : axioma ponto
-                | expression
-                | variable_list'''
+                | axioma COMMENT
+                | axioma expression
+                | axioma defenition
+                | axioma variable_list
+                | empty'''
+
+def p_empty(p):
+    '''empty :'''
+
 
 def p_ponto(p):
     '''ponto : PONTO'''
@@ -131,7 +139,9 @@ def find_column(input, token):
 parser = yacc.yacc()
 
 # Test the parser
-data = '''20 20 + .'''
+data = ''': AVERAGE ( a b -- avg ) + 2/ ;
+10 20 AVERAGE .''' 
+# data = '''20.0 20 + . ( comentario )'''
 parser.parse(data)
 
 # Print the generated assembly code
