@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'COLON COMMENT DIVIDE DROP DUP FLOAT INT MINUS MOD OVER PLUS PONTO SEMICOLON SWAP TIMES WORDaxioma : axioma lineaxioma : emptyline : COMMENTline : PONTOline : int int operationi\n            | float float operationf\n            | float int operationf\n            | int float operationf\n            line : int line\n            | float lineline : intline : floatint : INTfloat : FLOATline : COLON WORD COMMENT code SEMICOLONcode : axiomaline : WORDoperationi : PLUSoperationi : MINUSoperationi : TIMESoperationi : DIVIDEoperationi : MODoperationf : PLUSoperationf : MINUSoperationf : TIMESoperationf : DIVIDEempty :'
+_lr_signature = 'COLON COMMENT DIVIDE DROP DUP FLOAT INT MINUS MOD OVER PLUS PONTO SEMICOLON SWAP TIMES WORDaxioma : axioma lineaxioma : emptyline : COMMENTline : PONTOline : line operationline : int line\n            | float lineline : intline : floatint : INTfloat : FLOATline : COLON WORD COMMENT code SEMICOLONcode : axiomaline : WORDoperation : PLUSoperation : MINUSoperation : TIMESoperation : DIVIDEoperation : MODempty :'
     
-_lr_action_items = {'COMMENT':([0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,34,35,],[-27,4,-2,-1,-3,-4,4,4,-17,-13,-14,4,4,-9,4,4,-10,32,-5,-18,-19,-20,-21,-22,-8,-23,-24,-25,-26,-6,-7,-27,4,-15,]),'PONTO':([0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31,32,34,35,],[-27,5,-2,-1,-3,-4,5,5,-17,-13,-14,5,5,-9,5,5,-10,-5,-18,-19,-20,-21,-22,-8,-23,-24,-25,-26,-6,-7,-27,5,-15,]),'COLON':([0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31,32,34,35,],[-27,8,-2,-1,-3,-4,8,8,-17,-13,-14,8,8,-9,8,8,-10,-5,-18,-19,-20,-21,-22,-8,-23,-24,-25,-26,-6,-7,-27,8,-15,]),'WORD':([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31,32,34,35,],[-27,9,-2,-1,-3,-4,9,9,18,-17,-13,-14,9,9,-9,9,9,-10,-5,-18,-19,-20,-21,-22,-8,-23,-24,-25,-26,-6,-7,-27,9,-15,]),'INT':([0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31,32,34,35,],[-27,10,-2,-1,-3,-4,10,10,-17,-13,-14,10,10,-9,10,10,-10,-5,-18,-19,-20,-21,-22,-8,-23,-24,-25,-26,-6,-7,-27,10,-15,]),'FLOAT':([0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31,32,34,35,],[-27,11,-2,-1,-3,-4,11,11,-17,-13,-14,11,11,-9,11,11,-10,-5,-18,-19,-20,-21,-22,-8,-23,-24,-25,-26,-6,-7,-27,11,-15,]),'$end':([0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31,35,],[-27,0,-2,-1,-3,-4,-11,-12,-17,-13,-14,-11,-12,-9,-12,-11,-10,-5,-18,-19,-20,-21,-22,-8,-23,-24,-25,-26,-6,-7,-15,]),'SEMICOLON':([2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,],[-2,-1,-3,-4,-11,-12,-17,-13,-14,-11,-12,-9,-12,-11,-10,-5,-18,-19,-20,-21,-22,-8,-23,-24,-25,-26,-6,-7,-27,35,-16,-15,]),'PLUS':([10,11,12,13,15,16,],[-13,-14,20,26,26,26,]),'MINUS':([10,11,12,13,15,16,],[-13,-14,21,27,27,27,]),'TIMES':([10,11,12,13,15,16,],[-13,-14,22,28,28,28,]),'DIVIDE':([10,11,12,13,15,16,],[-13,-14,23,29,29,29,]),'MOD':([10,12,],[-13,24,]),}
+_lr_action_items = {'COMMENT':([0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20,21,23,24,],[-20,4,-2,-1,-3,-4,4,4,-14,-10,-11,-5,-15,-16,-17,-18,-19,-6,-7,21,-20,4,-12,]),'PONTO':([0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,21,23,24,],[-20,5,-2,-1,-3,-4,5,5,-14,-10,-11,-5,-15,-16,-17,-18,-19,-6,-7,-20,5,-12,]),'COLON':([0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,21,23,24,],[-20,8,-2,-1,-3,-4,8,8,-14,-10,-11,-5,-15,-16,-17,-18,-19,-6,-7,-20,8,-12,]),'WORD':([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,21,23,24,],[-20,9,-2,-1,-3,-4,9,9,20,-14,-10,-11,-5,-15,-16,-17,-18,-19,-6,-7,-20,9,-12,]),'INT':([0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,21,23,24,],[-20,10,-2,-1,-3,-4,10,10,-14,-10,-11,-5,-15,-16,-17,-18,-19,-6,-7,-20,10,-12,]),'FLOAT':([0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,21,23,24,],[-20,11,-2,-1,-3,-4,11,11,-14,-10,-11,-5,-15,-16,-17,-18,-19,-6,-7,-20,11,-12,]),'$end':([0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,24,],[-20,0,-2,-1,-3,-4,-8,-9,-14,-10,-11,-5,-15,-16,-17,-18,-19,-6,-7,-12,]),'SEMICOLON':([2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,21,22,23,24,],[-2,-1,-3,-4,-8,-9,-14,-10,-11,-5,-15,-16,-17,-18,-19,-6,-7,-20,24,-13,-12,]),'PLUS':([3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,24,],[13,-3,-4,-8,-9,-14,-10,-11,-5,-15,-16,-17,-18,-19,13,13,-12,]),'MINUS':([3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,24,],[14,-3,-4,-8,-9,-14,-10,-11,-5,-15,-16,-17,-18,-19,14,14,-12,]),'TIMES':([3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,24,],[15,-3,-4,-8,-9,-14,-10,-11,-5,-15,-16,-17,-18,-19,15,15,-12,]),'DIVIDE':([3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,24,],[16,-3,-4,-8,-9,-14,-10,-11,-5,-15,-16,-17,-18,-19,16,16,-12,]),'MOD':([3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,24,],[17,-3,-4,-8,-9,-14,-10,-11,-5,-15,-16,-17,-18,-19,17,17,-12,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'axioma':([0,32,],[1,34,]),'empty':([0,32,],[2,2,]),'line':([1,6,7,12,13,15,16,34,],[3,14,17,14,17,17,14,3,]),'int':([1,6,7,12,13,15,16,34,],[6,12,16,12,16,16,12,6,]),'float':([1,6,7,12,13,15,16,34,],[7,13,15,13,15,15,13,7,]),'operationi':([12,],[19,]),'operationf':([13,15,16,],[25,30,31,]),'code':([32,],[33,]),}
+_lr_goto_items = {'axioma':([0,21,],[1,23,]),'empty':([0,21,],[2,2,]),'line':([1,6,7,23,],[3,18,19,3,]),'int':([1,6,7,23,],[6,6,6,6,]),'float':([1,6,7,23,],[7,7,7,7,]),'operation':([3,18,19,],[12,12,12,]),'code':([21,],[22,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -31,27 +31,20 @@ _lr_productions = [
   ('axioma -> empty','axioma',1,'p_axioma_empty','forth_yacc_wordDef.py',21),
   ('line -> COMMENT','line',1,'p_line_comment','forth_yacc_wordDef.py',25),
   ('line -> PONTO','line',1,'p_line_ponto','forth_yacc_wordDef.py',29),
-  ('line -> int int operationi','line',3,'p_line_expression_arithmetic','forth_yacc_wordDef.py',37),
-  ('line -> float float operationf','line',3,'p_line_expression_arithmetic','forth_yacc_wordDef.py',38),
-  ('line -> float int operationf','line',3,'p_line_expression_arithmetic','forth_yacc_wordDef.py',39),
-  ('line -> int float operationf','line',3,'p_line_expression_arithmetic','forth_yacc_wordDef.py',40),
-  ('line -> int line','line',2,'p_line_variable_list','forth_yacc_wordDef.py',45),
-  ('line -> float line','line',2,'p_line_variable_list','forth_yacc_wordDef.py',46),
-  ('line -> int','line',1,'p_line_int','forth_yacc_wordDef.py',50),
-  ('line -> float','line',1,'p_line_float','forth_yacc_wordDef.py',54),
-  ('int -> INT','int',1,'p_int','forth_yacc_wordDef.py',58),
-  ('float -> FLOAT','float',1,'p_float','forth_yacc_wordDef.py',63),
-  ('line -> COLON WORD COMMENT code SEMICOLON','line',5,'p_line_definition','forth_yacc_wordDef.py',69),
-  ('code -> axioma','code',1,'p_code','forth_yacc_wordDef.py',73),
-  ('line -> WORD','line',1,'p_line_word','forth_yacc_wordDef.py',77),
-  ('operationi -> PLUS','operationi',1,'p_operationi_plus','forth_yacc_wordDef.py',84),
-  ('operationi -> MINUS','operationi',1,'p_operationi_minus','forth_yacc_wordDef.py',92),
-  ('operationi -> TIMES','operationi',1,'p_operationi_times','forth_yacc_wordDef.py',100),
-  ('operationi -> DIVIDE','operationi',1,'p_operationi_divide','forth_yacc_wordDef.py',107),
-  ('operationi -> MOD','operationi',1,'p_operationi_mod','forth_yacc_wordDef.py',114),
-  ('operationf -> PLUS','operationf',1,'p_operationf_plus','forth_yacc_wordDef.py',121),
-  ('operationf -> MINUS','operationf',1,'p_operationf_minus','forth_yacc_wordDef.py',128),
-  ('operationf -> TIMES','operationf',1,'p_operationf_times','forth_yacc_wordDef.py',135),
-  ('operationf -> DIVIDE','operationf',1,'p_operationf_divide','forth_yacc_wordDef.py',142),
-  ('empty -> <empty>','empty',0,'p_empty','forth_yacc_wordDef.py',149),
+  ('line -> line operation','line',2,'p_line_expression_arithmetic','forth_yacc_wordDef.py',37),
+  ('line -> int line','line',2,'p_line_variable_list','forth_yacc_wordDef.py',41),
+  ('line -> float line','line',2,'p_line_variable_list','forth_yacc_wordDef.py',42),
+  ('line -> int','line',1,'p_line_int','forth_yacc_wordDef.py',46),
+  ('line -> float','line',1,'p_line_float','forth_yacc_wordDef.py',50),
+  ('int -> INT','int',1,'p_int','forth_yacc_wordDef.py',54),
+  ('float -> FLOAT','float',1,'p_float','forth_yacc_wordDef.py',59),
+  ('line -> COLON WORD COMMENT code SEMICOLON','line',5,'p_line_definition','forth_yacc_wordDef.py',65),
+  ('code -> axioma','code',1,'p_code','forth_yacc_wordDef.py',69),
+  ('line -> WORD','line',1,'p_line_word','forth_yacc_wordDef.py',73),
+  ('operation -> PLUS','operation',1,'p_operation_plus','forth_yacc_wordDef.py',80),
+  ('operation -> MINUS','operation',1,'p_operation_minus','forth_yacc_wordDef.py',92),
+  ('operation -> TIMES','operation',1,'p_operation_times','forth_yacc_wordDef.py',104),
+  ('operation -> DIVIDE','operation',1,'p_operation_divide','forth_yacc_wordDef.py',115),
+  ('operation -> MOD','operation',1,'p_operationi_mod','forth_yacc_wordDef.py',126),
+  ('empty -> <empty>','empty',0,'p_empty','forth_yacc_wordDef.py',136),
 ]
