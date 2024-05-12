@@ -1,5 +1,6 @@
 import ply.yacc as yacc
 yacc.debug = True
+
 # Get the token list from the lexer module
 from forth_lex import tokens
 
@@ -12,124 +13,143 @@ stack = []
 # Dictionary to store defined words
 defined_words = {}
 
-def p_axioma(p):
-    '''axioma   : axioma ponto
-                | axioma COMMENT
-                | axioma expression
-                | axioma definition
-                | axioma variable_list
-                | empty'''
+def p_axioma_iter(p):
+    '''axioma : axioma line'''
+    p[0] = p[1] + p[2]
 
-def p_empty(p):
-    '''empty :'''
+def p_axioma_empty(p):
+    '''axioma : empty'''
+    p[0] = ""
 
-
-def p_ponto(p):
-    '''ponto : PONTO'''
+def p_line_comment(p):
+    '''line : COMMENT'''
+    p[0] = ""
+    
+def p_line_ponto(p):
+    '''line : PONTO'''
     valor = stack.pop()
     if valor == "INT":
-        assembly_code.append(f'WRITEI')
+        p[0] = f'WRITEI\n'
     elif valor == "FLOAT":
-        assembly_code.append(f'WRITEF')
+        p[0] = f'WRITEF\n'
 
+def p_line_expression_arithmetic(p):
+    '''line : int int operationi
+            | float float operationf
+            | float int operationf
+            | int float operationf
+            '''
+    p[0] = f'{p[1]}{p[2]}{p[3]}'
 
-def p_expression_arithmetic(p):
-    '''expression : int int operationi
-                  | float float operationf
-                  | float int operationf
-                  | int float operationf
-                  '''
+def p_line_variable_list(p):
+    '''line : int line
+            | float line''' 
+    p[0] = f'{p[1]}{p[2]}'
 
-    
+def p_line_int(p):
+    '''line : int'''
+    p[0] = p[1]
+
+def p_line_float(p):
+    '''line : float'''
+    p[0] = p[1]
+
 def p_int(p):
     '''int : INT'''
-    assembly_code.append(f'PUSHI {p[1]}')  
     stack.append("INT")
-    print(" Push the integer onto the stack")
+    p[0] = f'PUSHI {p[1]}\n'
 
 def p_float(p):
     '''float : FLOAT'''
-    assembly_code.append(f'PUSHF {p[1]}')  # Push the float onto the stack
     stack.append("FLOAT")
+    p[0] = f'PUSHF {p[1]}\n'
 
-def p_variable_list(p):
-    '''variable_list : int variable_list
-                     | float variable_list
-                     | int
-                     | float'''
-    # Handle the case when only variables are inputted
 
-def p_definition(p):
-    '''definition : COLON WORD COMMENT code SEMICOLON'''
-    defined_words[p[2]] = p[4]  # Store the code for the defined word
-
+def p_line_definition(p):
+    '''line : COLON WORD COMMENT code SEMICOLON'''
+    p[0] = f'{p[2]}:\n{p[4]}'
+    
 def p_code(p):
-    '''code : expression'''
+    '''code : axioma'''
+    p[0] = p[1]
+    
+def p_line_word(p):
+    '''line : WORD'''
+    if p[1] in defined_words:
+        assembly_code.append(defined_words[p[1]])  # Compile the code associated with the word
+    else:
+        print("Undefined word:", p[1])
 
 def p_operationi_plus(p):
     '''operationi : PLUS'''
-    assembly_code.append('ADD')  # Addition operation
     stack.pop()  
     stack.pop()
     stack.append("INT")
+    p[0] = f'ADD\n'  # Addition operation
+    
 
 def p_operationi_minus(p):
     '''operationi : MINUS'''
-    assembly_code.append('SUB')
     stack.pop()  
     stack.pop()
     stack.append("INT")
-    print(" Subtraction operation")
+    p[0] = f'SUB\n'
+
 
 def p_operationi_times(p):
     '''operationi : TIMES'''
-    assembly_code.append('MUL')  # Multiplication operation
     stack.pop()  
     stack.pop()
     stack.append("INT")
+    p[0] = f'MUL\n'
     
 def p_operationi_divide(p):
     '''operationi : DIVIDE'''
-    assembly_code.append('DIV')  # Division operation
     stack.pop()  
     stack.pop()
     stack.append("INT")
+    p[0] = f'DIV\n'
 
 def p_operationi_mod(p):
     '''operationi : MOD'''
-    assembly_code.append('MOD')  # Addition operation
     stack.pop()  
     stack.pop()
     stack.append("INT")
+    p[0] = f'MOD\n'
     
 def p_operationf_plus(p):
     '''operationf : PLUS'''
-    assembly_code.append('FADD')  # Addition operation
     stack.pop()  
     stack.pop()
     stack.append("FLOAT")
+    p[0] = f'FADD\n'
     
 def p_operationf_minus(p):
     '''operationf : MINUS'''
-    assembly_code.append('FSUB')  # Subtraction operation
     stack.pop()  
     stack.pop()
     stack.append("FLOAT")
+    p[0] = f'FSUB\n'
     
 def p_operationf_times(p):
     '''operationf : TIMES'''
-    assembly_code.append('FMUL')  # Multiplication operation
     stack.pop()  
     stack.pop()
     stack.append("FLOAT")
+    p[0] = f'FMUL\n'
     
 def p_operationf_divide(p):
     '''operationf : DIVIDE'''
-    assembly_code.append('FDIV')  # Division operation
     stack.pop()  
     stack.pop()
     stack.append("FLOAT")
+    p[0] = f'FDIV\n'
                  
+def p_empty(p):
+    'empty :'
+    pass
+
+        
 def p_error(p):
     if p:
         print("Syntax error at line", p.lineno, "column", find_column(data, p))
@@ -144,11 +164,10 @@ def find_column(input, token):
 parser = yacc.yacc()
 
 # Test the parser
-data = ''': AVERAGE ( a b -- avg ) 2 2 + ;''' 
-# data = '''20.0 20 + . ( comentario )'''
-parser.parse(data)
+# data = ''': AVERAGE ( a b -- avg ) + 2/ ;''' 
+data = '''10 10 + 10 +'''
+
+r = parser.parse(data)
 
 # Print the generated assembly code
-print("Assembly code:")
-for instruction in assembly_code:
-    print(instruction)
+print(r)

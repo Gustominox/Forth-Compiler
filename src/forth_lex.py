@@ -61,7 +61,7 @@ def t_newline(t):
     t.lexer.lineno += len(t.value)
 
 # A string containing ignored characters (spaces and tabs)
-t_ignore  = ' \t'
+t_ignore  = ' \n\t'
 
 # Error handling rule for illegal tokens
 def t_error(t):
@@ -75,21 +75,3 @@ def find_column(token):
 
 # Build the lexer
 lexer = lex.lex()
-
-# Reading input
-# for linha in sys.stdin:
-#    lexer.input(linha) 
-#    tok = lexer.token()
-#    while tok:
-    #    print(tok)
-    #    tok = lexer.token()
-
-# Test the lexer
-# data = '''30.5 5 - .'''
-# Give the lexer some input
-
-# lexer.input(data)
-
-# Print tokens
-# for token in lexer:
-#     print(token)
