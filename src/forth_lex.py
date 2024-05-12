@@ -15,11 +15,18 @@ tokens = (
     'SWAP',
     'OVER',
     'COMMENT',
-#    'LPAREN',
-#    'RPAREN',
     'COLON',   
     'SEMICOLON',  
-    'WORD'  
+    'WORD',
+    'IF',
+    'ELSE',
+    'THEN',
+    '1PLUS',
+    '1MINUS',
+    '2PLUS',
+    '2MINUS',
+    '2TIMES',
+    '2DIVIDE'
 )
 # Regular expression rules for simple tokens
 t_PLUS    = r'\+'
@@ -31,12 +38,14 @@ t_PONTO   = r'\.'
 t_COMMENT = r'\([^)]*\)'
 # t_LPAREN  = r'\('
 # t_RPAREN  = r'\)'
-t_DUP     = r'DUP'
-t_DROP    = r'DROP'
-t_SWAP    = r'SWAP'
-t_OVER    = r'OVER'
 t_COLON   = r':'
 t_SEMICOLON = r';'
+t_1PLUS = r'1\+'
+t_1MINUS = r'1-'
+T_2PLUS = r'2\+'
+t_2MINUS = r'2-'
+t_2TIMES = r'2\*'
+t_2DIVIDE = r'2/'
 
 # Regular expression for floats
 def t_FLOAT(t):
@@ -48,6 +57,28 @@ def t_FLOAT(t):
 def t_INT(t):
     r'\d+'
     t.value = int(t.value)  # Convert to integer
+    return t
+
+def t_IF(t):    
+    r'IF' 
+    return t
+def t_ELSE(t):  
+    r'ELSE'
+    return t
+def t_THEN(t):  
+    r'THEN'
+    return t
+def t_DUP(t):   
+    r'DUP'
+    return t
+def t_DROP(t):  
+    r'DROP'
+    return t
+def t_SWAP(t):  
+    r'SWAP'
+    return t
+def t_OVER(t):  
+    r'OVER'
     return t
 
 # Regular expression for words
