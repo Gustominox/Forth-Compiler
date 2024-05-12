@@ -10,10 +10,11 @@ tokens = (
     'DIVIDE',
     'MOD',
     'PONTO',
+    'CR',
+    'PONTOSTRING',
     'DUP',
     'DROP',
     'SWAP',
-    'OVER',
     'COMMENT',
     'COLON',   
     'SEMICOLON',  
@@ -59,27 +60,31 @@ def t_INT(t):
     t.value = int(t.value)  # Convert to integer
     return t
 
+def t_CR(t):
+    r'CR|cr'
+    return t
 def t_IF(t):    
-    r'IF' 
+    r'IF|if' 
     return t
 def t_ELSE(t):  
-    r'ELSE'
+    r'ELSE|else'
     return t
 def t_THEN(t):  
-    r'THEN'
+    r'THEN|then'
     return t
 def t_DUP(t):   
-    r'DUP'
+    r'DUP|dup'
     return t
 def t_DROP(t):  
-    r'DROP'
+    r'DROP|drop'
     return t
 def t_SWAP(t):  
-    r'SWAP'
+    r'SWAP|swap'
     return t
-def t_OVER(t):  
-    r'OVER'
-    return t
+
+def t_PONTOSTRING(t):
+  r'."([^"]*)"'
+  return t
 
 # Regular expression for words
 def t_WORD(t):
@@ -92,7 +97,7 @@ def t_newline(t):
     t.lexer.lineno += len(t.value)
 
 # A string containing ignored characters (spaces and tabs)
-t_ignore  = ' \n\t'
+t_ignore  = ' \t'
 
 # Error handling rule for illegal tokens
 def t_error(t):
@@ -105,4 +110,13 @@ def find_column(token):
     return token.lexpos - line_start + 1
 
 # Build the lexer
+
 lexer = lex.lex()
+
+
+def debug_lexer(exemplo):
+    lexer.input(exemplo)
+
+    while tok := lexer.token():
+        print(tok)
+        

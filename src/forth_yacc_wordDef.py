@@ -15,6 +15,8 @@ defined_words = {}
 
 if_counter = 0
 
+in_func = 0
+
 def p_axioma_iter(p):
     '''axioma : axioma line'''
     p[0] = p[1] + p[2]
@@ -50,6 +52,14 @@ def p_line_ponto(p):
         p[0] = f'WRITEI\n'
     elif valor == "FLOAT":
         p[0] = f'WRITEF\n'
+
+def p_line_cr(p):
+    'line : CR'
+    p[0] = 'WRITELN \n'
+    
+def p_line_pontostring(p):
+    '''line : PONTOSTRING'''
+    p[0] = f'PUSHS {p[1][1:]}\nWRITES\n'
 
 def p_line_expression_arithmetic(p):
     '''line : line operation'''
@@ -197,7 +207,6 @@ def p_operation_minus(p):
         stack.append("INT")
         p[0] = f'SUB\n'
 
-
 def p_operation_times(p):
     '''operation : TIMES'''
     val1 = stack.pop()  
@@ -248,10 +257,15 @@ def find_column(input, token):
 parser = yacc.yacc()
 
 # Test the parser
-data = ''': AVERAGE ( a b -- avg ) 10 2 * 1+ 1- 2+ 2- 2* ;
-AVERAGE
-AVERAGE''' 
-# data = '''IF 0 THEN 2'''
+# data = '''10 1
+#: SUM ( a b -- sum ) + ;
+#SUM''' 
+#data = '''20 30 > IF " Sucesso1" CR ELSE ." Falha1" CR THEN'''
+data = '''10 20
+swap
+SWAP
+cr CR cr dup
+'''
 
 r = parser.parse(data)
 
