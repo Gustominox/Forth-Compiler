@@ -76,7 +76,7 @@ def p_line_ponto(p):
     try:
         valor = stack.pop()
     except IndexError as e:
-        p_err_n(p,1)
+        p_err_1(p)
         raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using '.'\033[0m\n")        
     
     if valor == "INT":
@@ -97,7 +97,7 @@ def p_line_emit(p):
     try:
         stack.pop()
     except IndexError as e:
-        p_err_n(p,1)
+        p_err_1(p)
         raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using 'EMIT'\033[0m\n")     
     
     p[0] = f'WRITECHR\n'
@@ -109,22 +109,32 @@ def p_line_char(p):
     p[0] = f'PUSHI {str(ord(letter))}\n'
 
 def p_line_expression_arithmetic(p):
-    '''line : line operation'''
-    p[0] = f'{p[1]}{p[2]}'
+    '''line : operation'''
+    p[0] = p[1]
 
 def p_operation_1plus(p):
     '''operation : 1PLUS'''
-    val1 = stack.pop()
-    if(val1 == "INT"):
+    try:
+        valor = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using '1+'\033[0m\n") 
+    
+    if(valor == "INT"):
         stack.append("INT")
         p[0] = f'PUSHI 1\nADD\n'
-    elif(val1 == "FLOAT"):
+    elif(valor == "FLOAT"):
         stack.append("FLOAT")
         p[0] = f'PUSHF 1.0\nFADD\n'
 
 def p_operation_1minus(p):
     '''operation : 1MINUS'''
-    val1 = stack.pop()
+    try:
+        val1 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using '1-'\033[0m\n") 
+    
     if(val1 == "INT"):
         stack.append("INT")
         p[0] = f'PUSHI 1\nSUB\n'
@@ -134,7 +144,11 @@ def p_operation_1minus(p):
 
 def p_operation_2plus(p):
     '''operation : 2PLUS'''
-    val1 = stack.pop()
+    try:
+        val1 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using '2+'\033[0m\n") 
     if(val1 == "INT"):
         stack.append("INT")
         p[0] = f'PUSHI 2\nADD\n'
@@ -144,7 +158,11 @@ def p_operation_2plus(p):
 
 def p_operation_2minus(p):
     '''operation : 2MINUS'''
-    val1 = stack.pop()
+    try:
+        val1 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using '2-'\033[0m\n") 
     if(val1 == "INT"):
         stack.append("INT")
         p[0] = f'PUSHI 2\nSUB\n'
@@ -154,7 +172,12 @@ def p_operation_2minus(p):
 
 def p_operation_2times(p):
     '''operation : 2TIMES'''
-    val1 = stack.pop()
+    try:
+        val1 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using '2*'\033[0m\n") 
+    
     if(val1 == "INT"):
         stack.append("INT")
         p[0] = f'PUSHI 2\nMUL\n'
@@ -164,7 +187,12 @@ def p_operation_2times(p):
 
 def p_operation_2divide(p):   
     '''operation : 2DIVIDE'''
-    val1 = stack.pop()
+    try:
+        val1 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using '2/'\033[0m\n") 
+    
     if(val1 == "INT"):
         stack.append("INT")
         p[0] = f'PUSHI 2\nDIV\n'
@@ -178,7 +206,19 @@ def p_operation_dup(p):
     stack.append(val1)
     stack.append(val1)
     p[0] = f'DUP 1\n'
-
+    
+def p_operation_2dup(p):
+    '''operation : 2DUP'''
+    global regist_counter
+    val1 = stack.pop()
+    val2 = stack.pop()
+    stack.append(val2)
+    stack.append(val1)
+    stack.append(val2)
+    stack.append(val1)
+    p[0] = f'STOREG {str(regist_counter + 1)}\nSTOREG {str(regist_counter)}\nPUSHG {str(regist_counter)}\nPUSHG {str(regist_counter+1)}\nPUSHG {str(regist_counter)}\nPUSHG {str(regist_counter+1)}\n'
+    regist_counter += 2
+    
 def p_operation_drop(p):
     '''operation : DROP'''
     stack.pop()
@@ -218,7 +258,7 @@ def p_float(p):
 def p_line_definition(p):
     '''line : COLON WORD CODE'''
     if p[2] in defined_words:
-        p_err_n(p,2)
+        p_err_2(p)
         raise Exception(f"\n\t\033[91m ERROR :: Word redefenition :: Word {p[2]} \033[0m\n")        
     else:
         defined_words[p[2]] = p[3]
@@ -226,7 +266,7 @@ def p_line_definition(p):
 
 def p_line_definition_error(p):
     '''line : COLON WORD'''
-    p_err_n(p,2)
+    p_err_2(p)
     raise Exception(f"\n\t\033[91m ERROR :: No code in function defenition :: Check if missing comment\033[0m\n")        
     
 def p_line_word(p):
@@ -234,13 +274,19 @@ def p_line_word(p):
     if p[1] in defined_words:
         p[0] = p[1] + "\n"
     else:
-        p_err_n(p,1)
+        p_err_1(p)
         raise Exception(f"\n\t\033[91m ERROR :: Undefined Word :: \"{p[1]}\" \033[0m\n")        
 
 def p_operation_plus(p):
     '''operation : PLUS'''
-    val1 = stack.pop()  
-    val2 = stack.pop()
+    
+    try:
+        val1 = stack.pop()  
+        val2 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using 'PLUS'\033[0m\n") 
+    
     if(val1 == "FLOAT" or val2 == "FLOAT" ):
         stack.append("FLOAT")
         p[0] = f'FADD\n'
@@ -251,8 +297,14 @@ def p_operation_plus(p):
 
 def p_operation_minus(p):
     '''operation : MINUS'''
-    val1 = stack.pop()  
-    val2 = stack.pop()
+    
+    try:
+        val1 = stack.pop()  
+        val2 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using 'MINUS'\033[0m\n") 
+    
     if(val1 == "FLOAT" or val2 == "FLOAT" ):
         stack.append("FLOAT")
         p[0] = f'FSUB\n'
@@ -262,8 +314,14 @@ def p_operation_minus(p):
 
 def p_operation_times(p):
     '''operation : TIMES'''
-    val1 = stack.pop()  
-    val2 = stack.pop()
+ 
+    try:
+        val1 = stack.pop()  
+        val2 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using 'TIMES'\033[0m\n") 
+    
     if(val1 == "FLOAT" or val2 == "FLOAT" ):
         stack.append("FLOAT")
         p[0] = f'FMUL\n'
@@ -273,8 +331,13 @@ def p_operation_times(p):
     
 def p_operation_divide(p):
     '''operation : DIVIDE'''
-    val1 = stack.pop()  
-    val2 = stack.pop()
+    try:
+        val1 = stack.pop()  
+        val2 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using 'TIMES'\033[0m\n") 
+    
     if(val1 == "FLOAT" or val2 == "FLOAT" ):
         stack.append("FLOAT")
         p[0] = f'FDIV\n'
@@ -284,8 +347,13 @@ def p_operation_divide(p):
 
 def p_operation_mod(p):
     '''operation : MOD'''
-    val1 = stack.pop()  
-    val2 = stack.pop()
+    try:
+        val1 = stack.pop()  
+        val2 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using 'MOD'\033[0m\n") 
+    
     if(val1 == "FLOAT" or val2 == "FLOAT" ):
         print("Operacao impossivel com floats")
     else:
@@ -354,11 +422,18 @@ def p_error(p):
     else:
         print("Syntax error: unexpected end of input")
 
-def p_err_n(p,n):
+def p_err_1(p):
     if p:
-        print("\nSyntax error at line", p.lineno(n), "column", find_column(data, p.lexpos(n)))
+        print("\nSyntax error at line", p.lineno(1), "column", find_column(data, p.lexpos(1)))
     else:
         print("Syntax error: unexpected end of input")
+
+def p_err_2(p):
+    if p:
+        print("\nSyntax error at line", p.lineno(2), "column", find_column(data, p.lexpos(2)))
+    else:
+        print("Syntax error: unexpected end of input")
+
 
 def find_column(input, tokenLexpos):
     line_start = input.rfind('\n', 0, tokenLexpos) + 1
@@ -378,9 +453,8 @@ parser = yacc.yacc()
 
 # Test the parser
 data='''
-2 0 DO ."fora" 2 0 DO ."dentro" LOOP LOOP
-
-'''
+1 2
+2 0 do 2dup loop'''
 
 
 try:

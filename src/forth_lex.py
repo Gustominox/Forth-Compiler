@@ -14,6 +14,7 @@ tokens = (
     'EMIT',
     'CHAR',
     'PONTOSTRING',
+    '2DUP',
     'DUP',
     'DROP',
     'SWAP',
@@ -44,18 +45,54 @@ tokens = (
     '2DIVIDE'
 )
 # Regular expression rules for simple tokens
-t_PLUS    = r'\+'
-t_MINUS   = r'-'
-t_TIMES   = r'\*'
-t_DIVIDE  = r'/'
-t_MOD     = r'%'
-t_PONTO   = r'\.'
-t_1PLUS = r'1\+'
-t_1MINUS = r'1-'
-T_2PLUS = r'2\+'
-t_2MINUS = r'2-'
-t_2TIMES = r'2\*'
-t_2DIVIDE = r'2/'
+def t_PLUS(t):
+    r'\+'
+    return t
+    
+def t_MINUS(t):
+    r'-'
+    return t
+
+def t_TIMES(t):
+    r'\*'
+    return t
+
+def t_DIVIDE(t):
+    r'/'
+    return t
+    
+def t_MOD(t):
+    r'%'
+    return t
+    
+def t_PONTO(t):
+    r'\.'
+    return t
+    
+
+def t_1PLUS(t):  
+    r'1\+'
+    return t
+
+def t_1MINUS(t):  
+    r'1-'
+    return t
+    
+def t_2PLUS(t):  
+    r'2\+'
+    return t
+
+def t_2MINUS(t):  
+    r'2-'
+    return t
+    
+def t_2TIMES(t):  
+    r'2\*'
+    return t
+    
+def t_2DIVIDE(t):  
+    r'2/'
+    return t
 
 def t_EMIT(t):
   r'\bEMIT\b|\bemit\b'
@@ -84,9 +121,15 @@ def t_ELSE(t):
 def t_THEN(t):  
     r'\bTHEN\b|\bthen\b'
     return t
+
 def t_DUP(t):   
     r'\bDUP\b|\bdup\b'
     return t
+
+def t_2DUP(t):   
+    r'\b2DUP\b|\b2dup\b'
+    return t
+
 def t_DROP(t):  
     r'\bDROP\b|\bdrop\b'
     return t
@@ -186,8 +229,3 @@ def debug_lexer(exemplo):
         print(tok)
  
 # Test the parser
-#data='''
-#: func1 ( -- ) if ."Sucesso1" CR else ."Falha1" CR then ;
-#1 func1'''
-
-#debug_lexer(data)
