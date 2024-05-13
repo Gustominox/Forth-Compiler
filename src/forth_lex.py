@@ -13,11 +13,13 @@ tokens = (
     'CR',
     'EMIT',
     'CHAR',
+    'ANYCHAR',
     'PONTOSTRING',
     '2DUP',
     'DUP',
     'DROP',
     'SWAP',
+    'DEPTH',
     'COMMENT',
     'COLON',   
     'SEMICOLON',  
@@ -65,11 +67,14 @@ def t_MOD(t):
     r'%'
     return t
     
+def t_PONTOSTRING(t):
+    r'."([^"]*)"'
+    return t
+    
 def t_PONTO(t):
     r'\.'
     return t
     
-
 def t_1PLUS(t):  
     r'1\+'
     return t
@@ -99,7 +104,7 @@ def t_EMIT(t):
   return t
 
 def t_CHAR(t):
-  r'\bCHAR\b|\bchar\b'
+  r'\b(?:CHAR|char)\b\s.'
   return t
 
 def t_COLON(t): 
@@ -136,7 +141,9 @@ def t_DROP(t):
 def t_SWAP(t):  
     r'\bSWAP\b|\bswap\b'
     return t
-
+def t_DEPTH(t):  
+    r'\bDEPTH\b|\bdepth\b'
+    return t
 
 def t_DO(t):
     r'\bDO\b|\bdo\b'
@@ -166,11 +173,6 @@ def t_INF(t):
     r'<'
     return t
 
-def t_PONTOSTRING(t):
-  r'."([^"]*)"'
-  return t
-
-# Regular expression for words
 def t_WORD(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'  # Start with a letter or underscore, followed by letters, digits, hyphens, underscores, or dots
     return t
@@ -199,6 +201,7 @@ def t_INT(t):
     r'\d+'
     t.value = int(t.value)  # Convert to integer
     return t
+
 
 # Define a rule to track line numbers
 def t_newline(t):
@@ -229,3 +232,10 @@ def debug_lexer(exemplo):
         print(tok)
  
 # Test the parser
+data='''CHAR W .
+CHAR % DUP . EMIT
+CHAR A DUP .
+32 + EMIT
+'''
+
+debug_lexer(data)

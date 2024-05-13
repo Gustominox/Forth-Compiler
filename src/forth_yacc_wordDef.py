@@ -53,21 +53,21 @@ def p_line_loop(p):
     'line : DO axioma LOOP'
     global regist_counter, loop_counter
     p[0] = f'''
-    STOREG {str(regist_counter)}
-    STOREG {str(regist_counter + 1)}
-    do{str(loop_counter)}:
-    PUSHG {str(regist_counter + 1)}
-    PUSHG {str(regist_counter)}
-    SUB
-    JZ endDo{str(loop_counter)}
-    {p[2]}
-    PUSHG {str(regist_counter)}
-    PUSHI 1
-    ADD
-    STOREG {str(regist_counter)}
-    JUMP do{str(loop_counter)}
-    endDo{str(loop_counter)}:
-    '''
+STOREG {str(regist_counter)}
+STOREG {str(regist_counter + 1)}
+do{str(loop_counter)}:
+PUSHG {str(regist_counter + 1)}
+PUSHG {str(regist_counter)}
+SUB
+JZ endDo{str(loop_counter)}
+{p[2]}
+PUSHG {str(regist_counter)}
+PUSHI 1
+ADD
+STOREG {str(regist_counter)}
+JUMP do{str(loop_counter)}
+endDo{str(loop_counter)}:
+'''
     regist_counter += 2
     loop_counter += 1 
     
@@ -103,8 +103,8 @@ def p_line_emit(p):
     p[0] = f'WRITECHR\n'
 
 def p_line_char(p):
-    '''line : CHAR WORD'''
-    letter = p[2][0]
+    '''line : CHAR'''
+    letter = p[1][-1]
     stack.append("INT")
     p[0] = f'PUSHI {str(ord(letter))}\n'
 
@@ -202,7 +202,12 @@ def p_operation_2divide(p):
 
 def p_operation_dup(p):
     '''operation : DUP'''
-    val1 = stack.pop()
+    try:
+        val1 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using 'DUP'\033[0m\n")
+    
     stack.append(val1)
     stack.append(val1)
     p[0] = f'DUP 1\n'
@@ -231,6 +236,11 @@ def p_operation_swap(p):
     stack.append(val1)
     stack.append(val2)
     p[0] = f'SWAP\n'
+    
+def p_operation_depth(p):        
+    '''operation : DEPTH'''
+    stack_size = len(stack)
+    p[0] = f'PUSHI {stack_size}\n'
         
 def p_line_variable_list(p):
     '''line : int line
@@ -267,7 +277,7 @@ def p_line_definition(p):
 def p_line_definition_error(p):
     '''line : COLON WORD'''
     p_err_2(p)
-    raise Exception(f"\n\t\033[91m ERROR :: No code in function defenition :: Check if missing comment\033[0m\n")        
+    raise Exception(f"\n\t\033[91m ERROR :: No code in function defenition :: Check if missing function comment description\033[0m\n")        
     
 def p_line_word(p):
     '''line : WORD'''
@@ -336,7 +346,7 @@ def p_operation_divide(p):
         val2 = stack.pop()
     except IndexError as e:
         p_err_1(p)
-        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using 'TIMES'\033[0m\n") 
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using 'DIVIDE'\033[0m\n") 
     
     if(val1 == "FLOAT" or val2 == "FLOAT" ):
         stack.append("FLOAT")
@@ -362,8 +372,13 @@ def p_operation_mod(p):
 
 def p_operation_sup(p):
     '''operation : SUP'''
-    val1 = stack.pop()  
-    val2 = stack.pop()
+    try:
+        val1 = stack.pop()  
+        val2 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using '>'\033[0m\n")
+    
     if(val1 == "FLOAT" or val2 == "FLOAT" ):
         stack.append("INT")
         p[0] = f'FSUP\n'
@@ -373,16 +388,25 @@ def p_operation_sup(p):
 
 def p_operation_equal(p):
     '''operation : EQUAL'''
-    val1 = stack.pop()  
-    val2 = stack.pop()
+    try:
+        val1 = stack.pop()  
+        val2 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using '=='\033[0m\n")
+    
     stack.append("INT")
     p[0] = f'EQUAL\n'
 
 
 def p_operation_inf(p):
     '''operation : INF'''
-    val1 = stack.pop()  
-    val2 = stack.pop()
+    try:
+        val1 = stack.pop()  
+        val2 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using '<'\033[0m\n")
     if(val1 == "FLOAT" or val2 == "FLOAT" ):
         stack.append("INT")
         p[0] = f'FINF\n'
@@ -392,8 +416,12 @@ def p_operation_inf(p):
 
 def p_operation_supequal(p):
     '''operation : SUPEQUAL'''
-    val1 = stack.pop()  
-    val2 = stack.pop()
+    try:
+        val1 = stack.pop()  
+        val2 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using '>='\033[0m\n")
     if(val1 == "FLOAT" or val2 == "FLOAT" ):
         stack.append("INT")
         p[0] = f'FSUPEQ\n'
@@ -403,8 +431,12 @@ def p_operation_supequal(p):
 
 def p_operation_infequal(p):
     '''operation : INFEQUAL'''
-    val1 = stack.pop()  
-    val2 = stack.pop()
+    try:
+        val1 = stack.pop()  
+        val2 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using '<='\033[0m\n")
     if(val1 == "FLOAT" or val2 == "FLOAT" ):
         stack.append("INT")
         p[0] = f'FINFEQ\n'
@@ -420,7 +452,8 @@ def p_error(p):
     if p:
         print("\nSyntax error at line", p.lineno, "column", find_column(data, p.lexpos))
     else:
-        print("Syntax error: unexpected end of input")
+        print("\nSyntax error: unexpected end of input")
+        raise Exception(f"\n\t\033[91m FATAL :: Check last line for unwanted characters\033[0m\n")
 
 def p_err_1(p):
     if p:
@@ -433,7 +466,6 @@ def p_err_2(p):
         print("\nSyntax error at line", p.lineno(2), "column", find_column(data, p.lexpos(2)))
     else:
         print("Syntax error: unexpected end of input")
-
 
 def find_column(input, tokenLexpos):
     line_start = input.rfind('\n', 0, tokenLexpos) + 1
@@ -452,9 +484,11 @@ def loop_vars():
 parser = yacc.yacc()
 
 # Test the parser
-data='''
-1 2
-2 0 do 2dup loop'''
+data='''CHAR W .
+CHAR % DUP . EMIT
+CHAR A DUP .
+32 + EMIT
+'''
 
 
 try:
@@ -472,12 +506,26 @@ result += "\nSTART\n\n"
 print(stack)
 print(defined_words)
 
-for line in r.splitlines():
-    if line in defined_words.keys():
-        result += parser.parse(defined_words[line][:-1])
-    else:
-        result += line + "\n"
+devoloped_words = 1
+
+save_pre_result = result
+
+while devoloped_words > 0:
+    devoloped_words = 0
+    for line in r.splitlines():
+        #print("Appending: ",line)
+        if line in defined_words.keys():
+            #print(line)
+            result += parser.parse(defined_words[line][:-1])
+            devoloped_words += 1
+        else:
+            result += line + "\n"
+    if devoloped_words > 0:
+        r = result
+        result = ""
+        
         
 result += "\nSTOP\n"
+
 # Print the generated assembly code            
 print(result)
