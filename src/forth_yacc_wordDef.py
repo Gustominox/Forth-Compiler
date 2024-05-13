@@ -15,7 +15,7 @@ defined_words = {}
 
 if_counter = 0
 
-in_func = 0
+in_func = False
 
 def p_axioma_iter(p):
     '''axioma : axioma line'''
@@ -52,6 +52,7 @@ def p_line_ponto(p):
         p[0] = f'WRITEI\n'
     elif valor == "FLOAT":
         p[0] = f'WRITEF\n'
+
 
 def p_line_cr(p):
     'line : CR'
@@ -169,18 +170,23 @@ def p_float(p):
     p[0] = f'PUSHF {p[1]}\n'
 
 def p_line_definition(p):
-    '''line : COLON WORD COMMENT code SEMICOLON'''
-    defined_words[p[2]] = p[4]
+    '''line : COLON WORD CODE'''
+    defined_words[p[2]] = p[3]
+    in_func = False
     p[0] = ''
     
-def p_code(p):
-    '''code : axioma'''
-    p[0] = p[1]
+#def p_code(p):
+#    '''code : axioma'''
+#    in_func = True
+#    p[0] = p[1]
     
 def p_line_word(p):
     '''line : WORD'''
+    print(f"Found word {p[1]}")
     if p[1] in defined_words:
-        p[0] = defined_words[p[1]]  # Compile the code associated with the word
+
+        new_code = parser.parse(defined_words[p[1]][:-1])
+        p[0] = new_code  # Compile the code associated with the word
     else:
         print("Undefined word:", p[1])
 
@@ -257,18 +263,16 @@ def find_column(input, token):
 parser = yacc.yacc()
 
 # Test the parser
-# data = '''10 1
-#: SUM ( a b -- sum ) + ;
-#SUM''' 
+data = '''100
+: PRINT ( a b -- sum ) . ;
+1.0 PRINT
+PRINT
+100'''
 #data = '''20 30 > IF " Sucesso1" CR ELSE ." Falha1" CR THEN'''
-data = '''10 20
-swap
-SWAP
-cr CR cr dup
-'''
 
 r = parser.parse(data)
 
 # Print the generated assembly code
 print(r)
 print(stack)
+print(defined_words)

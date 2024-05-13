@@ -19,6 +19,7 @@ tokens = (
     'COLON',   
     'SEMICOLON',  
     'WORD',
+    'CODE',
     'IF',
     'ELSE',
     'THEN',
@@ -36,11 +37,8 @@ t_TIMES   = r'\*'
 t_DIVIDE  = r'/'
 t_MOD     = r'%'
 t_PONTO   = r'\.'
-t_COMMENT = r'\([^)]*\)'
 # t_LPAREN  = r'\('
 # t_RPAREN  = r'\)'
-t_COLON   = r':'
-t_SEMICOLON = r';'
 t_1PLUS = r'1\+'
 t_1MINUS = r'1-'
 T_2PLUS = r'2\+'
@@ -48,16 +46,13 @@ t_2MINUS = r'2-'
 t_2TIMES = r'2\*'
 t_2DIVIDE = r'2/'
 
-# Regular expression for floats
-def t_FLOAT(t):
-    r'\d+\.\d+'
-    t.value = float(t.value)  # Convert to float
+
+def t_COLON(t): 
+    r':'
     return t
 
-# Regular expression for integers
-def t_INT(t):
-    r'\d+'
-    t.value = int(t.value)  # Convert to integer
+def t_SEMICOLON(t):
+    r';'
     return t
 
 def t_CR(t):
@@ -91,6 +86,26 @@ def t_WORD(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'  # Start with a letter or underscore, followed by letters, digits, hyphens, underscores, or dots
     return t
 
+def t_CODE(t):
+    r'\([^)]*\) [^;]+ ;'
+    return t
+
+def t_COMMENT(t):
+    r'\([^)]*\)'
+    return t
+
+# Regular expression for floats
+def t_FLOAT(t):
+    r'\d+\.\d+'
+    t.value = float(t.value)  # Convert to float
+    return t
+
+# Regular expression for integers
+def t_INT(t):
+    r'\d+'
+    t.value = int(t.value)  # Convert to integer
+    return t
+
 # Define a rule to track line numbers
 def t_newline(t):
     r'\n+'
@@ -113,10 +128,16 @@ def find_column(token):
 
 lexer = lex.lex()
 
-
 def debug_lexer(exemplo):
     lexer.input(exemplo)
 
     while tok := lexer.token():
         print(tok)
-        
+ 
+# Test the parser
+data = '''
+: PRINT ( a b -- sum ) . ;
+1.0 PRINT
+100 PRINT
+'''
+      
