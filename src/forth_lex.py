@@ -11,6 +11,8 @@ tokens = (
     'MOD',
     'PONTO',
     'CR',
+    'EMIT',
+    'CHAR',
     'PONTOSTRING',
     'DUP',
     'DROP',
@@ -20,9 +22,20 @@ tokens = (
     'SEMICOLON',  
     'WORD',
     'CODE',
+    # CONDICIONAIS
     'IF',
     'ELSE',
     'THEN',
+    # CICLOS
+    "DO",
+    "LOOP",
+    # OPERACOES CONDICIONAIS
+    'SUP',
+    'EQUAL',
+    'INF',
+    'SUPEQUAL',
+    'INFEQUAL',
+    # ATALHOS
     '1PLUS',
     '1MINUS',
     '2PLUS',
@@ -37,8 +50,6 @@ t_TIMES   = r'\*'
 t_DIVIDE  = r'/'
 t_MOD     = r'%'
 t_PONTO   = r'\.'
-# t_LPAREN  = r'\('
-# t_RPAREN  = r'\)'
 t_1PLUS = r'1\+'
 t_1MINUS = r'1-'
 T_2PLUS = r'2\+'
@@ -46,35 +57,70 @@ t_2MINUS = r'2-'
 t_2TIMES = r'2\*'
 t_2DIVIDE = r'2/'
 
+def t_EMIT(t):
+  r'\bEMIT\b|\bemit\b'
+  return t
+
+def t_CHAR(t):
+  r'\bCHAR\b|\bchar\b'
+  return t
 
 def t_COLON(t): 
     r':'
     return t
 
-def t_SEMICOLON(t):
-    r';'
+def t_CR(t):
+    r'\bCR\b|\bcr\b'
     return t
 
-def t_CR(t):
-    r'CR|cr'
-    return t
 def t_IF(t):    
-    r'IF|if' 
+    r'\bIF\b|\bif\b' 
     return t
+
 def t_ELSE(t):  
-    r'ELSE|else'
+    r'\bELSE\b|\belse\b'
     return t
+
 def t_THEN(t):  
-    r'THEN|then'
+    r'\bTHEN\b|\bthen\b'
     return t
 def t_DUP(t):   
-    r'DUP|dup'
+    r'\bDUP\b|\bdup\b'
     return t
 def t_DROP(t):  
-    r'DROP|drop'
+    r'\bDROP\b|\bdrop\b'
     return t
 def t_SWAP(t):  
-    r'SWAP|swap'
+    r'\bSWAP\b|\bswap\b'
+    return t
+
+
+def t_DO(t):
+    r'\bDO\b|\bdo\b'
+    return t
+
+def t_LOOP(t):
+    r'\bLOOP\b|\bloop\b'
+    return t
+
+def t_SUPEQUAL(t):
+    r'>='
+    return t
+
+def t_INFEQUAL(t):
+    r'<='
+    return t
+
+def t_SUP(t):
+    r'>'
+    return t
+
+def t_EQUAL(t):
+    r'='  
+    return t
+
+def t_INF(t):
+    r'<'
     return t
 
 def t_PONTOSTRING(t):
@@ -89,6 +135,11 @@ def t_WORD(t):
 def t_CODE(t):
     r'\([^)]*\) [^;]+ ;'
     return t
+
+def t_SEMICOLON(t): 
+    r';'
+    return t
+
 
 def t_COMMENT(t):
     r'\([^)]*\)'
@@ -135,9 +186,8 @@ def debug_lexer(exemplo):
         print(tok)
  
 # Test the parser
-data = '''
-: PRINT ( a b -- sum ) . ;
-1.0 PRINT
-100 PRINT
-'''
-      
+#data='''
+#: func1 ( -- ) if ."Sucesso1" CR else ."Falha1" CR then ;
+#1 func1'''
+
+#debug_lexer(data)

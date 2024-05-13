@@ -1,4 +1,6 @@
 import ply.yacc as yacc
+import sys
+import traceback
 yacc.debug = True
 
 # Get the token list from the lexer module
@@ -14,7 +16,8 @@ stack = []
 defined_words = {}
 
 if_counter = 0
-
+regist_counter = 0
+loop_counter = 1
 in_func = False
 
 def p_axioma_iter(p):
@@ -37,22 +40,49 @@ def p_conditional_else(p):
     '''conditional : IF axioma ELSE axioma THEN axioma'''
     global if_counter
     if_counter+=1
-    p[0] = f'jz else{str(if_counter)}\n{p[2]} jump endif{str(if_counter)}\nelse{str(if_counter)}:\n{p[4]} endif{str(if_counter)}:\n{p[6]}'
+    p[0] = f'JZ else{str(if_counter)}\n{p[2]}JUMP endif{str(if_counter)}\nelse{str(if_counter)}:\n{p[4]}endif{str(if_counter)}:\n{p[6]}'
 
 def p_confitional_then(p):
     '''conditional : IF axioma THEN axioma'''
     global if_counter
     if_counter+=1
-    p[0] = f'jz endif{str(if_counter)}\n{p[2]} jump endif{str(if_counter)}\nendif{str(if_counter)}:\n{p[4]}'        
+    p[0] = f'JZ endif{str(if_counter)}\n{p[2]}JUMP endif{str(if_counter)}\nendif{str(if_counter)}:\n{p[4]}'        
+    
+
+def p_line_loop(p):
+    'line : DO axioma LOOP'
+    global regist_counter, loop_counter
+    p[0] = f'''
+    STOREG {str(regist_counter)}
+    STOREG {str(regist_counter + 1)}
+    do{str(loop_counter)}:
+    PUSHG {str(regist_counter + 1)}
+    PUSHG {str(regist_counter)}
+    SUB
+    JZ endDo{str(loop_counter)}
+    {p[2]}
+    PUSHG {str(regist_counter)}
+    PUSHI 1
+    ADD
+    STOREG {str(regist_counter)}
+    JUMP do{str(loop_counter)}
+    endDo{str(loop_counter)}:
+    '''
+    regist_counter += 2
+    loop_counter += 1 
     
 def p_line_ponto(p):
     '''line : PONTO'''
-    valor = stack.pop()
+    try:
+        valor = stack.pop()
+    except IndexError as e:
+        p_err_n(p,1)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using '.'\033[0m\n")        
+    
     if valor == "INT":
         p[0] = f'WRITEI\n'
     elif valor == "FLOAT":
         p[0] = f'WRITEF\n'
-
 
 def p_line_cr(p):
     'line : CR'
@@ -61,6 +91,22 @@ def p_line_cr(p):
 def p_line_pontostring(p):
     '''line : PONTOSTRING'''
     p[0] = f'PUSHS {p[1][1:]}\nWRITES\n'
+
+def p_line_emit(p):
+    '''line : EMIT'''
+    try:
+        stack.pop()
+    except IndexError as e:
+        p_err_n(p,1)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using 'EMIT'\033[0m\n")     
+    
+    p[0] = f'WRITECHR\n'
+
+def p_line_char(p):
+    '''line : CHAR WORD'''
+    letter = p[2][0]
+    stack.append("INT")
+    p[0] = f'PUSHI {str(ord(letter))}\n'
 
 def p_line_expression_arithmetic(p):
     '''line : line operation'''
@@ -171,24 +217,25 @@ def p_float(p):
 
 def p_line_definition(p):
     '''line : COLON WORD CODE'''
-    defined_words[p[2]] = p[3]
-    in_func = False
-    p[0] = ''
-    
-#def p_code(p):
-#    '''code : axioma'''
-#    in_func = True
-#    p[0] = p[1]
+    if p[2] in defined_words:
+        p_err_n(p,2)
+        raise Exception(f"\n\t\033[91m ERROR :: Word redefenition :: Word {p[2]} \033[0m\n")        
+    else:
+        defined_words[p[2]] = p[3]
+        p[0] = ''
+
+def p_line_definition_error(p):
+    '''line : COLON WORD'''
+    p_err_n(p,2)
+    raise Exception(f"\n\t\033[91m ERROR :: No code in function defenition :: Check if missing comment\033[0m\n")        
     
 def p_line_word(p):
     '''line : WORD'''
-    print(f"Found word {p[1]}")
     if p[1] in defined_words:
-
-        new_code = parser.parse(defined_words[p[1]][:-1])
-        p[0] = new_code  # Compile the code associated with the word
+        p[0] = p[1] + "\n"
     else:
-        print("Undefined word:", p[1])
+        p_err_n(p,1)
+        raise Exception(f"\n\t\033[91m ERROR :: Undefined Word :: \"{p[1]}\" \033[0m\n")        
 
 def p_operation_plus(p):
     '''operation : PLUS'''
@@ -244,6 +291,58 @@ def p_operation_mod(p):
     else:
         stack.append("INT")
         p[0] = f'MOD\n'
+
+def p_operation_sup(p):
+    '''operation : SUP'''
+    val1 = stack.pop()  
+    val2 = stack.pop()
+    if(val1 == "FLOAT" or val2 == "FLOAT" ):
+        stack.append("INT")
+        p[0] = f'FSUP\n'
+    else:
+        stack.append("INT")
+        p[0] = f'SUP\n'
+
+def p_operation_equal(p):
+    '''operation : EQUAL'''
+    val1 = stack.pop()  
+    val2 = stack.pop()
+    stack.append("INT")
+    p[0] = f'EQUAL\n'
+
+
+def p_operation_inf(p):
+    '''operation : INF'''
+    val1 = stack.pop()  
+    val2 = stack.pop()
+    if(val1 == "FLOAT" or val2 == "FLOAT" ):
+        stack.append("INT")
+        p[0] = f'FINF\n'
+    else:
+        stack.append("INT")
+        p[0] = f'INF\n'
+
+def p_operation_supequal(p):
+    '''operation : SUPEQUAL'''
+    val1 = stack.pop()  
+    val2 = stack.pop()
+    if(val1 == "FLOAT" or val2 == "FLOAT" ):
+        stack.append("INT")
+        p[0] = f'FSUPEQ\n'
+    else:
+        stack.append("INT")
+        p[0] = f'SUPEQ\n'
+
+def p_operation_infequal(p):
+    '''operation : INFEQUAL'''
+    val1 = stack.pop()  
+    val2 = stack.pop()
+    if(val1 == "FLOAT" or val2 == "FLOAT" ):
+        stack.append("INT")
+        p[0] = f'FINFEQ\n'
+    else:
+        stack.append("INT")
+        p[0] = f'INFEQ\n'
         
 def p_empty(p):
     'empty :'
@@ -251,28 +350,60 @@ def p_empty(p):
         
 def p_error(p):
     if p:
-        print("Syntax error at line", p.lineno, "column", find_column(data, p))
+        print("\nSyntax error at line", p.lineno, "column", find_column(data, p.lexpos))
     else:
         print("Syntax error: unexpected end of input")
 
-def find_column(input, token):
-    line_start = input.rfind('\n', 0, token.lexpos) + 1
-    return (token.lexpos - line_start) + 1
+def p_err_n(p,n):
+    if p:
+        print("\nSyntax error at line", p.lineno(n), "column", find_column(data, p.lexpos(n)))
+    else:
+        print("Syntax error: unexpected end of input")
 
+def find_column(input, tokenLexpos):
+    line_start = input.rfind('\n', 0, tokenLexpos) + 1
+    return (tokenLexpos - line_start) + 1
+
+
+vars = ''
+
+def loop_vars():
+    global regist_counter,vars
+    for i in range(regist_counter):
+        stack.append('INT')
+        vars += 'PUSHI 0\n'
+        
 # Build the parser
 parser = yacc.yacc()
 
 # Test the parser
-data = '''100
-: PRINT ( a b -- sum ) . ;
-1.0 PRINT
-PRINT
-100'''
-#data = '''20 30 > IF " Sucesso1" CR ELSE ." Falha1" CR THEN'''
+data='''
+2 0 DO ."fora" 2 0 DO ."dentro" LOOP LOOP
 
-r = parser.parse(data)
+'''
 
-# Print the generated assembly code
-print(r)
+
+try:
+    r = parser.parse(data)
+except Exception as e:
+    print(e)
+    #traceback.print_exc()
+    sys.exit()
+
+loop_vars()
+result = vars
+result += "\nSTART\n\n"
+ 
+#print(r)
 print(stack)
 print(defined_words)
+
+for line in r.splitlines():
+    if line in defined_words.keys():
+        result += parser.parse(defined_words[line][:-1])
+    else:
+        result += line + "\n"
+        
+result += "\nSTOP\n"
+# Print the generated assembly code            
+print(result)
