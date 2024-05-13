@@ -83,6 +83,17 @@ def p_line_ponto(p):
 def p_line_cr(p):
     'line : CR'
     p[0] = 'WRITELN \n'
+
+def p_line_space(p):
+    'line : SPACE'
+    p[0] = f'PUSHS " "\nWRITES\n'
+    
+def p_line_spaces(p):
+    'line : INT SPACES'
+    spaces = ""
+    for _ in range(p[1]):
+        spaces += " "
+    p[0] = f'PUSHS \"{spaces}\"\nWRITES\n'
     
 def p_line_pontostring(p):
     '''line : PONTOSTRING'''

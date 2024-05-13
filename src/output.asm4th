@@ -18,7 +18,7 @@ PUSHI 0
 START
 
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 5
 PUSHI 0
@@ -40,12 +40,12 @@ STOREG 0
 JUMP do1
 endDo1:
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 42
 WRITECHR
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 5
 PUSHI 0
@@ -67,18 +67,18 @@ STOREG 2
 JUMP do2
 endDo2:
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 42
 WRITECHR
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 42
 WRITECHR
 WRITELN 
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 5
 PUSHI 0
@@ -100,37 +100,34 @@ STOREG 4
 JUMP do3
 endDo3:
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 42
 WRITECHR
-PUSHI 3
-PUSHS "      "
-WRITES
-PUSHI 42
-WRITECHR
-WRITELN 
-PUSHS "      "
-WRITES
-PUSHI 42
-WRITECHR
-PUSHI 3
-PUSHS "      "
+PUSHS "   "
 WRITES
 PUSHI 42
 WRITECHR
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 42
 WRITECHR
-PUSHI 3
-PUSHS "      "
+PUSHS "   "
 WRITES
 PUSHI 42
 WRITECHR
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
+WRITES
+PUSHI 42
+WRITECHR
+PUSHS "   "
+WRITES
+PUSHI 42
+WRITECHR
+WRITELN 
+PUSHS "                              "
 WRITES
 PUSHI 5
 PUSHI 0
@@ -153,7 +150,7 @@ JUMP do4
 endDo4:
 WRITELN 
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 5
 PUSHI 0
@@ -175,17 +172,16 @@ STOREG 8
 JUMP do5
 endDo5:
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 42
 WRITECHR
-PUSHI 3
-PUSHS "      "
+PUSHS "   "
 WRITES
 PUSHI 42
 WRITECHR
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 5
 PUSHI 0
@@ -207,28 +203,26 @@ STOREG 10
 JUMP do6
 endDo6:
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 42
 WRITECHR
 PUSHI 42
 WRITECHR
-PUSHI 3
-PUSHS "      "
+PUSHS "   "
 WRITES
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 42
 WRITECHR
-PUSHI 3
-PUSHS "      "
+PUSHS "   "
 WRITES
 PUSHI 42
 WRITECHR
 WRITELN 
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 5
 PUSHI 0
@@ -250,72 +244,62 @@ STOREG 12
 JUMP do7
 endDo7:
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
-PUSHI 2
-PUSHS "      "
-WRITES
-PUSHI 42
-WRITECHR
-PUSHI 2
-PUSHS "      "
-WRITES
-WRITELN 
-PUSHS "      "
-WRITES
-PUSHI 2
-PUSHS "      "
+PUSHS "  "
 WRITES
 PUSHI 42
 WRITECHR
-PUSHI 2
-PUSHS "      "
+PUSHS "  "
 WRITES
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
-PUSHI 2
-PUSHS "      "
+PUSHS "  "
 WRITES
 PUSHI 42
 WRITECHR
-PUSHI 2
-PUSHS "      "
+PUSHS "  "
 WRITES
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
-PUSHI 2
-PUSHS "      "
+PUSHS "  "
 WRITES
 PUSHI 42
 WRITECHR
-PUSHI 2
-PUSHS "      "
+PUSHS "  "
 WRITES
 WRITELN 
-WRITELN 
-PUSHS "      "
+PUSHS "                              "
+WRITES
+PUSHS "  "
 WRITES
 PUSHI 42
 WRITECHR
-PUSHI 3
-PUSHS "      "
+PUSHS "  "
+WRITES
+WRITELN 
+WRITELN 
+PUSHS "                              "
+WRITES
+PUSHI 42
+WRITECHR
+PUSHS "   "
 WRITES
 PUSHI 42
 WRITECHR
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 42
 WRITECHR
-PUSHI 3
-PUSHS "      "
+PUSHS "   "
 WRITES
 PUSHI 42
 WRITECHR
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 5
 PUSHI 0
@@ -337,22 +321,20 @@ STOREG 14
 JUMP do8
 endDo8:
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 42
 WRITECHR
-PUSHI 3
-PUSHS "      "
+PUSHS "   "
 WRITES
 PUSHI 42
 WRITECHR
 WRITELN 
-PUSHS "      "
+PUSHS "                              "
 WRITES
 PUSHI 42
 WRITECHR
-PUSHI 3
-PUSHS "      "
+PUSHS "   "
 WRITES
 PUSHI 42
 WRITECHR

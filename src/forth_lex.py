@@ -13,6 +13,8 @@ tokens = (
     'MOD',
     'PONTO',
     'CR',
+    'SPACE',
+    'SPACES',
     'EMIT',
     'CHAR',
     'PONTOSTRING',
@@ -106,6 +108,14 @@ def t_CHAR(t):
 
 def t_CR(t):
     r'\bCR\b|\bcr\b'
+    return t
+
+def t_SPACE(t):
+    r'\bSPACE\b|\bspace\b'
+    return t
+
+def t_SPACES(t):
+    r'\bSPACES\b|\bspaces\b'
     return t
 
 def t_IF(t):    
