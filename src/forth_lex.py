@@ -1,6 +1,8 @@
 import ply.lex as lex
 import sys
 # List of token names
+defined_words = {}
+
 tokens = (
     'INT',
     'FLOAT',
@@ -13,7 +15,6 @@ tokens = (
     'CR',
     'EMIT',
     'CHAR',
-    'ANYCHAR',
     'PONTOSTRING',
     '2DUP',
     'DUP',
@@ -21,11 +22,6 @@ tokens = (
     'SWAP',
     'DEPTH',
     'COMMENT',
-    'COLON',   
-    'SEMICOLON',  
-    'WORD',
-    'CODE',
-    # CONDICIONAIS
     'IF',
     'ELSE',
     'THEN',
@@ -44,9 +40,10 @@ tokens = (
     '2PLUS',
     '2MINUS',
     '2TIMES',
-    '2DIVIDE'
+    '2DIVIDE',
 )
 # Regular expression rules for simple tokens
+
 def t_PLUS(t):
     r'\+'
     return t
@@ -106,10 +103,6 @@ def t_EMIT(t):
 def t_CHAR(t):
   r'\b(?:CHAR|char)\b\s.'
   return t
-
-def t_COLON(t): 
-    r':'
-    return t
 
 def t_CR(t):
     r'\bCR\b|\bcr\b'
@@ -173,19 +166,6 @@ def t_INF(t):
     r'<'
     return t
 
-def t_WORD(t):
-    r'[a-zA-Z_][a-zA-Z0-9_]*'  # Start with a letter or underscore, followed by letters, digits, hyphens, underscores, or dots
-    return t
-
-def t_CODE(t):
-    r'\([^)]*\) [^;]+ ;'
-    return t
-
-def t_SEMICOLON(t): 
-    r';'
-    return t
-
-
 def t_COMMENT(t):
     r'\([^)]*\)'
     return t
@@ -231,11 +211,5 @@ def debug_lexer(exemplo):
     while tok := lexer.token():
         print(tok)
  
-# Test the parser
-data='''CHAR W .
-CHAR % DUP . EMIT
-CHAR A DUP .
-32 + EMIT
-'''
 
-debug_lexer(data)
+

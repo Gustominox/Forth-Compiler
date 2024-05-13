@@ -1,10 +1,5 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
-Unused terminals:
-
-    ANYCHAR
-    SEMICOLON
-
 Grammar
 
 Rule 0     S' -> axioma
@@ -38,20 +33,17 @@ Rule 27    line -> int
 Rule 28    line -> float
 Rule 29    int -> INT
 Rule 30    float -> FLOAT
-Rule 31    line -> COLON WORD CODE
-Rule 32    line -> COLON WORD
-Rule 33    line -> WORD
-Rule 34    operation -> PLUS
-Rule 35    operation -> MINUS
-Rule 36    operation -> TIMES
-Rule 37    operation -> DIVIDE
-Rule 38    operation -> MOD
-Rule 39    operation -> SUP
-Rule 40    operation -> EQUAL
-Rule 41    operation -> INF
-Rule 42    operation -> SUPEQUAL
-Rule 43    operation -> INFEQUAL
-Rule 44    empty -> <empty>
+Rule 31    operation -> PLUS
+Rule 32    operation -> MINUS
+Rule 33    operation -> TIMES
+Rule 34    operation -> DIVIDE
+Rule 35    operation -> MOD
+Rule 36    operation -> SUP
+Rule 37    operation -> EQUAL
+Rule 38    operation -> INF
+Rule 39    operation -> SUPEQUAL
+Rule 40    operation -> INFEQUAL
+Rule 41    empty -> <empty>
 
 Terminals, with rules where they appear
 
@@ -62,38 +54,33 @@ Terminals, with rules where they appear
 2MINUS               : 17
 2PLUS                : 16
 2TIMES               : 18
-ANYCHAR              : 
 CHAR                 : 12
-CODE                 : 31
-COLON                : 31 32
 COMMENT              : 3
 CR                   : 9
 DEPTH                : 24
-DIVIDE               : 37
+DIVIDE               : 34
 DO                   : 7
 DROP                 : 22
 DUP                  : 20
 ELSE                 : 5
 EMIT                 : 11
-EQUAL                : 40
+EQUAL                : 37
 FLOAT                : 30
 IF                   : 5 6
-INF                  : 41
-INFEQUAL             : 43
+INF                  : 38
+INFEQUAL             : 40
 INT                  : 29
 LOOP                 : 7
-MINUS                : 35
-MOD                  : 38
-PLUS                 : 34
+MINUS                : 32
+MOD                  : 35
+PLUS                 : 31
 PONTO                : 8
 PONTOSTRING          : 10
-SEMICOLON            : 
-SUP                  : 39
-SUPEQUAL             : 42
+SUP                  : 36
+SUPEQUAL             : 39
 SWAP                 : 23
 THEN                 : 5 6
-TIMES                : 36
-WORD                 : 31 32 33
+TIMES                : 33
 error                : 
 
 Nonterminals, with rules where they appear
@@ -113,42 +100,40 @@ state 0
     (0) S' -> . axioma
     (1) axioma -> . axioma line
     (2) axioma -> . empty
-    (44) empty -> .
+    (41) empty -> .
 
-    COMMENT         reduce using rule 44 (empty -> .)
-    DO              reduce using rule 44 (empty -> .)
-    PONTO           reduce using rule 44 (empty -> .)
-    CR              reduce using rule 44 (empty -> .)
-    PONTOSTRING     reduce using rule 44 (empty -> .)
-    EMIT            reduce using rule 44 (empty -> .)
-    CHAR            reduce using rule 44 (empty -> .)
-    COLON           reduce using rule 44 (empty -> .)
-    WORD            reduce using rule 44 (empty -> .)
-    IF              reduce using rule 44 (empty -> .)
-    1PLUS           reduce using rule 44 (empty -> .)
-    1MINUS          reduce using rule 44 (empty -> .)
-    2PLUS           reduce using rule 44 (empty -> .)
-    2MINUS          reduce using rule 44 (empty -> .)
-    2TIMES          reduce using rule 44 (empty -> .)
-    2DIVIDE         reduce using rule 44 (empty -> .)
-    DUP             reduce using rule 44 (empty -> .)
-    2DUP            reduce using rule 44 (empty -> .)
-    DROP            reduce using rule 44 (empty -> .)
-    SWAP            reduce using rule 44 (empty -> .)
-    DEPTH           reduce using rule 44 (empty -> .)
-    PLUS            reduce using rule 44 (empty -> .)
-    MINUS           reduce using rule 44 (empty -> .)
-    TIMES           reduce using rule 44 (empty -> .)
-    DIVIDE          reduce using rule 44 (empty -> .)
-    MOD             reduce using rule 44 (empty -> .)
-    SUP             reduce using rule 44 (empty -> .)
-    EQUAL           reduce using rule 44 (empty -> .)
-    INF             reduce using rule 44 (empty -> .)
-    SUPEQUAL        reduce using rule 44 (empty -> .)
-    INFEQUAL        reduce using rule 44 (empty -> .)
-    INT             reduce using rule 44 (empty -> .)
-    FLOAT           reduce using rule 44 (empty -> .)
-    $end            reduce using rule 44 (empty -> .)
+    COMMENT         reduce using rule 41 (empty -> .)
+    DO              reduce using rule 41 (empty -> .)
+    PONTO           reduce using rule 41 (empty -> .)
+    CR              reduce using rule 41 (empty -> .)
+    PONTOSTRING     reduce using rule 41 (empty -> .)
+    EMIT            reduce using rule 41 (empty -> .)
+    CHAR            reduce using rule 41 (empty -> .)
+    IF              reduce using rule 41 (empty -> .)
+    1PLUS           reduce using rule 41 (empty -> .)
+    1MINUS          reduce using rule 41 (empty -> .)
+    2PLUS           reduce using rule 41 (empty -> .)
+    2MINUS          reduce using rule 41 (empty -> .)
+    2TIMES          reduce using rule 41 (empty -> .)
+    2DIVIDE         reduce using rule 41 (empty -> .)
+    DUP             reduce using rule 41 (empty -> .)
+    2DUP            reduce using rule 41 (empty -> .)
+    DROP            reduce using rule 41 (empty -> .)
+    SWAP            reduce using rule 41 (empty -> .)
+    DEPTH           reduce using rule 41 (empty -> .)
+    PLUS            reduce using rule 41 (empty -> .)
+    MINUS           reduce using rule 41 (empty -> .)
+    TIMES           reduce using rule 41 (empty -> .)
+    DIVIDE          reduce using rule 41 (empty -> .)
+    MOD             reduce using rule 41 (empty -> .)
+    SUP             reduce using rule 41 (empty -> .)
+    EQUAL           reduce using rule 41 (empty -> .)
+    INF             reduce using rule 41 (empty -> .)
+    SUPEQUAL        reduce using rule 41 (empty -> .)
+    INFEQUAL        reduce using rule 41 (empty -> .)
+    INT             reduce using rule 41 (empty -> .)
+    FLOAT           reduce using rule 41 (empty -> .)
+    $end            reduce using rule 41 (empty -> .)
 
     axioma                         shift and go to state 1
     empty                          shift and go to state 2
@@ -170,9 +155,6 @@ state 1
     (26) line -> . float line
     (27) line -> . int
     (28) line -> . float
-    (31) line -> . COLON WORD CODE
-    (32) line -> . COLON WORD
-    (33) line -> . WORD
     (5) conditional -> . IF axioma ELSE axioma THEN axioma
     (6) conditional -> . IF axioma THEN axioma
     (14) operation -> . 1PLUS
@@ -186,16 +168,16 @@ state 1
     (22) operation -> . DROP
     (23) operation -> . SWAP
     (24) operation -> . DEPTH
-    (34) operation -> . PLUS
-    (35) operation -> . MINUS
-    (36) operation -> . TIMES
-    (37) operation -> . DIVIDE
-    (38) operation -> . MOD
-    (39) operation -> . SUP
-    (40) operation -> . EQUAL
-    (41) operation -> . INF
-    (42) operation -> . SUPEQUAL
-    (43) operation -> . INFEQUAL
+    (31) operation -> . PLUS
+    (32) operation -> . MINUS
+    (33) operation -> . TIMES
+    (34) operation -> . DIVIDE
+    (35) operation -> . MOD
+    (36) operation -> . SUP
+    (37) operation -> . EQUAL
+    (38) operation -> . INF
+    (39) operation -> . SUPEQUAL
+    (40) operation -> . INFEQUAL
     (29) int -> . INT
     (30) float -> . FLOAT
 
@@ -206,32 +188,30 @@ state 1
     PONTOSTRING     shift and go to state 9
     EMIT            shift and go to state 10
     CHAR            shift and go to state 11
-    COLON           shift and go to state 15
-    WORD            shift and go to state 16
-    IF              shift and go to state 17
-    1PLUS           shift and go to state 18
-    1MINUS          shift and go to state 19
-    2PLUS           shift and go to state 20
-    2MINUS          shift and go to state 21
-    2TIMES          shift and go to state 22
-    2DIVIDE         shift and go to state 23
-    DUP             shift and go to state 24
-    2DUP            shift and go to state 25
-    DROP            shift and go to state 26
-    SWAP            shift and go to state 27
-    DEPTH           shift and go to state 28
-    PLUS            shift and go to state 29
-    MINUS           shift and go to state 30
-    TIMES           shift and go to state 31
-    DIVIDE          shift and go to state 32
-    MOD             shift and go to state 33
-    SUP             shift and go to state 34
-    EQUAL           shift and go to state 35
-    INF             shift and go to state 36
-    SUPEQUAL        shift and go to state 37
-    INFEQUAL        shift and go to state 38
-    INT             shift and go to state 39
-    FLOAT           shift and go to state 40
+    IF              shift and go to state 15
+    1PLUS           shift and go to state 16
+    1MINUS          shift and go to state 17
+    2PLUS           shift and go to state 18
+    2MINUS          shift and go to state 19
+    2TIMES          shift and go to state 20
+    2DIVIDE         shift and go to state 21
+    DUP             shift and go to state 22
+    2DUP            shift and go to state 23
+    DROP            shift and go to state 24
+    SWAP            shift and go to state 25
+    DEPTH           shift and go to state 26
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    SUP             shift and go to state 32
+    EQUAL           shift and go to state 33
+    INF             shift and go to state 34
+    SUPEQUAL        shift and go to state 35
+    INFEQUAL        shift and go to state 36
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
 
     line                           shift and go to state 3
     conditional                    shift and go to state 5
@@ -250,8 +230,6 @@ state 2
     PONTOSTRING     reduce using rule 2 (axioma -> empty .)
     EMIT            reduce using rule 2 (axioma -> empty .)
     CHAR            reduce using rule 2 (axioma -> empty .)
-    COLON           reduce using rule 2 (axioma -> empty .)
-    WORD            reduce using rule 2 (axioma -> empty .)
     IF              reduce using rule 2 (axioma -> empty .)
     1PLUS           reduce using rule 2 (axioma -> empty .)
     1MINUS          reduce using rule 2 (axioma -> empty .)
@@ -293,8 +271,6 @@ state 3
     PONTOSTRING     reduce using rule 1 (axioma -> axioma line .)
     EMIT            reduce using rule 1 (axioma -> axioma line .)
     CHAR            reduce using rule 1 (axioma -> axioma line .)
-    COLON           reduce using rule 1 (axioma -> axioma line .)
-    WORD            reduce using rule 1 (axioma -> axioma line .)
     IF              reduce using rule 1 (axioma -> axioma line .)
     1PLUS           reduce using rule 1 (axioma -> axioma line .)
     1MINUS          reduce using rule 1 (axioma -> axioma line .)
@@ -336,8 +312,6 @@ state 4
     PONTOSTRING     reduce using rule 3 (line -> COMMENT .)
     EMIT            reduce using rule 3 (line -> COMMENT .)
     CHAR            reduce using rule 3 (line -> COMMENT .)
-    COLON           reduce using rule 3 (line -> COMMENT .)
-    WORD            reduce using rule 3 (line -> COMMENT .)
     IF              reduce using rule 3 (line -> COMMENT .)
     1PLUS           reduce using rule 3 (line -> COMMENT .)
     1MINUS          reduce using rule 3 (line -> COMMENT .)
@@ -379,8 +353,6 @@ state 5
     PONTOSTRING     reduce using rule 4 (line -> conditional .)
     EMIT            reduce using rule 4 (line -> conditional .)
     CHAR            reduce using rule 4 (line -> conditional .)
-    COLON           reduce using rule 4 (line -> conditional .)
-    WORD            reduce using rule 4 (line -> conditional .)
     IF              reduce using rule 4 (line -> conditional .)
     1PLUS           reduce using rule 4 (line -> conditional .)
     1MINUS          reduce using rule 4 (line -> conditional .)
@@ -416,44 +388,42 @@ state 6
     (7) line -> DO . axioma LOOP
     (1) axioma -> . axioma line
     (2) axioma -> . empty
-    (44) empty -> .
+    (41) empty -> .
 
-    LOOP            reduce using rule 44 (empty -> .)
-    COMMENT         reduce using rule 44 (empty -> .)
-    DO              reduce using rule 44 (empty -> .)
-    PONTO           reduce using rule 44 (empty -> .)
-    CR              reduce using rule 44 (empty -> .)
-    PONTOSTRING     reduce using rule 44 (empty -> .)
-    EMIT            reduce using rule 44 (empty -> .)
-    CHAR            reduce using rule 44 (empty -> .)
-    COLON           reduce using rule 44 (empty -> .)
-    WORD            reduce using rule 44 (empty -> .)
-    IF              reduce using rule 44 (empty -> .)
-    1PLUS           reduce using rule 44 (empty -> .)
-    1MINUS          reduce using rule 44 (empty -> .)
-    2PLUS           reduce using rule 44 (empty -> .)
-    2MINUS          reduce using rule 44 (empty -> .)
-    2TIMES          reduce using rule 44 (empty -> .)
-    2DIVIDE         reduce using rule 44 (empty -> .)
-    DUP             reduce using rule 44 (empty -> .)
-    2DUP            reduce using rule 44 (empty -> .)
-    DROP            reduce using rule 44 (empty -> .)
-    SWAP            reduce using rule 44 (empty -> .)
-    DEPTH           reduce using rule 44 (empty -> .)
-    PLUS            reduce using rule 44 (empty -> .)
-    MINUS           reduce using rule 44 (empty -> .)
-    TIMES           reduce using rule 44 (empty -> .)
-    DIVIDE          reduce using rule 44 (empty -> .)
-    MOD             reduce using rule 44 (empty -> .)
-    SUP             reduce using rule 44 (empty -> .)
-    EQUAL           reduce using rule 44 (empty -> .)
-    INF             reduce using rule 44 (empty -> .)
-    SUPEQUAL        reduce using rule 44 (empty -> .)
-    INFEQUAL        reduce using rule 44 (empty -> .)
-    INT             reduce using rule 44 (empty -> .)
-    FLOAT           reduce using rule 44 (empty -> .)
+    LOOP            reduce using rule 41 (empty -> .)
+    COMMENT         reduce using rule 41 (empty -> .)
+    DO              reduce using rule 41 (empty -> .)
+    PONTO           reduce using rule 41 (empty -> .)
+    CR              reduce using rule 41 (empty -> .)
+    PONTOSTRING     reduce using rule 41 (empty -> .)
+    EMIT            reduce using rule 41 (empty -> .)
+    CHAR            reduce using rule 41 (empty -> .)
+    IF              reduce using rule 41 (empty -> .)
+    1PLUS           reduce using rule 41 (empty -> .)
+    1MINUS          reduce using rule 41 (empty -> .)
+    2PLUS           reduce using rule 41 (empty -> .)
+    2MINUS          reduce using rule 41 (empty -> .)
+    2TIMES          reduce using rule 41 (empty -> .)
+    2DIVIDE         reduce using rule 41 (empty -> .)
+    DUP             reduce using rule 41 (empty -> .)
+    2DUP            reduce using rule 41 (empty -> .)
+    DROP            reduce using rule 41 (empty -> .)
+    SWAP            reduce using rule 41 (empty -> .)
+    DEPTH           reduce using rule 41 (empty -> .)
+    PLUS            reduce using rule 41 (empty -> .)
+    MINUS           reduce using rule 41 (empty -> .)
+    TIMES           reduce using rule 41 (empty -> .)
+    DIVIDE          reduce using rule 41 (empty -> .)
+    MOD             reduce using rule 41 (empty -> .)
+    SUP             reduce using rule 41 (empty -> .)
+    EQUAL           reduce using rule 41 (empty -> .)
+    INF             reduce using rule 41 (empty -> .)
+    SUPEQUAL        reduce using rule 41 (empty -> .)
+    INFEQUAL        reduce using rule 41 (empty -> .)
+    INT             reduce using rule 41 (empty -> .)
+    FLOAT           reduce using rule 41 (empty -> .)
 
-    axioma                         shift and go to state 41
+    axioma                         shift and go to state 39
     empty                          shift and go to state 2
 
 state 7
@@ -467,8 +437,6 @@ state 7
     PONTOSTRING     reduce using rule 8 (line -> PONTO .)
     EMIT            reduce using rule 8 (line -> PONTO .)
     CHAR            reduce using rule 8 (line -> PONTO .)
-    COLON           reduce using rule 8 (line -> PONTO .)
-    WORD            reduce using rule 8 (line -> PONTO .)
     IF              reduce using rule 8 (line -> PONTO .)
     1PLUS           reduce using rule 8 (line -> PONTO .)
     1MINUS          reduce using rule 8 (line -> PONTO .)
@@ -510,8 +478,6 @@ state 8
     PONTOSTRING     reduce using rule 9 (line -> CR .)
     EMIT            reduce using rule 9 (line -> CR .)
     CHAR            reduce using rule 9 (line -> CR .)
-    COLON           reduce using rule 9 (line -> CR .)
-    WORD            reduce using rule 9 (line -> CR .)
     IF              reduce using rule 9 (line -> CR .)
     1PLUS           reduce using rule 9 (line -> CR .)
     1MINUS          reduce using rule 9 (line -> CR .)
@@ -553,8 +519,6 @@ state 9
     PONTOSTRING     reduce using rule 10 (line -> PONTOSTRING .)
     EMIT            reduce using rule 10 (line -> PONTOSTRING .)
     CHAR            reduce using rule 10 (line -> PONTOSTRING .)
-    COLON           reduce using rule 10 (line -> PONTOSTRING .)
-    WORD            reduce using rule 10 (line -> PONTOSTRING .)
     IF              reduce using rule 10 (line -> PONTOSTRING .)
     1PLUS           reduce using rule 10 (line -> PONTOSTRING .)
     1MINUS          reduce using rule 10 (line -> PONTOSTRING .)
@@ -596,8 +560,6 @@ state 10
     PONTOSTRING     reduce using rule 11 (line -> EMIT .)
     EMIT            reduce using rule 11 (line -> EMIT .)
     CHAR            reduce using rule 11 (line -> EMIT .)
-    COLON           reduce using rule 11 (line -> EMIT .)
-    WORD            reduce using rule 11 (line -> EMIT .)
     IF              reduce using rule 11 (line -> EMIT .)
     1PLUS           reduce using rule 11 (line -> EMIT .)
     1MINUS          reduce using rule 11 (line -> EMIT .)
@@ -639,8 +601,6 @@ state 11
     PONTOSTRING     reduce using rule 12 (line -> CHAR .)
     EMIT            reduce using rule 12 (line -> CHAR .)
     CHAR            reduce using rule 12 (line -> CHAR .)
-    COLON           reduce using rule 12 (line -> CHAR .)
-    WORD            reduce using rule 12 (line -> CHAR .)
     IF              reduce using rule 12 (line -> CHAR .)
     1PLUS           reduce using rule 12 (line -> CHAR .)
     1MINUS          reduce using rule 12 (line -> CHAR .)
@@ -682,8 +642,6 @@ state 12
     PONTOSTRING     reduce using rule 13 (line -> operation .)
     EMIT            reduce using rule 13 (line -> operation .)
     CHAR            reduce using rule 13 (line -> operation .)
-    COLON           reduce using rule 13 (line -> operation .)
-    WORD            reduce using rule 13 (line -> operation .)
     IF              reduce using rule 13 (line -> operation .)
     1PLUS           reduce using rule 13 (line -> operation .)
     1MINUS          reduce using rule 13 (line -> operation .)
@@ -731,9 +689,6 @@ state 13
     (26) line -> . float line
     (27) line -> . int
     (28) line -> . float
-    (31) line -> . COLON WORD CODE
-    (32) line -> . COLON WORD
-    (33) line -> . WORD
     (5) conditional -> . IF axioma ELSE axioma THEN axioma
     (6) conditional -> . IF axioma THEN axioma
     (14) operation -> . 1PLUS
@@ -747,16 +702,16 @@ state 13
     (22) operation -> . DROP
     (23) operation -> . SWAP
     (24) operation -> . DEPTH
-    (34) operation -> . PLUS
-    (35) operation -> . MINUS
-    (36) operation -> . TIMES
-    (37) operation -> . DIVIDE
-    (38) operation -> . MOD
-    (39) operation -> . SUP
-    (40) operation -> . EQUAL
-    (41) operation -> . INF
-    (42) operation -> . SUPEQUAL
-    (43) operation -> . INFEQUAL
+    (31) operation -> . PLUS
+    (32) operation -> . MINUS
+    (33) operation -> . TIMES
+    (34) operation -> . DIVIDE
+    (35) operation -> . MOD
+    (36) operation -> . SUP
+    (37) operation -> . EQUAL
+    (38) operation -> . INF
+    (39) operation -> . SUPEQUAL
+    (40) operation -> . INFEQUAL
     (29) int -> . INT
     (30) float -> . FLOAT
 
@@ -767,8 +722,6 @@ state 13
   ! shift/reduce conflict for PONTOSTRING resolved as shift
   ! shift/reduce conflict for EMIT resolved as shift
   ! shift/reduce conflict for CHAR resolved as shift
-  ! shift/reduce conflict for COLON resolved as shift
-  ! shift/reduce conflict for WORD resolved as shift
   ! shift/reduce conflict for IF resolved as shift
   ! shift/reduce conflict for 1PLUS resolved as shift
   ! shift/reduce conflict for 1MINUS resolved as shift
@@ -804,32 +757,30 @@ state 13
     PONTOSTRING     shift and go to state 9
     EMIT            shift and go to state 10
     CHAR            shift and go to state 11
-    COLON           shift and go to state 15
-    WORD            shift and go to state 16
-    IF              shift and go to state 17
-    1PLUS           shift and go to state 18
-    1MINUS          shift and go to state 19
-    2PLUS           shift and go to state 20
-    2MINUS          shift and go to state 21
-    2TIMES          shift and go to state 22
-    2DIVIDE         shift and go to state 23
-    DUP             shift and go to state 24
-    2DUP            shift and go to state 25
-    DROP            shift and go to state 26
-    SWAP            shift and go to state 27
-    DEPTH           shift and go to state 28
-    PLUS            shift and go to state 29
-    MINUS           shift and go to state 30
-    TIMES           shift and go to state 31
-    DIVIDE          shift and go to state 32
-    MOD             shift and go to state 33
-    SUP             shift and go to state 34
-    EQUAL           shift and go to state 35
-    INF             shift and go to state 36
-    SUPEQUAL        shift and go to state 37
-    INFEQUAL        shift and go to state 38
-    INT             shift and go to state 39
-    FLOAT           shift and go to state 40
+    IF              shift and go to state 15
+    1PLUS           shift and go to state 16
+    1MINUS          shift and go to state 17
+    2PLUS           shift and go to state 18
+    2MINUS          shift and go to state 19
+    2TIMES          shift and go to state 20
+    2DIVIDE         shift and go to state 21
+    DUP             shift and go to state 22
+    2DUP            shift and go to state 23
+    DROP            shift and go to state 24
+    SWAP            shift and go to state 25
+    DEPTH           shift and go to state 26
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    SUP             shift and go to state 32
+    EQUAL           shift and go to state 33
+    INF             shift and go to state 34
+    SUPEQUAL        shift and go to state 35
+    INFEQUAL        shift and go to state 36
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
 
   ! COMMENT         [ reduce using rule 27 (line -> int .) ]
   ! DO              [ reduce using rule 27 (line -> int .) ]
@@ -838,8 +789,6 @@ state 13
   ! PONTOSTRING     [ reduce using rule 27 (line -> int .) ]
   ! EMIT            [ reduce using rule 27 (line -> int .) ]
   ! CHAR            [ reduce using rule 27 (line -> int .) ]
-  ! COLON           [ reduce using rule 27 (line -> int .) ]
-  ! WORD            [ reduce using rule 27 (line -> int .) ]
   ! IF              [ reduce using rule 27 (line -> int .) ]
   ! 1PLUS           [ reduce using rule 27 (line -> int .) ]
   ! 1MINUS          [ reduce using rule 27 (line -> int .) ]
@@ -866,7 +815,7 @@ state 13
   ! FLOAT           [ reduce using rule 27 (line -> int .) ]
 
     int                            shift and go to state 13
-    line                           shift and go to state 42
+    line                           shift and go to state 40
     conditional                    shift and go to state 5
     operation                      shift and go to state 12
     float                          shift and go to state 14
@@ -888,9 +837,6 @@ state 14
     (26) line -> . float line
     (27) line -> . int
     (28) line -> . float
-    (31) line -> . COLON WORD CODE
-    (32) line -> . COLON WORD
-    (33) line -> . WORD
     (5) conditional -> . IF axioma ELSE axioma THEN axioma
     (6) conditional -> . IF axioma THEN axioma
     (14) operation -> . 1PLUS
@@ -904,16 +850,16 @@ state 14
     (22) operation -> . DROP
     (23) operation -> . SWAP
     (24) operation -> . DEPTH
-    (34) operation -> . PLUS
-    (35) operation -> . MINUS
-    (36) operation -> . TIMES
-    (37) operation -> . DIVIDE
-    (38) operation -> . MOD
-    (39) operation -> . SUP
-    (40) operation -> . EQUAL
-    (41) operation -> . INF
-    (42) operation -> . SUPEQUAL
-    (43) operation -> . INFEQUAL
+    (31) operation -> . PLUS
+    (32) operation -> . MINUS
+    (33) operation -> . TIMES
+    (34) operation -> . DIVIDE
+    (35) operation -> . MOD
+    (36) operation -> . SUP
+    (37) operation -> . EQUAL
+    (38) operation -> . INF
+    (39) operation -> . SUPEQUAL
+    (40) operation -> . INFEQUAL
     (29) int -> . INT
     (30) float -> . FLOAT
 
@@ -924,8 +870,6 @@ state 14
   ! shift/reduce conflict for PONTOSTRING resolved as shift
   ! shift/reduce conflict for EMIT resolved as shift
   ! shift/reduce conflict for CHAR resolved as shift
-  ! shift/reduce conflict for COLON resolved as shift
-  ! shift/reduce conflict for WORD resolved as shift
   ! shift/reduce conflict for IF resolved as shift
   ! shift/reduce conflict for 1PLUS resolved as shift
   ! shift/reduce conflict for 1MINUS resolved as shift
@@ -961,32 +905,30 @@ state 14
     PONTOSTRING     shift and go to state 9
     EMIT            shift and go to state 10
     CHAR            shift and go to state 11
-    COLON           shift and go to state 15
-    WORD            shift and go to state 16
-    IF              shift and go to state 17
-    1PLUS           shift and go to state 18
-    1MINUS          shift and go to state 19
-    2PLUS           shift and go to state 20
-    2MINUS          shift and go to state 21
-    2TIMES          shift and go to state 22
-    2DIVIDE         shift and go to state 23
-    DUP             shift and go to state 24
-    2DUP            shift and go to state 25
-    DROP            shift and go to state 26
-    SWAP            shift and go to state 27
-    DEPTH           shift and go to state 28
-    PLUS            shift and go to state 29
-    MINUS           shift and go to state 30
-    TIMES           shift and go to state 31
-    DIVIDE          shift and go to state 32
-    MOD             shift and go to state 33
-    SUP             shift and go to state 34
-    EQUAL           shift and go to state 35
-    INF             shift and go to state 36
-    SUPEQUAL        shift and go to state 37
-    INFEQUAL        shift and go to state 38
-    INT             shift and go to state 39
-    FLOAT           shift and go to state 40
+    IF              shift and go to state 15
+    1PLUS           shift and go to state 16
+    1MINUS          shift and go to state 17
+    2PLUS           shift and go to state 18
+    2MINUS          shift and go to state 19
+    2TIMES          shift and go to state 20
+    2DIVIDE         shift and go to state 21
+    DUP             shift and go to state 22
+    2DUP            shift and go to state 23
+    DROP            shift and go to state 24
+    SWAP            shift and go to state 25
+    DEPTH           shift and go to state 26
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    SUP             shift and go to state 32
+    EQUAL           shift and go to state 33
+    INF             shift and go to state 34
+    SUPEQUAL        shift and go to state 35
+    INFEQUAL        shift and go to state 36
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
 
   ! COMMENT         [ reduce using rule 28 (line -> float .) ]
   ! DO              [ reduce using rule 28 (line -> float .) ]
@@ -995,8 +937,6 @@ state 14
   ! PONTOSTRING     [ reduce using rule 28 (line -> float .) ]
   ! EMIT            [ reduce using rule 28 (line -> float .) ]
   ! CHAR            [ reduce using rule 28 (line -> float .) ]
-  ! COLON           [ reduce using rule 28 (line -> float .) ]
-  ! WORD            [ reduce using rule 28 (line -> float .) ]
   ! IF              [ reduce using rule 28 (line -> float .) ]
   ! 1PLUS           [ reduce using rule 28 (line -> float .) ]
   ! 1MINUS          [ reduce using rule 28 (line -> float .) ]
@@ -1023,110 +963,57 @@ state 14
   ! FLOAT           [ reduce using rule 28 (line -> float .) ]
 
     float                          shift and go to state 14
-    line                           shift and go to state 43
+    line                           shift and go to state 41
     conditional                    shift and go to state 5
     operation                      shift and go to state 12
     int                            shift and go to state 13
 
 state 15
 
-    (31) line -> COLON . WORD CODE
-    (32) line -> COLON . WORD
-
-    WORD            shift and go to state 44
-
-
-state 16
-
-    (33) line -> WORD .
-
-    COMMENT         reduce using rule 33 (line -> WORD .)
-    DO              reduce using rule 33 (line -> WORD .)
-    PONTO           reduce using rule 33 (line -> WORD .)
-    CR              reduce using rule 33 (line -> WORD .)
-    PONTOSTRING     reduce using rule 33 (line -> WORD .)
-    EMIT            reduce using rule 33 (line -> WORD .)
-    CHAR            reduce using rule 33 (line -> WORD .)
-    COLON           reduce using rule 33 (line -> WORD .)
-    WORD            reduce using rule 33 (line -> WORD .)
-    IF              reduce using rule 33 (line -> WORD .)
-    1PLUS           reduce using rule 33 (line -> WORD .)
-    1MINUS          reduce using rule 33 (line -> WORD .)
-    2PLUS           reduce using rule 33 (line -> WORD .)
-    2MINUS          reduce using rule 33 (line -> WORD .)
-    2TIMES          reduce using rule 33 (line -> WORD .)
-    2DIVIDE         reduce using rule 33 (line -> WORD .)
-    DUP             reduce using rule 33 (line -> WORD .)
-    2DUP            reduce using rule 33 (line -> WORD .)
-    DROP            reduce using rule 33 (line -> WORD .)
-    SWAP            reduce using rule 33 (line -> WORD .)
-    DEPTH           reduce using rule 33 (line -> WORD .)
-    PLUS            reduce using rule 33 (line -> WORD .)
-    MINUS           reduce using rule 33 (line -> WORD .)
-    TIMES           reduce using rule 33 (line -> WORD .)
-    DIVIDE          reduce using rule 33 (line -> WORD .)
-    MOD             reduce using rule 33 (line -> WORD .)
-    SUP             reduce using rule 33 (line -> WORD .)
-    EQUAL           reduce using rule 33 (line -> WORD .)
-    INF             reduce using rule 33 (line -> WORD .)
-    SUPEQUAL        reduce using rule 33 (line -> WORD .)
-    INFEQUAL        reduce using rule 33 (line -> WORD .)
-    INT             reduce using rule 33 (line -> WORD .)
-    FLOAT           reduce using rule 33 (line -> WORD .)
-    $end            reduce using rule 33 (line -> WORD .)
-    LOOP            reduce using rule 33 (line -> WORD .)
-    ELSE            reduce using rule 33 (line -> WORD .)
-    THEN            reduce using rule 33 (line -> WORD .)
-
-
-state 17
-
     (5) conditional -> IF . axioma ELSE axioma THEN axioma
     (6) conditional -> IF . axioma THEN axioma
     (1) axioma -> . axioma line
     (2) axioma -> . empty
-    (44) empty -> .
+    (41) empty -> .
 
-    ELSE            reduce using rule 44 (empty -> .)
-    THEN            reduce using rule 44 (empty -> .)
-    COMMENT         reduce using rule 44 (empty -> .)
-    DO              reduce using rule 44 (empty -> .)
-    PONTO           reduce using rule 44 (empty -> .)
-    CR              reduce using rule 44 (empty -> .)
-    PONTOSTRING     reduce using rule 44 (empty -> .)
-    EMIT            reduce using rule 44 (empty -> .)
-    CHAR            reduce using rule 44 (empty -> .)
-    COLON           reduce using rule 44 (empty -> .)
-    WORD            reduce using rule 44 (empty -> .)
-    IF              reduce using rule 44 (empty -> .)
-    1PLUS           reduce using rule 44 (empty -> .)
-    1MINUS          reduce using rule 44 (empty -> .)
-    2PLUS           reduce using rule 44 (empty -> .)
-    2MINUS          reduce using rule 44 (empty -> .)
-    2TIMES          reduce using rule 44 (empty -> .)
-    2DIVIDE         reduce using rule 44 (empty -> .)
-    DUP             reduce using rule 44 (empty -> .)
-    2DUP            reduce using rule 44 (empty -> .)
-    DROP            reduce using rule 44 (empty -> .)
-    SWAP            reduce using rule 44 (empty -> .)
-    DEPTH           reduce using rule 44 (empty -> .)
-    PLUS            reduce using rule 44 (empty -> .)
-    MINUS           reduce using rule 44 (empty -> .)
-    TIMES           reduce using rule 44 (empty -> .)
-    DIVIDE          reduce using rule 44 (empty -> .)
-    MOD             reduce using rule 44 (empty -> .)
-    SUP             reduce using rule 44 (empty -> .)
-    EQUAL           reduce using rule 44 (empty -> .)
-    INF             reduce using rule 44 (empty -> .)
-    SUPEQUAL        reduce using rule 44 (empty -> .)
-    INFEQUAL        reduce using rule 44 (empty -> .)
-    INT             reduce using rule 44 (empty -> .)
-    FLOAT           reduce using rule 44 (empty -> .)
+    ELSE            reduce using rule 41 (empty -> .)
+    THEN            reduce using rule 41 (empty -> .)
+    COMMENT         reduce using rule 41 (empty -> .)
+    DO              reduce using rule 41 (empty -> .)
+    PONTO           reduce using rule 41 (empty -> .)
+    CR              reduce using rule 41 (empty -> .)
+    PONTOSTRING     reduce using rule 41 (empty -> .)
+    EMIT            reduce using rule 41 (empty -> .)
+    CHAR            reduce using rule 41 (empty -> .)
+    IF              reduce using rule 41 (empty -> .)
+    1PLUS           reduce using rule 41 (empty -> .)
+    1MINUS          reduce using rule 41 (empty -> .)
+    2PLUS           reduce using rule 41 (empty -> .)
+    2MINUS          reduce using rule 41 (empty -> .)
+    2TIMES          reduce using rule 41 (empty -> .)
+    2DIVIDE         reduce using rule 41 (empty -> .)
+    DUP             reduce using rule 41 (empty -> .)
+    2DUP            reduce using rule 41 (empty -> .)
+    DROP            reduce using rule 41 (empty -> .)
+    SWAP            reduce using rule 41 (empty -> .)
+    DEPTH           reduce using rule 41 (empty -> .)
+    PLUS            reduce using rule 41 (empty -> .)
+    MINUS           reduce using rule 41 (empty -> .)
+    TIMES           reduce using rule 41 (empty -> .)
+    DIVIDE          reduce using rule 41 (empty -> .)
+    MOD             reduce using rule 41 (empty -> .)
+    SUP             reduce using rule 41 (empty -> .)
+    EQUAL           reduce using rule 41 (empty -> .)
+    INF             reduce using rule 41 (empty -> .)
+    SUPEQUAL        reduce using rule 41 (empty -> .)
+    INFEQUAL        reduce using rule 41 (empty -> .)
+    INT             reduce using rule 41 (empty -> .)
+    FLOAT           reduce using rule 41 (empty -> .)
 
-    axioma                         shift and go to state 45
+    axioma                         shift and go to state 42
     empty                          shift and go to state 2
 
-state 18
+state 16
 
     (14) operation -> 1PLUS .
 
@@ -1137,8 +1024,6 @@ state 18
     PONTOSTRING     reduce using rule 14 (operation -> 1PLUS .)
     EMIT            reduce using rule 14 (operation -> 1PLUS .)
     CHAR            reduce using rule 14 (operation -> 1PLUS .)
-    COLON           reduce using rule 14 (operation -> 1PLUS .)
-    WORD            reduce using rule 14 (operation -> 1PLUS .)
     IF              reduce using rule 14 (operation -> 1PLUS .)
     1PLUS           reduce using rule 14 (operation -> 1PLUS .)
     1MINUS          reduce using rule 14 (operation -> 1PLUS .)
@@ -1169,7 +1054,7 @@ state 18
     THEN            reduce using rule 14 (operation -> 1PLUS .)
 
 
-state 19
+state 17
 
     (15) operation -> 1MINUS .
 
@@ -1180,8 +1065,6 @@ state 19
     PONTOSTRING     reduce using rule 15 (operation -> 1MINUS .)
     EMIT            reduce using rule 15 (operation -> 1MINUS .)
     CHAR            reduce using rule 15 (operation -> 1MINUS .)
-    COLON           reduce using rule 15 (operation -> 1MINUS .)
-    WORD            reduce using rule 15 (operation -> 1MINUS .)
     IF              reduce using rule 15 (operation -> 1MINUS .)
     1PLUS           reduce using rule 15 (operation -> 1MINUS .)
     1MINUS          reduce using rule 15 (operation -> 1MINUS .)
@@ -1212,7 +1095,7 @@ state 19
     THEN            reduce using rule 15 (operation -> 1MINUS .)
 
 
-state 20
+state 18
 
     (16) operation -> 2PLUS .
 
@@ -1223,8 +1106,6 @@ state 20
     PONTOSTRING     reduce using rule 16 (operation -> 2PLUS .)
     EMIT            reduce using rule 16 (operation -> 2PLUS .)
     CHAR            reduce using rule 16 (operation -> 2PLUS .)
-    COLON           reduce using rule 16 (operation -> 2PLUS .)
-    WORD            reduce using rule 16 (operation -> 2PLUS .)
     IF              reduce using rule 16 (operation -> 2PLUS .)
     1PLUS           reduce using rule 16 (operation -> 2PLUS .)
     1MINUS          reduce using rule 16 (operation -> 2PLUS .)
@@ -1255,7 +1136,7 @@ state 20
     THEN            reduce using rule 16 (operation -> 2PLUS .)
 
 
-state 21
+state 19
 
     (17) operation -> 2MINUS .
 
@@ -1266,8 +1147,6 @@ state 21
     PONTOSTRING     reduce using rule 17 (operation -> 2MINUS .)
     EMIT            reduce using rule 17 (operation -> 2MINUS .)
     CHAR            reduce using rule 17 (operation -> 2MINUS .)
-    COLON           reduce using rule 17 (operation -> 2MINUS .)
-    WORD            reduce using rule 17 (operation -> 2MINUS .)
     IF              reduce using rule 17 (operation -> 2MINUS .)
     1PLUS           reduce using rule 17 (operation -> 2MINUS .)
     1MINUS          reduce using rule 17 (operation -> 2MINUS .)
@@ -1298,7 +1177,7 @@ state 21
     THEN            reduce using rule 17 (operation -> 2MINUS .)
 
 
-state 22
+state 20
 
     (18) operation -> 2TIMES .
 
@@ -1309,8 +1188,6 @@ state 22
     PONTOSTRING     reduce using rule 18 (operation -> 2TIMES .)
     EMIT            reduce using rule 18 (operation -> 2TIMES .)
     CHAR            reduce using rule 18 (operation -> 2TIMES .)
-    COLON           reduce using rule 18 (operation -> 2TIMES .)
-    WORD            reduce using rule 18 (operation -> 2TIMES .)
     IF              reduce using rule 18 (operation -> 2TIMES .)
     1PLUS           reduce using rule 18 (operation -> 2TIMES .)
     1MINUS          reduce using rule 18 (operation -> 2TIMES .)
@@ -1341,7 +1218,7 @@ state 22
     THEN            reduce using rule 18 (operation -> 2TIMES .)
 
 
-state 23
+state 21
 
     (19) operation -> 2DIVIDE .
 
@@ -1352,8 +1229,6 @@ state 23
     PONTOSTRING     reduce using rule 19 (operation -> 2DIVIDE .)
     EMIT            reduce using rule 19 (operation -> 2DIVIDE .)
     CHAR            reduce using rule 19 (operation -> 2DIVIDE .)
-    COLON           reduce using rule 19 (operation -> 2DIVIDE .)
-    WORD            reduce using rule 19 (operation -> 2DIVIDE .)
     IF              reduce using rule 19 (operation -> 2DIVIDE .)
     1PLUS           reduce using rule 19 (operation -> 2DIVIDE .)
     1MINUS          reduce using rule 19 (operation -> 2DIVIDE .)
@@ -1384,7 +1259,7 @@ state 23
     THEN            reduce using rule 19 (operation -> 2DIVIDE .)
 
 
-state 24
+state 22
 
     (20) operation -> DUP .
 
@@ -1395,8 +1270,6 @@ state 24
     PONTOSTRING     reduce using rule 20 (operation -> DUP .)
     EMIT            reduce using rule 20 (operation -> DUP .)
     CHAR            reduce using rule 20 (operation -> DUP .)
-    COLON           reduce using rule 20 (operation -> DUP .)
-    WORD            reduce using rule 20 (operation -> DUP .)
     IF              reduce using rule 20 (operation -> DUP .)
     1PLUS           reduce using rule 20 (operation -> DUP .)
     1MINUS          reduce using rule 20 (operation -> DUP .)
@@ -1427,7 +1300,7 @@ state 24
     THEN            reduce using rule 20 (operation -> DUP .)
 
 
-state 25
+state 23
 
     (21) operation -> 2DUP .
 
@@ -1438,8 +1311,6 @@ state 25
     PONTOSTRING     reduce using rule 21 (operation -> 2DUP .)
     EMIT            reduce using rule 21 (operation -> 2DUP .)
     CHAR            reduce using rule 21 (operation -> 2DUP .)
-    COLON           reduce using rule 21 (operation -> 2DUP .)
-    WORD            reduce using rule 21 (operation -> 2DUP .)
     IF              reduce using rule 21 (operation -> 2DUP .)
     1PLUS           reduce using rule 21 (operation -> 2DUP .)
     1MINUS          reduce using rule 21 (operation -> 2DUP .)
@@ -1470,7 +1341,7 @@ state 25
     THEN            reduce using rule 21 (operation -> 2DUP .)
 
 
-state 26
+state 24
 
     (22) operation -> DROP .
 
@@ -1481,8 +1352,6 @@ state 26
     PONTOSTRING     reduce using rule 22 (operation -> DROP .)
     EMIT            reduce using rule 22 (operation -> DROP .)
     CHAR            reduce using rule 22 (operation -> DROP .)
-    COLON           reduce using rule 22 (operation -> DROP .)
-    WORD            reduce using rule 22 (operation -> DROP .)
     IF              reduce using rule 22 (operation -> DROP .)
     1PLUS           reduce using rule 22 (operation -> DROP .)
     1MINUS          reduce using rule 22 (operation -> DROP .)
@@ -1513,7 +1382,7 @@ state 26
     THEN            reduce using rule 22 (operation -> DROP .)
 
 
-state 27
+state 25
 
     (23) operation -> SWAP .
 
@@ -1524,8 +1393,6 @@ state 27
     PONTOSTRING     reduce using rule 23 (operation -> SWAP .)
     EMIT            reduce using rule 23 (operation -> SWAP .)
     CHAR            reduce using rule 23 (operation -> SWAP .)
-    COLON           reduce using rule 23 (operation -> SWAP .)
-    WORD            reduce using rule 23 (operation -> SWAP .)
     IF              reduce using rule 23 (operation -> SWAP .)
     1PLUS           reduce using rule 23 (operation -> SWAP .)
     1MINUS          reduce using rule 23 (operation -> SWAP .)
@@ -1556,7 +1423,7 @@ state 27
     THEN            reduce using rule 23 (operation -> SWAP .)
 
 
-state 28
+state 26
 
     (24) operation -> DEPTH .
 
@@ -1567,8 +1434,6 @@ state 28
     PONTOSTRING     reduce using rule 24 (operation -> DEPTH .)
     EMIT            reduce using rule 24 (operation -> DEPTH .)
     CHAR            reduce using rule 24 (operation -> DEPTH .)
-    COLON           reduce using rule 24 (operation -> DEPTH .)
-    WORD            reduce using rule 24 (operation -> DEPTH .)
     IF              reduce using rule 24 (operation -> DEPTH .)
     1PLUS           reduce using rule 24 (operation -> DEPTH .)
     1MINUS          reduce using rule 24 (operation -> DEPTH .)
@@ -1599,437 +1464,417 @@ state 28
     THEN            reduce using rule 24 (operation -> DEPTH .)
 
 
+state 27
+
+    (31) operation -> PLUS .
+
+    COMMENT         reduce using rule 31 (operation -> PLUS .)
+    DO              reduce using rule 31 (operation -> PLUS .)
+    PONTO           reduce using rule 31 (operation -> PLUS .)
+    CR              reduce using rule 31 (operation -> PLUS .)
+    PONTOSTRING     reduce using rule 31 (operation -> PLUS .)
+    EMIT            reduce using rule 31 (operation -> PLUS .)
+    CHAR            reduce using rule 31 (operation -> PLUS .)
+    IF              reduce using rule 31 (operation -> PLUS .)
+    1PLUS           reduce using rule 31 (operation -> PLUS .)
+    1MINUS          reduce using rule 31 (operation -> PLUS .)
+    2PLUS           reduce using rule 31 (operation -> PLUS .)
+    2MINUS          reduce using rule 31 (operation -> PLUS .)
+    2TIMES          reduce using rule 31 (operation -> PLUS .)
+    2DIVIDE         reduce using rule 31 (operation -> PLUS .)
+    DUP             reduce using rule 31 (operation -> PLUS .)
+    2DUP            reduce using rule 31 (operation -> PLUS .)
+    DROP            reduce using rule 31 (operation -> PLUS .)
+    SWAP            reduce using rule 31 (operation -> PLUS .)
+    DEPTH           reduce using rule 31 (operation -> PLUS .)
+    PLUS            reduce using rule 31 (operation -> PLUS .)
+    MINUS           reduce using rule 31 (operation -> PLUS .)
+    TIMES           reduce using rule 31 (operation -> PLUS .)
+    DIVIDE          reduce using rule 31 (operation -> PLUS .)
+    MOD             reduce using rule 31 (operation -> PLUS .)
+    SUP             reduce using rule 31 (operation -> PLUS .)
+    EQUAL           reduce using rule 31 (operation -> PLUS .)
+    INF             reduce using rule 31 (operation -> PLUS .)
+    SUPEQUAL        reduce using rule 31 (operation -> PLUS .)
+    INFEQUAL        reduce using rule 31 (operation -> PLUS .)
+    INT             reduce using rule 31 (operation -> PLUS .)
+    FLOAT           reduce using rule 31 (operation -> PLUS .)
+    $end            reduce using rule 31 (operation -> PLUS .)
+    LOOP            reduce using rule 31 (operation -> PLUS .)
+    ELSE            reduce using rule 31 (operation -> PLUS .)
+    THEN            reduce using rule 31 (operation -> PLUS .)
+
+
+state 28
+
+    (32) operation -> MINUS .
+
+    COMMENT         reduce using rule 32 (operation -> MINUS .)
+    DO              reduce using rule 32 (operation -> MINUS .)
+    PONTO           reduce using rule 32 (operation -> MINUS .)
+    CR              reduce using rule 32 (operation -> MINUS .)
+    PONTOSTRING     reduce using rule 32 (operation -> MINUS .)
+    EMIT            reduce using rule 32 (operation -> MINUS .)
+    CHAR            reduce using rule 32 (operation -> MINUS .)
+    IF              reduce using rule 32 (operation -> MINUS .)
+    1PLUS           reduce using rule 32 (operation -> MINUS .)
+    1MINUS          reduce using rule 32 (operation -> MINUS .)
+    2PLUS           reduce using rule 32 (operation -> MINUS .)
+    2MINUS          reduce using rule 32 (operation -> MINUS .)
+    2TIMES          reduce using rule 32 (operation -> MINUS .)
+    2DIVIDE         reduce using rule 32 (operation -> MINUS .)
+    DUP             reduce using rule 32 (operation -> MINUS .)
+    2DUP            reduce using rule 32 (operation -> MINUS .)
+    DROP            reduce using rule 32 (operation -> MINUS .)
+    SWAP            reduce using rule 32 (operation -> MINUS .)
+    DEPTH           reduce using rule 32 (operation -> MINUS .)
+    PLUS            reduce using rule 32 (operation -> MINUS .)
+    MINUS           reduce using rule 32 (operation -> MINUS .)
+    TIMES           reduce using rule 32 (operation -> MINUS .)
+    DIVIDE          reduce using rule 32 (operation -> MINUS .)
+    MOD             reduce using rule 32 (operation -> MINUS .)
+    SUP             reduce using rule 32 (operation -> MINUS .)
+    EQUAL           reduce using rule 32 (operation -> MINUS .)
+    INF             reduce using rule 32 (operation -> MINUS .)
+    SUPEQUAL        reduce using rule 32 (operation -> MINUS .)
+    INFEQUAL        reduce using rule 32 (operation -> MINUS .)
+    INT             reduce using rule 32 (operation -> MINUS .)
+    FLOAT           reduce using rule 32 (operation -> MINUS .)
+    $end            reduce using rule 32 (operation -> MINUS .)
+    LOOP            reduce using rule 32 (operation -> MINUS .)
+    ELSE            reduce using rule 32 (operation -> MINUS .)
+    THEN            reduce using rule 32 (operation -> MINUS .)
+
+
 state 29
 
-    (34) operation -> PLUS .
+    (33) operation -> TIMES .
 
-    COMMENT         reduce using rule 34 (operation -> PLUS .)
-    DO              reduce using rule 34 (operation -> PLUS .)
-    PONTO           reduce using rule 34 (operation -> PLUS .)
-    CR              reduce using rule 34 (operation -> PLUS .)
-    PONTOSTRING     reduce using rule 34 (operation -> PLUS .)
-    EMIT            reduce using rule 34 (operation -> PLUS .)
-    CHAR            reduce using rule 34 (operation -> PLUS .)
-    COLON           reduce using rule 34 (operation -> PLUS .)
-    WORD            reduce using rule 34 (operation -> PLUS .)
-    IF              reduce using rule 34 (operation -> PLUS .)
-    1PLUS           reduce using rule 34 (operation -> PLUS .)
-    1MINUS          reduce using rule 34 (operation -> PLUS .)
-    2PLUS           reduce using rule 34 (operation -> PLUS .)
-    2MINUS          reduce using rule 34 (operation -> PLUS .)
-    2TIMES          reduce using rule 34 (operation -> PLUS .)
-    2DIVIDE         reduce using rule 34 (operation -> PLUS .)
-    DUP             reduce using rule 34 (operation -> PLUS .)
-    2DUP            reduce using rule 34 (operation -> PLUS .)
-    DROP            reduce using rule 34 (operation -> PLUS .)
-    SWAP            reduce using rule 34 (operation -> PLUS .)
-    DEPTH           reduce using rule 34 (operation -> PLUS .)
-    PLUS            reduce using rule 34 (operation -> PLUS .)
-    MINUS           reduce using rule 34 (operation -> PLUS .)
-    TIMES           reduce using rule 34 (operation -> PLUS .)
-    DIVIDE          reduce using rule 34 (operation -> PLUS .)
-    MOD             reduce using rule 34 (operation -> PLUS .)
-    SUP             reduce using rule 34 (operation -> PLUS .)
-    EQUAL           reduce using rule 34 (operation -> PLUS .)
-    INF             reduce using rule 34 (operation -> PLUS .)
-    SUPEQUAL        reduce using rule 34 (operation -> PLUS .)
-    INFEQUAL        reduce using rule 34 (operation -> PLUS .)
-    INT             reduce using rule 34 (operation -> PLUS .)
-    FLOAT           reduce using rule 34 (operation -> PLUS .)
-    $end            reduce using rule 34 (operation -> PLUS .)
-    LOOP            reduce using rule 34 (operation -> PLUS .)
-    ELSE            reduce using rule 34 (operation -> PLUS .)
-    THEN            reduce using rule 34 (operation -> PLUS .)
+    COMMENT         reduce using rule 33 (operation -> TIMES .)
+    DO              reduce using rule 33 (operation -> TIMES .)
+    PONTO           reduce using rule 33 (operation -> TIMES .)
+    CR              reduce using rule 33 (operation -> TIMES .)
+    PONTOSTRING     reduce using rule 33 (operation -> TIMES .)
+    EMIT            reduce using rule 33 (operation -> TIMES .)
+    CHAR            reduce using rule 33 (operation -> TIMES .)
+    IF              reduce using rule 33 (operation -> TIMES .)
+    1PLUS           reduce using rule 33 (operation -> TIMES .)
+    1MINUS          reduce using rule 33 (operation -> TIMES .)
+    2PLUS           reduce using rule 33 (operation -> TIMES .)
+    2MINUS          reduce using rule 33 (operation -> TIMES .)
+    2TIMES          reduce using rule 33 (operation -> TIMES .)
+    2DIVIDE         reduce using rule 33 (operation -> TIMES .)
+    DUP             reduce using rule 33 (operation -> TIMES .)
+    2DUP            reduce using rule 33 (operation -> TIMES .)
+    DROP            reduce using rule 33 (operation -> TIMES .)
+    SWAP            reduce using rule 33 (operation -> TIMES .)
+    DEPTH           reduce using rule 33 (operation -> TIMES .)
+    PLUS            reduce using rule 33 (operation -> TIMES .)
+    MINUS           reduce using rule 33 (operation -> TIMES .)
+    TIMES           reduce using rule 33 (operation -> TIMES .)
+    DIVIDE          reduce using rule 33 (operation -> TIMES .)
+    MOD             reduce using rule 33 (operation -> TIMES .)
+    SUP             reduce using rule 33 (operation -> TIMES .)
+    EQUAL           reduce using rule 33 (operation -> TIMES .)
+    INF             reduce using rule 33 (operation -> TIMES .)
+    SUPEQUAL        reduce using rule 33 (operation -> TIMES .)
+    INFEQUAL        reduce using rule 33 (operation -> TIMES .)
+    INT             reduce using rule 33 (operation -> TIMES .)
+    FLOAT           reduce using rule 33 (operation -> TIMES .)
+    $end            reduce using rule 33 (operation -> TIMES .)
+    LOOP            reduce using rule 33 (operation -> TIMES .)
+    ELSE            reduce using rule 33 (operation -> TIMES .)
+    THEN            reduce using rule 33 (operation -> TIMES .)
 
 
 state 30
 
-    (35) operation -> MINUS .
+    (34) operation -> DIVIDE .
 
-    COMMENT         reduce using rule 35 (operation -> MINUS .)
-    DO              reduce using rule 35 (operation -> MINUS .)
-    PONTO           reduce using rule 35 (operation -> MINUS .)
-    CR              reduce using rule 35 (operation -> MINUS .)
-    PONTOSTRING     reduce using rule 35 (operation -> MINUS .)
-    EMIT            reduce using rule 35 (operation -> MINUS .)
-    CHAR            reduce using rule 35 (operation -> MINUS .)
-    COLON           reduce using rule 35 (operation -> MINUS .)
-    WORD            reduce using rule 35 (operation -> MINUS .)
-    IF              reduce using rule 35 (operation -> MINUS .)
-    1PLUS           reduce using rule 35 (operation -> MINUS .)
-    1MINUS          reduce using rule 35 (operation -> MINUS .)
-    2PLUS           reduce using rule 35 (operation -> MINUS .)
-    2MINUS          reduce using rule 35 (operation -> MINUS .)
-    2TIMES          reduce using rule 35 (operation -> MINUS .)
-    2DIVIDE         reduce using rule 35 (operation -> MINUS .)
-    DUP             reduce using rule 35 (operation -> MINUS .)
-    2DUP            reduce using rule 35 (operation -> MINUS .)
-    DROP            reduce using rule 35 (operation -> MINUS .)
-    SWAP            reduce using rule 35 (operation -> MINUS .)
-    DEPTH           reduce using rule 35 (operation -> MINUS .)
-    PLUS            reduce using rule 35 (operation -> MINUS .)
-    MINUS           reduce using rule 35 (operation -> MINUS .)
-    TIMES           reduce using rule 35 (operation -> MINUS .)
-    DIVIDE          reduce using rule 35 (operation -> MINUS .)
-    MOD             reduce using rule 35 (operation -> MINUS .)
-    SUP             reduce using rule 35 (operation -> MINUS .)
-    EQUAL           reduce using rule 35 (operation -> MINUS .)
-    INF             reduce using rule 35 (operation -> MINUS .)
-    SUPEQUAL        reduce using rule 35 (operation -> MINUS .)
-    INFEQUAL        reduce using rule 35 (operation -> MINUS .)
-    INT             reduce using rule 35 (operation -> MINUS .)
-    FLOAT           reduce using rule 35 (operation -> MINUS .)
-    $end            reduce using rule 35 (operation -> MINUS .)
-    LOOP            reduce using rule 35 (operation -> MINUS .)
-    ELSE            reduce using rule 35 (operation -> MINUS .)
-    THEN            reduce using rule 35 (operation -> MINUS .)
+    COMMENT         reduce using rule 34 (operation -> DIVIDE .)
+    DO              reduce using rule 34 (operation -> DIVIDE .)
+    PONTO           reduce using rule 34 (operation -> DIVIDE .)
+    CR              reduce using rule 34 (operation -> DIVIDE .)
+    PONTOSTRING     reduce using rule 34 (operation -> DIVIDE .)
+    EMIT            reduce using rule 34 (operation -> DIVIDE .)
+    CHAR            reduce using rule 34 (operation -> DIVIDE .)
+    IF              reduce using rule 34 (operation -> DIVIDE .)
+    1PLUS           reduce using rule 34 (operation -> DIVIDE .)
+    1MINUS          reduce using rule 34 (operation -> DIVIDE .)
+    2PLUS           reduce using rule 34 (operation -> DIVIDE .)
+    2MINUS          reduce using rule 34 (operation -> DIVIDE .)
+    2TIMES          reduce using rule 34 (operation -> DIVIDE .)
+    2DIVIDE         reduce using rule 34 (operation -> DIVIDE .)
+    DUP             reduce using rule 34 (operation -> DIVIDE .)
+    2DUP            reduce using rule 34 (operation -> DIVIDE .)
+    DROP            reduce using rule 34 (operation -> DIVIDE .)
+    SWAP            reduce using rule 34 (operation -> DIVIDE .)
+    DEPTH           reduce using rule 34 (operation -> DIVIDE .)
+    PLUS            reduce using rule 34 (operation -> DIVIDE .)
+    MINUS           reduce using rule 34 (operation -> DIVIDE .)
+    TIMES           reduce using rule 34 (operation -> DIVIDE .)
+    DIVIDE          reduce using rule 34 (operation -> DIVIDE .)
+    MOD             reduce using rule 34 (operation -> DIVIDE .)
+    SUP             reduce using rule 34 (operation -> DIVIDE .)
+    EQUAL           reduce using rule 34 (operation -> DIVIDE .)
+    INF             reduce using rule 34 (operation -> DIVIDE .)
+    SUPEQUAL        reduce using rule 34 (operation -> DIVIDE .)
+    INFEQUAL        reduce using rule 34 (operation -> DIVIDE .)
+    INT             reduce using rule 34 (operation -> DIVIDE .)
+    FLOAT           reduce using rule 34 (operation -> DIVIDE .)
+    $end            reduce using rule 34 (operation -> DIVIDE .)
+    LOOP            reduce using rule 34 (operation -> DIVIDE .)
+    ELSE            reduce using rule 34 (operation -> DIVIDE .)
+    THEN            reduce using rule 34 (operation -> DIVIDE .)
 
 
 state 31
 
-    (36) operation -> TIMES .
+    (35) operation -> MOD .
 
-    COMMENT         reduce using rule 36 (operation -> TIMES .)
-    DO              reduce using rule 36 (operation -> TIMES .)
-    PONTO           reduce using rule 36 (operation -> TIMES .)
-    CR              reduce using rule 36 (operation -> TIMES .)
-    PONTOSTRING     reduce using rule 36 (operation -> TIMES .)
-    EMIT            reduce using rule 36 (operation -> TIMES .)
-    CHAR            reduce using rule 36 (operation -> TIMES .)
-    COLON           reduce using rule 36 (operation -> TIMES .)
-    WORD            reduce using rule 36 (operation -> TIMES .)
-    IF              reduce using rule 36 (operation -> TIMES .)
-    1PLUS           reduce using rule 36 (operation -> TIMES .)
-    1MINUS          reduce using rule 36 (operation -> TIMES .)
-    2PLUS           reduce using rule 36 (operation -> TIMES .)
-    2MINUS          reduce using rule 36 (operation -> TIMES .)
-    2TIMES          reduce using rule 36 (operation -> TIMES .)
-    2DIVIDE         reduce using rule 36 (operation -> TIMES .)
-    DUP             reduce using rule 36 (operation -> TIMES .)
-    2DUP            reduce using rule 36 (operation -> TIMES .)
-    DROP            reduce using rule 36 (operation -> TIMES .)
-    SWAP            reduce using rule 36 (operation -> TIMES .)
-    DEPTH           reduce using rule 36 (operation -> TIMES .)
-    PLUS            reduce using rule 36 (operation -> TIMES .)
-    MINUS           reduce using rule 36 (operation -> TIMES .)
-    TIMES           reduce using rule 36 (operation -> TIMES .)
-    DIVIDE          reduce using rule 36 (operation -> TIMES .)
-    MOD             reduce using rule 36 (operation -> TIMES .)
-    SUP             reduce using rule 36 (operation -> TIMES .)
-    EQUAL           reduce using rule 36 (operation -> TIMES .)
-    INF             reduce using rule 36 (operation -> TIMES .)
-    SUPEQUAL        reduce using rule 36 (operation -> TIMES .)
-    INFEQUAL        reduce using rule 36 (operation -> TIMES .)
-    INT             reduce using rule 36 (operation -> TIMES .)
-    FLOAT           reduce using rule 36 (operation -> TIMES .)
-    $end            reduce using rule 36 (operation -> TIMES .)
-    LOOP            reduce using rule 36 (operation -> TIMES .)
-    ELSE            reduce using rule 36 (operation -> TIMES .)
-    THEN            reduce using rule 36 (operation -> TIMES .)
+    COMMENT         reduce using rule 35 (operation -> MOD .)
+    DO              reduce using rule 35 (operation -> MOD .)
+    PONTO           reduce using rule 35 (operation -> MOD .)
+    CR              reduce using rule 35 (operation -> MOD .)
+    PONTOSTRING     reduce using rule 35 (operation -> MOD .)
+    EMIT            reduce using rule 35 (operation -> MOD .)
+    CHAR            reduce using rule 35 (operation -> MOD .)
+    IF              reduce using rule 35 (operation -> MOD .)
+    1PLUS           reduce using rule 35 (operation -> MOD .)
+    1MINUS          reduce using rule 35 (operation -> MOD .)
+    2PLUS           reduce using rule 35 (operation -> MOD .)
+    2MINUS          reduce using rule 35 (operation -> MOD .)
+    2TIMES          reduce using rule 35 (operation -> MOD .)
+    2DIVIDE         reduce using rule 35 (operation -> MOD .)
+    DUP             reduce using rule 35 (operation -> MOD .)
+    2DUP            reduce using rule 35 (operation -> MOD .)
+    DROP            reduce using rule 35 (operation -> MOD .)
+    SWAP            reduce using rule 35 (operation -> MOD .)
+    DEPTH           reduce using rule 35 (operation -> MOD .)
+    PLUS            reduce using rule 35 (operation -> MOD .)
+    MINUS           reduce using rule 35 (operation -> MOD .)
+    TIMES           reduce using rule 35 (operation -> MOD .)
+    DIVIDE          reduce using rule 35 (operation -> MOD .)
+    MOD             reduce using rule 35 (operation -> MOD .)
+    SUP             reduce using rule 35 (operation -> MOD .)
+    EQUAL           reduce using rule 35 (operation -> MOD .)
+    INF             reduce using rule 35 (operation -> MOD .)
+    SUPEQUAL        reduce using rule 35 (operation -> MOD .)
+    INFEQUAL        reduce using rule 35 (operation -> MOD .)
+    INT             reduce using rule 35 (operation -> MOD .)
+    FLOAT           reduce using rule 35 (operation -> MOD .)
+    $end            reduce using rule 35 (operation -> MOD .)
+    LOOP            reduce using rule 35 (operation -> MOD .)
+    ELSE            reduce using rule 35 (operation -> MOD .)
+    THEN            reduce using rule 35 (operation -> MOD .)
 
 
 state 32
 
-    (37) operation -> DIVIDE .
+    (36) operation -> SUP .
 
-    COMMENT         reduce using rule 37 (operation -> DIVIDE .)
-    DO              reduce using rule 37 (operation -> DIVIDE .)
-    PONTO           reduce using rule 37 (operation -> DIVIDE .)
-    CR              reduce using rule 37 (operation -> DIVIDE .)
-    PONTOSTRING     reduce using rule 37 (operation -> DIVIDE .)
-    EMIT            reduce using rule 37 (operation -> DIVIDE .)
-    CHAR            reduce using rule 37 (operation -> DIVIDE .)
-    COLON           reduce using rule 37 (operation -> DIVIDE .)
-    WORD            reduce using rule 37 (operation -> DIVIDE .)
-    IF              reduce using rule 37 (operation -> DIVIDE .)
-    1PLUS           reduce using rule 37 (operation -> DIVIDE .)
-    1MINUS          reduce using rule 37 (operation -> DIVIDE .)
-    2PLUS           reduce using rule 37 (operation -> DIVIDE .)
-    2MINUS          reduce using rule 37 (operation -> DIVIDE .)
-    2TIMES          reduce using rule 37 (operation -> DIVIDE .)
-    2DIVIDE         reduce using rule 37 (operation -> DIVIDE .)
-    DUP             reduce using rule 37 (operation -> DIVIDE .)
-    2DUP            reduce using rule 37 (operation -> DIVIDE .)
-    DROP            reduce using rule 37 (operation -> DIVIDE .)
-    SWAP            reduce using rule 37 (operation -> DIVIDE .)
-    DEPTH           reduce using rule 37 (operation -> DIVIDE .)
-    PLUS            reduce using rule 37 (operation -> DIVIDE .)
-    MINUS           reduce using rule 37 (operation -> DIVIDE .)
-    TIMES           reduce using rule 37 (operation -> DIVIDE .)
-    DIVIDE          reduce using rule 37 (operation -> DIVIDE .)
-    MOD             reduce using rule 37 (operation -> DIVIDE .)
-    SUP             reduce using rule 37 (operation -> DIVIDE .)
-    EQUAL           reduce using rule 37 (operation -> DIVIDE .)
-    INF             reduce using rule 37 (operation -> DIVIDE .)
-    SUPEQUAL        reduce using rule 37 (operation -> DIVIDE .)
-    INFEQUAL        reduce using rule 37 (operation -> DIVIDE .)
-    INT             reduce using rule 37 (operation -> DIVIDE .)
-    FLOAT           reduce using rule 37 (operation -> DIVIDE .)
-    $end            reduce using rule 37 (operation -> DIVIDE .)
-    LOOP            reduce using rule 37 (operation -> DIVIDE .)
-    ELSE            reduce using rule 37 (operation -> DIVIDE .)
-    THEN            reduce using rule 37 (operation -> DIVIDE .)
+    COMMENT         reduce using rule 36 (operation -> SUP .)
+    DO              reduce using rule 36 (operation -> SUP .)
+    PONTO           reduce using rule 36 (operation -> SUP .)
+    CR              reduce using rule 36 (operation -> SUP .)
+    PONTOSTRING     reduce using rule 36 (operation -> SUP .)
+    EMIT            reduce using rule 36 (operation -> SUP .)
+    CHAR            reduce using rule 36 (operation -> SUP .)
+    IF              reduce using rule 36 (operation -> SUP .)
+    1PLUS           reduce using rule 36 (operation -> SUP .)
+    1MINUS          reduce using rule 36 (operation -> SUP .)
+    2PLUS           reduce using rule 36 (operation -> SUP .)
+    2MINUS          reduce using rule 36 (operation -> SUP .)
+    2TIMES          reduce using rule 36 (operation -> SUP .)
+    2DIVIDE         reduce using rule 36 (operation -> SUP .)
+    DUP             reduce using rule 36 (operation -> SUP .)
+    2DUP            reduce using rule 36 (operation -> SUP .)
+    DROP            reduce using rule 36 (operation -> SUP .)
+    SWAP            reduce using rule 36 (operation -> SUP .)
+    DEPTH           reduce using rule 36 (operation -> SUP .)
+    PLUS            reduce using rule 36 (operation -> SUP .)
+    MINUS           reduce using rule 36 (operation -> SUP .)
+    TIMES           reduce using rule 36 (operation -> SUP .)
+    DIVIDE          reduce using rule 36 (operation -> SUP .)
+    MOD             reduce using rule 36 (operation -> SUP .)
+    SUP             reduce using rule 36 (operation -> SUP .)
+    EQUAL           reduce using rule 36 (operation -> SUP .)
+    INF             reduce using rule 36 (operation -> SUP .)
+    SUPEQUAL        reduce using rule 36 (operation -> SUP .)
+    INFEQUAL        reduce using rule 36 (operation -> SUP .)
+    INT             reduce using rule 36 (operation -> SUP .)
+    FLOAT           reduce using rule 36 (operation -> SUP .)
+    $end            reduce using rule 36 (operation -> SUP .)
+    LOOP            reduce using rule 36 (operation -> SUP .)
+    ELSE            reduce using rule 36 (operation -> SUP .)
+    THEN            reduce using rule 36 (operation -> SUP .)
 
 
 state 33
 
-    (38) operation -> MOD .
+    (37) operation -> EQUAL .
 
-    COMMENT         reduce using rule 38 (operation -> MOD .)
-    DO              reduce using rule 38 (operation -> MOD .)
-    PONTO           reduce using rule 38 (operation -> MOD .)
-    CR              reduce using rule 38 (operation -> MOD .)
-    PONTOSTRING     reduce using rule 38 (operation -> MOD .)
-    EMIT            reduce using rule 38 (operation -> MOD .)
-    CHAR            reduce using rule 38 (operation -> MOD .)
-    COLON           reduce using rule 38 (operation -> MOD .)
-    WORD            reduce using rule 38 (operation -> MOD .)
-    IF              reduce using rule 38 (operation -> MOD .)
-    1PLUS           reduce using rule 38 (operation -> MOD .)
-    1MINUS          reduce using rule 38 (operation -> MOD .)
-    2PLUS           reduce using rule 38 (operation -> MOD .)
-    2MINUS          reduce using rule 38 (operation -> MOD .)
-    2TIMES          reduce using rule 38 (operation -> MOD .)
-    2DIVIDE         reduce using rule 38 (operation -> MOD .)
-    DUP             reduce using rule 38 (operation -> MOD .)
-    2DUP            reduce using rule 38 (operation -> MOD .)
-    DROP            reduce using rule 38 (operation -> MOD .)
-    SWAP            reduce using rule 38 (operation -> MOD .)
-    DEPTH           reduce using rule 38 (operation -> MOD .)
-    PLUS            reduce using rule 38 (operation -> MOD .)
-    MINUS           reduce using rule 38 (operation -> MOD .)
-    TIMES           reduce using rule 38 (operation -> MOD .)
-    DIVIDE          reduce using rule 38 (operation -> MOD .)
-    MOD             reduce using rule 38 (operation -> MOD .)
-    SUP             reduce using rule 38 (operation -> MOD .)
-    EQUAL           reduce using rule 38 (operation -> MOD .)
-    INF             reduce using rule 38 (operation -> MOD .)
-    SUPEQUAL        reduce using rule 38 (operation -> MOD .)
-    INFEQUAL        reduce using rule 38 (operation -> MOD .)
-    INT             reduce using rule 38 (operation -> MOD .)
-    FLOAT           reduce using rule 38 (operation -> MOD .)
-    $end            reduce using rule 38 (operation -> MOD .)
-    LOOP            reduce using rule 38 (operation -> MOD .)
-    ELSE            reduce using rule 38 (operation -> MOD .)
-    THEN            reduce using rule 38 (operation -> MOD .)
+    COMMENT         reduce using rule 37 (operation -> EQUAL .)
+    DO              reduce using rule 37 (operation -> EQUAL .)
+    PONTO           reduce using rule 37 (operation -> EQUAL .)
+    CR              reduce using rule 37 (operation -> EQUAL .)
+    PONTOSTRING     reduce using rule 37 (operation -> EQUAL .)
+    EMIT            reduce using rule 37 (operation -> EQUAL .)
+    CHAR            reduce using rule 37 (operation -> EQUAL .)
+    IF              reduce using rule 37 (operation -> EQUAL .)
+    1PLUS           reduce using rule 37 (operation -> EQUAL .)
+    1MINUS          reduce using rule 37 (operation -> EQUAL .)
+    2PLUS           reduce using rule 37 (operation -> EQUAL .)
+    2MINUS          reduce using rule 37 (operation -> EQUAL .)
+    2TIMES          reduce using rule 37 (operation -> EQUAL .)
+    2DIVIDE         reduce using rule 37 (operation -> EQUAL .)
+    DUP             reduce using rule 37 (operation -> EQUAL .)
+    2DUP            reduce using rule 37 (operation -> EQUAL .)
+    DROP            reduce using rule 37 (operation -> EQUAL .)
+    SWAP            reduce using rule 37 (operation -> EQUAL .)
+    DEPTH           reduce using rule 37 (operation -> EQUAL .)
+    PLUS            reduce using rule 37 (operation -> EQUAL .)
+    MINUS           reduce using rule 37 (operation -> EQUAL .)
+    TIMES           reduce using rule 37 (operation -> EQUAL .)
+    DIVIDE          reduce using rule 37 (operation -> EQUAL .)
+    MOD             reduce using rule 37 (operation -> EQUAL .)
+    SUP             reduce using rule 37 (operation -> EQUAL .)
+    EQUAL           reduce using rule 37 (operation -> EQUAL .)
+    INF             reduce using rule 37 (operation -> EQUAL .)
+    SUPEQUAL        reduce using rule 37 (operation -> EQUAL .)
+    INFEQUAL        reduce using rule 37 (operation -> EQUAL .)
+    INT             reduce using rule 37 (operation -> EQUAL .)
+    FLOAT           reduce using rule 37 (operation -> EQUAL .)
+    $end            reduce using rule 37 (operation -> EQUAL .)
+    LOOP            reduce using rule 37 (operation -> EQUAL .)
+    ELSE            reduce using rule 37 (operation -> EQUAL .)
+    THEN            reduce using rule 37 (operation -> EQUAL .)
 
 
 state 34
 
-    (39) operation -> SUP .
+    (38) operation -> INF .
 
-    COMMENT         reduce using rule 39 (operation -> SUP .)
-    DO              reduce using rule 39 (operation -> SUP .)
-    PONTO           reduce using rule 39 (operation -> SUP .)
-    CR              reduce using rule 39 (operation -> SUP .)
-    PONTOSTRING     reduce using rule 39 (operation -> SUP .)
-    EMIT            reduce using rule 39 (operation -> SUP .)
-    CHAR            reduce using rule 39 (operation -> SUP .)
-    COLON           reduce using rule 39 (operation -> SUP .)
-    WORD            reduce using rule 39 (operation -> SUP .)
-    IF              reduce using rule 39 (operation -> SUP .)
-    1PLUS           reduce using rule 39 (operation -> SUP .)
-    1MINUS          reduce using rule 39 (operation -> SUP .)
-    2PLUS           reduce using rule 39 (operation -> SUP .)
-    2MINUS          reduce using rule 39 (operation -> SUP .)
-    2TIMES          reduce using rule 39 (operation -> SUP .)
-    2DIVIDE         reduce using rule 39 (operation -> SUP .)
-    DUP             reduce using rule 39 (operation -> SUP .)
-    2DUP            reduce using rule 39 (operation -> SUP .)
-    DROP            reduce using rule 39 (operation -> SUP .)
-    SWAP            reduce using rule 39 (operation -> SUP .)
-    DEPTH           reduce using rule 39 (operation -> SUP .)
-    PLUS            reduce using rule 39 (operation -> SUP .)
-    MINUS           reduce using rule 39 (operation -> SUP .)
-    TIMES           reduce using rule 39 (operation -> SUP .)
-    DIVIDE          reduce using rule 39 (operation -> SUP .)
-    MOD             reduce using rule 39 (operation -> SUP .)
-    SUP             reduce using rule 39 (operation -> SUP .)
-    EQUAL           reduce using rule 39 (operation -> SUP .)
-    INF             reduce using rule 39 (operation -> SUP .)
-    SUPEQUAL        reduce using rule 39 (operation -> SUP .)
-    INFEQUAL        reduce using rule 39 (operation -> SUP .)
-    INT             reduce using rule 39 (operation -> SUP .)
-    FLOAT           reduce using rule 39 (operation -> SUP .)
-    $end            reduce using rule 39 (operation -> SUP .)
-    LOOP            reduce using rule 39 (operation -> SUP .)
-    ELSE            reduce using rule 39 (operation -> SUP .)
-    THEN            reduce using rule 39 (operation -> SUP .)
+    COMMENT         reduce using rule 38 (operation -> INF .)
+    DO              reduce using rule 38 (operation -> INF .)
+    PONTO           reduce using rule 38 (operation -> INF .)
+    CR              reduce using rule 38 (operation -> INF .)
+    PONTOSTRING     reduce using rule 38 (operation -> INF .)
+    EMIT            reduce using rule 38 (operation -> INF .)
+    CHAR            reduce using rule 38 (operation -> INF .)
+    IF              reduce using rule 38 (operation -> INF .)
+    1PLUS           reduce using rule 38 (operation -> INF .)
+    1MINUS          reduce using rule 38 (operation -> INF .)
+    2PLUS           reduce using rule 38 (operation -> INF .)
+    2MINUS          reduce using rule 38 (operation -> INF .)
+    2TIMES          reduce using rule 38 (operation -> INF .)
+    2DIVIDE         reduce using rule 38 (operation -> INF .)
+    DUP             reduce using rule 38 (operation -> INF .)
+    2DUP            reduce using rule 38 (operation -> INF .)
+    DROP            reduce using rule 38 (operation -> INF .)
+    SWAP            reduce using rule 38 (operation -> INF .)
+    DEPTH           reduce using rule 38 (operation -> INF .)
+    PLUS            reduce using rule 38 (operation -> INF .)
+    MINUS           reduce using rule 38 (operation -> INF .)
+    TIMES           reduce using rule 38 (operation -> INF .)
+    DIVIDE          reduce using rule 38 (operation -> INF .)
+    MOD             reduce using rule 38 (operation -> INF .)
+    SUP             reduce using rule 38 (operation -> INF .)
+    EQUAL           reduce using rule 38 (operation -> INF .)
+    INF             reduce using rule 38 (operation -> INF .)
+    SUPEQUAL        reduce using rule 38 (operation -> INF .)
+    INFEQUAL        reduce using rule 38 (operation -> INF .)
+    INT             reduce using rule 38 (operation -> INF .)
+    FLOAT           reduce using rule 38 (operation -> INF .)
+    $end            reduce using rule 38 (operation -> INF .)
+    LOOP            reduce using rule 38 (operation -> INF .)
+    ELSE            reduce using rule 38 (operation -> INF .)
+    THEN            reduce using rule 38 (operation -> INF .)
 
 
 state 35
 
-    (40) operation -> EQUAL .
+    (39) operation -> SUPEQUAL .
 
-    COMMENT         reduce using rule 40 (operation -> EQUAL .)
-    DO              reduce using rule 40 (operation -> EQUAL .)
-    PONTO           reduce using rule 40 (operation -> EQUAL .)
-    CR              reduce using rule 40 (operation -> EQUAL .)
-    PONTOSTRING     reduce using rule 40 (operation -> EQUAL .)
-    EMIT            reduce using rule 40 (operation -> EQUAL .)
-    CHAR            reduce using rule 40 (operation -> EQUAL .)
-    COLON           reduce using rule 40 (operation -> EQUAL .)
-    WORD            reduce using rule 40 (operation -> EQUAL .)
-    IF              reduce using rule 40 (operation -> EQUAL .)
-    1PLUS           reduce using rule 40 (operation -> EQUAL .)
-    1MINUS          reduce using rule 40 (operation -> EQUAL .)
-    2PLUS           reduce using rule 40 (operation -> EQUAL .)
-    2MINUS          reduce using rule 40 (operation -> EQUAL .)
-    2TIMES          reduce using rule 40 (operation -> EQUAL .)
-    2DIVIDE         reduce using rule 40 (operation -> EQUAL .)
-    DUP             reduce using rule 40 (operation -> EQUAL .)
-    2DUP            reduce using rule 40 (operation -> EQUAL .)
-    DROP            reduce using rule 40 (operation -> EQUAL .)
-    SWAP            reduce using rule 40 (operation -> EQUAL .)
-    DEPTH           reduce using rule 40 (operation -> EQUAL .)
-    PLUS            reduce using rule 40 (operation -> EQUAL .)
-    MINUS           reduce using rule 40 (operation -> EQUAL .)
-    TIMES           reduce using rule 40 (operation -> EQUAL .)
-    DIVIDE          reduce using rule 40 (operation -> EQUAL .)
-    MOD             reduce using rule 40 (operation -> EQUAL .)
-    SUP             reduce using rule 40 (operation -> EQUAL .)
-    EQUAL           reduce using rule 40 (operation -> EQUAL .)
-    INF             reduce using rule 40 (operation -> EQUAL .)
-    SUPEQUAL        reduce using rule 40 (operation -> EQUAL .)
-    INFEQUAL        reduce using rule 40 (operation -> EQUAL .)
-    INT             reduce using rule 40 (operation -> EQUAL .)
-    FLOAT           reduce using rule 40 (operation -> EQUAL .)
-    $end            reduce using rule 40 (operation -> EQUAL .)
-    LOOP            reduce using rule 40 (operation -> EQUAL .)
-    ELSE            reduce using rule 40 (operation -> EQUAL .)
-    THEN            reduce using rule 40 (operation -> EQUAL .)
+    COMMENT         reduce using rule 39 (operation -> SUPEQUAL .)
+    DO              reduce using rule 39 (operation -> SUPEQUAL .)
+    PONTO           reduce using rule 39 (operation -> SUPEQUAL .)
+    CR              reduce using rule 39 (operation -> SUPEQUAL .)
+    PONTOSTRING     reduce using rule 39 (operation -> SUPEQUAL .)
+    EMIT            reduce using rule 39 (operation -> SUPEQUAL .)
+    CHAR            reduce using rule 39 (operation -> SUPEQUAL .)
+    IF              reduce using rule 39 (operation -> SUPEQUAL .)
+    1PLUS           reduce using rule 39 (operation -> SUPEQUAL .)
+    1MINUS          reduce using rule 39 (operation -> SUPEQUAL .)
+    2PLUS           reduce using rule 39 (operation -> SUPEQUAL .)
+    2MINUS          reduce using rule 39 (operation -> SUPEQUAL .)
+    2TIMES          reduce using rule 39 (operation -> SUPEQUAL .)
+    2DIVIDE         reduce using rule 39 (operation -> SUPEQUAL .)
+    DUP             reduce using rule 39 (operation -> SUPEQUAL .)
+    2DUP            reduce using rule 39 (operation -> SUPEQUAL .)
+    DROP            reduce using rule 39 (operation -> SUPEQUAL .)
+    SWAP            reduce using rule 39 (operation -> SUPEQUAL .)
+    DEPTH           reduce using rule 39 (operation -> SUPEQUAL .)
+    PLUS            reduce using rule 39 (operation -> SUPEQUAL .)
+    MINUS           reduce using rule 39 (operation -> SUPEQUAL .)
+    TIMES           reduce using rule 39 (operation -> SUPEQUAL .)
+    DIVIDE          reduce using rule 39 (operation -> SUPEQUAL .)
+    MOD             reduce using rule 39 (operation -> SUPEQUAL .)
+    SUP             reduce using rule 39 (operation -> SUPEQUAL .)
+    EQUAL           reduce using rule 39 (operation -> SUPEQUAL .)
+    INF             reduce using rule 39 (operation -> SUPEQUAL .)
+    SUPEQUAL        reduce using rule 39 (operation -> SUPEQUAL .)
+    INFEQUAL        reduce using rule 39 (operation -> SUPEQUAL .)
+    INT             reduce using rule 39 (operation -> SUPEQUAL .)
+    FLOAT           reduce using rule 39 (operation -> SUPEQUAL .)
+    $end            reduce using rule 39 (operation -> SUPEQUAL .)
+    LOOP            reduce using rule 39 (operation -> SUPEQUAL .)
+    ELSE            reduce using rule 39 (operation -> SUPEQUAL .)
+    THEN            reduce using rule 39 (operation -> SUPEQUAL .)
 
 
 state 36
 
-    (41) operation -> INF .
+    (40) operation -> INFEQUAL .
 
-    COMMENT         reduce using rule 41 (operation -> INF .)
-    DO              reduce using rule 41 (operation -> INF .)
-    PONTO           reduce using rule 41 (operation -> INF .)
-    CR              reduce using rule 41 (operation -> INF .)
-    PONTOSTRING     reduce using rule 41 (operation -> INF .)
-    EMIT            reduce using rule 41 (operation -> INF .)
-    CHAR            reduce using rule 41 (operation -> INF .)
-    COLON           reduce using rule 41 (operation -> INF .)
-    WORD            reduce using rule 41 (operation -> INF .)
-    IF              reduce using rule 41 (operation -> INF .)
-    1PLUS           reduce using rule 41 (operation -> INF .)
-    1MINUS          reduce using rule 41 (operation -> INF .)
-    2PLUS           reduce using rule 41 (operation -> INF .)
-    2MINUS          reduce using rule 41 (operation -> INF .)
-    2TIMES          reduce using rule 41 (operation -> INF .)
-    2DIVIDE         reduce using rule 41 (operation -> INF .)
-    DUP             reduce using rule 41 (operation -> INF .)
-    2DUP            reduce using rule 41 (operation -> INF .)
-    DROP            reduce using rule 41 (operation -> INF .)
-    SWAP            reduce using rule 41 (operation -> INF .)
-    DEPTH           reduce using rule 41 (operation -> INF .)
-    PLUS            reduce using rule 41 (operation -> INF .)
-    MINUS           reduce using rule 41 (operation -> INF .)
-    TIMES           reduce using rule 41 (operation -> INF .)
-    DIVIDE          reduce using rule 41 (operation -> INF .)
-    MOD             reduce using rule 41 (operation -> INF .)
-    SUP             reduce using rule 41 (operation -> INF .)
-    EQUAL           reduce using rule 41 (operation -> INF .)
-    INF             reduce using rule 41 (operation -> INF .)
-    SUPEQUAL        reduce using rule 41 (operation -> INF .)
-    INFEQUAL        reduce using rule 41 (operation -> INF .)
-    INT             reduce using rule 41 (operation -> INF .)
-    FLOAT           reduce using rule 41 (operation -> INF .)
-    $end            reduce using rule 41 (operation -> INF .)
-    LOOP            reduce using rule 41 (operation -> INF .)
-    ELSE            reduce using rule 41 (operation -> INF .)
-    THEN            reduce using rule 41 (operation -> INF .)
+    COMMENT         reduce using rule 40 (operation -> INFEQUAL .)
+    DO              reduce using rule 40 (operation -> INFEQUAL .)
+    PONTO           reduce using rule 40 (operation -> INFEQUAL .)
+    CR              reduce using rule 40 (operation -> INFEQUAL .)
+    PONTOSTRING     reduce using rule 40 (operation -> INFEQUAL .)
+    EMIT            reduce using rule 40 (operation -> INFEQUAL .)
+    CHAR            reduce using rule 40 (operation -> INFEQUAL .)
+    IF              reduce using rule 40 (operation -> INFEQUAL .)
+    1PLUS           reduce using rule 40 (operation -> INFEQUAL .)
+    1MINUS          reduce using rule 40 (operation -> INFEQUAL .)
+    2PLUS           reduce using rule 40 (operation -> INFEQUAL .)
+    2MINUS          reduce using rule 40 (operation -> INFEQUAL .)
+    2TIMES          reduce using rule 40 (operation -> INFEQUAL .)
+    2DIVIDE         reduce using rule 40 (operation -> INFEQUAL .)
+    DUP             reduce using rule 40 (operation -> INFEQUAL .)
+    2DUP            reduce using rule 40 (operation -> INFEQUAL .)
+    DROP            reduce using rule 40 (operation -> INFEQUAL .)
+    SWAP            reduce using rule 40 (operation -> INFEQUAL .)
+    DEPTH           reduce using rule 40 (operation -> INFEQUAL .)
+    PLUS            reduce using rule 40 (operation -> INFEQUAL .)
+    MINUS           reduce using rule 40 (operation -> INFEQUAL .)
+    TIMES           reduce using rule 40 (operation -> INFEQUAL .)
+    DIVIDE          reduce using rule 40 (operation -> INFEQUAL .)
+    MOD             reduce using rule 40 (operation -> INFEQUAL .)
+    SUP             reduce using rule 40 (operation -> INFEQUAL .)
+    EQUAL           reduce using rule 40 (operation -> INFEQUAL .)
+    INF             reduce using rule 40 (operation -> INFEQUAL .)
+    SUPEQUAL        reduce using rule 40 (operation -> INFEQUAL .)
+    INFEQUAL        reduce using rule 40 (operation -> INFEQUAL .)
+    INT             reduce using rule 40 (operation -> INFEQUAL .)
+    FLOAT           reduce using rule 40 (operation -> INFEQUAL .)
+    $end            reduce using rule 40 (operation -> INFEQUAL .)
+    LOOP            reduce using rule 40 (operation -> INFEQUAL .)
+    ELSE            reduce using rule 40 (operation -> INFEQUAL .)
+    THEN            reduce using rule 40 (operation -> INFEQUAL .)
 
 
 state 37
-
-    (42) operation -> SUPEQUAL .
-
-    COMMENT         reduce using rule 42 (operation -> SUPEQUAL .)
-    DO              reduce using rule 42 (operation -> SUPEQUAL .)
-    PONTO           reduce using rule 42 (operation -> SUPEQUAL .)
-    CR              reduce using rule 42 (operation -> SUPEQUAL .)
-    PONTOSTRING     reduce using rule 42 (operation -> SUPEQUAL .)
-    EMIT            reduce using rule 42 (operation -> SUPEQUAL .)
-    CHAR            reduce using rule 42 (operation -> SUPEQUAL .)
-    COLON           reduce using rule 42 (operation -> SUPEQUAL .)
-    WORD            reduce using rule 42 (operation -> SUPEQUAL .)
-    IF              reduce using rule 42 (operation -> SUPEQUAL .)
-    1PLUS           reduce using rule 42 (operation -> SUPEQUAL .)
-    1MINUS          reduce using rule 42 (operation -> SUPEQUAL .)
-    2PLUS           reduce using rule 42 (operation -> SUPEQUAL .)
-    2MINUS          reduce using rule 42 (operation -> SUPEQUAL .)
-    2TIMES          reduce using rule 42 (operation -> SUPEQUAL .)
-    2DIVIDE         reduce using rule 42 (operation -> SUPEQUAL .)
-    DUP             reduce using rule 42 (operation -> SUPEQUAL .)
-    2DUP            reduce using rule 42 (operation -> SUPEQUAL .)
-    DROP            reduce using rule 42 (operation -> SUPEQUAL .)
-    SWAP            reduce using rule 42 (operation -> SUPEQUAL .)
-    DEPTH           reduce using rule 42 (operation -> SUPEQUAL .)
-    PLUS            reduce using rule 42 (operation -> SUPEQUAL .)
-    MINUS           reduce using rule 42 (operation -> SUPEQUAL .)
-    TIMES           reduce using rule 42 (operation -> SUPEQUAL .)
-    DIVIDE          reduce using rule 42 (operation -> SUPEQUAL .)
-    MOD             reduce using rule 42 (operation -> SUPEQUAL .)
-    SUP             reduce using rule 42 (operation -> SUPEQUAL .)
-    EQUAL           reduce using rule 42 (operation -> SUPEQUAL .)
-    INF             reduce using rule 42 (operation -> SUPEQUAL .)
-    SUPEQUAL        reduce using rule 42 (operation -> SUPEQUAL .)
-    INFEQUAL        reduce using rule 42 (operation -> SUPEQUAL .)
-    INT             reduce using rule 42 (operation -> SUPEQUAL .)
-    FLOAT           reduce using rule 42 (operation -> SUPEQUAL .)
-    $end            reduce using rule 42 (operation -> SUPEQUAL .)
-    LOOP            reduce using rule 42 (operation -> SUPEQUAL .)
-    ELSE            reduce using rule 42 (operation -> SUPEQUAL .)
-    THEN            reduce using rule 42 (operation -> SUPEQUAL .)
-
-
-state 38
-
-    (43) operation -> INFEQUAL .
-
-    COMMENT         reduce using rule 43 (operation -> INFEQUAL .)
-    DO              reduce using rule 43 (operation -> INFEQUAL .)
-    PONTO           reduce using rule 43 (operation -> INFEQUAL .)
-    CR              reduce using rule 43 (operation -> INFEQUAL .)
-    PONTOSTRING     reduce using rule 43 (operation -> INFEQUAL .)
-    EMIT            reduce using rule 43 (operation -> INFEQUAL .)
-    CHAR            reduce using rule 43 (operation -> INFEQUAL .)
-    COLON           reduce using rule 43 (operation -> INFEQUAL .)
-    WORD            reduce using rule 43 (operation -> INFEQUAL .)
-    IF              reduce using rule 43 (operation -> INFEQUAL .)
-    1PLUS           reduce using rule 43 (operation -> INFEQUAL .)
-    1MINUS          reduce using rule 43 (operation -> INFEQUAL .)
-    2PLUS           reduce using rule 43 (operation -> INFEQUAL .)
-    2MINUS          reduce using rule 43 (operation -> INFEQUAL .)
-    2TIMES          reduce using rule 43 (operation -> INFEQUAL .)
-    2DIVIDE         reduce using rule 43 (operation -> INFEQUAL .)
-    DUP             reduce using rule 43 (operation -> INFEQUAL .)
-    2DUP            reduce using rule 43 (operation -> INFEQUAL .)
-    DROP            reduce using rule 43 (operation -> INFEQUAL .)
-    SWAP            reduce using rule 43 (operation -> INFEQUAL .)
-    DEPTH           reduce using rule 43 (operation -> INFEQUAL .)
-    PLUS            reduce using rule 43 (operation -> INFEQUAL .)
-    MINUS           reduce using rule 43 (operation -> INFEQUAL .)
-    TIMES           reduce using rule 43 (operation -> INFEQUAL .)
-    DIVIDE          reduce using rule 43 (operation -> INFEQUAL .)
-    MOD             reduce using rule 43 (operation -> INFEQUAL .)
-    SUP             reduce using rule 43 (operation -> INFEQUAL .)
-    EQUAL           reduce using rule 43 (operation -> INFEQUAL .)
-    INF             reduce using rule 43 (operation -> INFEQUAL .)
-    SUPEQUAL        reduce using rule 43 (operation -> INFEQUAL .)
-    INFEQUAL        reduce using rule 43 (operation -> INFEQUAL .)
-    INT             reduce using rule 43 (operation -> INFEQUAL .)
-    FLOAT           reduce using rule 43 (operation -> INFEQUAL .)
-    $end            reduce using rule 43 (operation -> INFEQUAL .)
-    LOOP            reduce using rule 43 (operation -> INFEQUAL .)
-    ELSE            reduce using rule 43 (operation -> INFEQUAL .)
-    THEN            reduce using rule 43 (operation -> INFEQUAL .)
-
-
-state 39
 
     (29) int -> INT .
 
@@ -2040,8 +1885,6 @@ state 39
     PONTOSTRING     reduce using rule 29 (int -> INT .)
     EMIT            reduce using rule 29 (int -> INT .)
     CHAR            reduce using rule 29 (int -> INT .)
-    COLON           reduce using rule 29 (int -> INT .)
-    WORD            reduce using rule 29 (int -> INT .)
     IF              reduce using rule 29 (int -> INT .)
     1PLUS           reduce using rule 29 (int -> INT .)
     1MINUS          reduce using rule 29 (int -> INT .)
@@ -2072,7 +1915,7 @@ state 39
     THEN            reduce using rule 29 (int -> INT .)
 
 
-state 40
+state 38
 
     (30) float -> FLOAT .
 
@@ -2083,8 +1926,6 @@ state 40
     PONTOSTRING     reduce using rule 30 (float -> FLOAT .)
     EMIT            reduce using rule 30 (float -> FLOAT .)
     CHAR            reduce using rule 30 (float -> FLOAT .)
-    COLON           reduce using rule 30 (float -> FLOAT .)
-    WORD            reduce using rule 30 (float -> FLOAT .)
     IF              reduce using rule 30 (float -> FLOAT .)
     1PLUS           reduce using rule 30 (float -> FLOAT .)
     1MINUS          reduce using rule 30 (float -> FLOAT .)
@@ -2115,7 +1956,7 @@ state 40
     THEN            reduce using rule 30 (float -> FLOAT .)
 
 
-state 41
+state 39
 
     (7) line -> DO axioma . LOOP
     (1) axioma -> axioma . line
@@ -2132,9 +1973,6 @@ state 41
     (26) line -> . float line
     (27) line -> . int
     (28) line -> . float
-    (31) line -> . COLON WORD CODE
-    (32) line -> . COLON WORD
-    (33) line -> . WORD
     (5) conditional -> . IF axioma ELSE axioma THEN axioma
     (6) conditional -> . IF axioma THEN axioma
     (14) operation -> . 1PLUS
@@ -2148,20 +1986,20 @@ state 41
     (22) operation -> . DROP
     (23) operation -> . SWAP
     (24) operation -> . DEPTH
-    (34) operation -> . PLUS
-    (35) operation -> . MINUS
-    (36) operation -> . TIMES
-    (37) operation -> . DIVIDE
-    (38) operation -> . MOD
-    (39) operation -> . SUP
-    (40) operation -> . EQUAL
-    (41) operation -> . INF
-    (42) operation -> . SUPEQUAL
-    (43) operation -> . INFEQUAL
+    (31) operation -> . PLUS
+    (32) operation -> . MINUS
+    (33) operation -> . TIMES
+    (34) operation -> . DIVIDE
+    (35) operation -> . MOD
+    (36) operation -> . SUP
+    (37) operation -> . EQUAL
+    (38) operation -> . INF
+    (39) operation -> . SUPEQUAL
+    (40) operation -> . INFEQUAL
     (29) int -> . INT
     (30) float -> . FLOAT
 
-    LOOP            shift and go to state 46
+    LOOP            shift and go to state 43
     COMMENT         shift and go to state 4
     DO              shift and go to state 6
     PONTO           shift and go to state 7
@@ -2169,32 +2007,30 @@ state 41
     PONTOSTRING     shift and go to state 9
     EMIT            shift and go to state 10
     CHAR            shift and go to state 11
-    COLON           shift and go to state 15
-    WORD            shift and go to state 16
-    IF              shift and go to state 17
-    1PLUS           shift and go to state 18
-    1MINUS          shift and go to state 19
-    2PLUS           shift and go to state 20
-    2MINUS          shift and go to state 21
-    2TIMES          shift and go to state 22
-    2DIVIDE         shift and go to state 23
-    DUP             shift and go to state 24
-    2DUP            shift and go to state 25
-    DROP            shift and go to state 26
-    SWAP            shift and go to state 27
-    DEPTH           shift and go to state 28
-    PLUS            shift and go to state 29
-    MINUS           shift and go to state 30
-    TIMES           shift and go to state 31
-    DIVIDE          shift and go to state 32
-    MOD             shift and go to state 33
-    SUP             shift and go to state 34
-    EQUAL           shift and go to state 35
-    INF             shift and go to state 36
-    SUPEQUAL        shift and go to state 37
-    INFEQUAL        shift and go to state 38
-    INT             shift and go to state 39
-    FLOAT           shift and go to state 40
+    IF              shift and go to state 15
+    1PLUS           shift and go to state 16
+    1MINUS          shift and go to state 17
+    2PLUS           shift and go to state 18
+    2MINUS          shift and go to state 19
+    2TIMES          shift and go to state 20
+    2DIVIDE         shift and go to state 21
+    DUP             shift and go to state 22
+    2DUP            shift and go to state 23
+    DROP            shift and go to state 24
+    SWAP            shift and go to state 25
+    DEPTH           shift and go to state 26
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    SUP             shift and go to state 32
+    EQUAL           shift and go to state 33
+    INF             shift and go to state 34
+    SUPEQUAL        shift and go to state 35
+    INFEQUAL        shift and go to state 36
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
 
     line                           shift and go to state 3
     conditional                    shift and go to state 5
@@ -2202,7 +2038,7 @@ state 41
     int                            shift and go to state 13
     float                          shift and go to state 14
 
-state 42
+state 40
 
     (25) line -> int line .
 
@@ -2213,8 +2049,6 @@ state 42
     PONTOSTRING     reduce using rule 25 (line -> int line .)
     EMIT            reduce using rule 25 (line -> int line .)
     CHAR            reduce using rule 25 (line -> int line .)
-    COLON           reduce using rule 25 (line -> int line .)
-    WORD            reduce using rule 25 (line -> int line .)
     IF              reduce using rule 25 (line -> int line .)
     1PLUS           reduce using rule 25 (line -> int line .)
     1MINUS          reduce using rule 25 (line -> int line .)
@@ -2245,7 +2079,7 @@ state 42
     THEN            reduce using rule 25 (line -> int line .)
 
 
-state 43
+state 41
 
     (26) line -> float line .
 
@@ -2256,8 +2090,6 @@ state 43
     PONTOSTRING     reduce using rule 26 (line -> float line .)
     EMIT            reduce using rule 26 (line -> float line .)
     CHAR            reduce using rule 26 (line -> float line .)
-    COLON           reduce using rule 26 (line -> float line .)
-    WORD            reduce using rule 26 (line -> float line .)
     IF              reduce using rule 26 (line -> float line .)
     1PLUS           reduce using rule 26 (line -> float line .)
     1MINUS          reduce using rule 26 (line -> float line .)
@@ -2288,52 +2120,7 @@ state 43
     THEN            reduce using rule 26 (line -> float line .)
 
 
-state 44
-
-    (31) line -> COLON WORD . CODE
-    (32) line -> COLON WORD .
-
-    CODE            shift and go to state 47
-    COMMENT         reduce using rule 32 (line -> COLON WORD .)
-    DO              reduce using rule 32 (line -> COLON WORD .)
-    PONTO           reduce using rule 32 (line -> COLON WORD .)
-    CR              reduce using rule 32 (line -> COLON WORD .)
-    PONTOSTRING     reduce using rule 32 (line -> COLON WORD .)
-    EMIT            reduce using rule 32 (line -> COLON WORD .)
-    CHAR            reduce using rule 32 (line -> COLON WORD .)
-    COLON           reduce using rule 32 (line -> COLON WORD .)
-    WORD            reduce using rule 32 (line -> COLON WORD .)
-    IF              reduce using rule 32 (line -> COLON WORD .)
-    1PLUS           reduce using rule 32 (line -> COLON WORD .)
-    1MINUS          reduce using rule 32 (line -> COLON WORD .)
-    2PLUS           reduce using rule 32 (line -> COLON WORD .)
-    2MINUS          reduce using rule 32 (line -> COLON WORD .)
-    2TIMES          reduce using rule 32 (line -> COLON WORD .)
-    2DIVIDE         reduce using rule 32 (line -> COLON WORD .)
-    DUP             reduce using rule 32 (line -> COLON WORD .)
-    2DUP            reduce using rule 32 (line -> COLON WORD .)
-    DROP            reduce using rule 32 (line -> COLON WORD .)
-    SWAP            reduce using rule 32 (line -> COLON WORD .)
-    DEPTH           reduce using rule 32 (line -> COLON WORD .)
-    PLUS            reduce using rule 32 (line -> COLON WORD .)
-    MINUS           reduce using rule 32 (line -> COLON WORD .)
-    TIMES           reduce using rule 32 (line -> COLON WORD .)
-    DIVIDE          reduce using rule 32 (line -> COLON WORD .)
-    MOD             reduce using rule 32 (line -> COLON WORD .)
-    SUP             reduce using rule 32 (line -> COLON WORD .)
-    EQUAL           reduce using rule 32 (line -> COLON WORD .)
-    INF             reduce using rule 32 (line -> COLON WORD .)
-    SUPEQUAL        reduce using rule 32 (line -> COLON WORD .)
-    INFEQUAL        reduce using rule 32 (line -> COLON WORD .)
-    INT             reduce using rule 32 (line -> COLON WORD .)
-    FLOAT           reduce using rule 32 (line -> COLON WORD .)
-    $end            reduce using rule 32 (line -> COLON WORD .)
-    LOOP            reduce using rule 32 (line -> COLON WORD .)
-    ELSE            reduce using rule 32 (line -> COLON WORD .)
-    THEN            reduce using rule 32 (line -> COLON WORD .)
-
-
-state 45
+state 42
 
     (5) conditional -> IF axioma . ELSE axioma THEN axioma
     (6) conditional -> IF axioma . THEN axioma
@@ -2351,9 +2138,6 @@ state 45
     (26) line -> . float line
     (27) line -> . int
     (28) line -> . float
-    (31) line -> . COLON WORD CODE
-    (32) line -> . COLON WORD
-    (33) line -> . WORD
     (5) conditional -> . IF axioma ELSE axioma THEN axioma
     (6) conditional -> . IF axioma THEN axioma
     (14) operation -> . 1PLUS
@@ -2367,21 +2151,21 @@ state 45
     (22) operation -> . DROP
     (23) operation -> . SWAP
     (24) operation -> . DEPTH
-    (34) operation -> . PLUS
-    (35) operation -> . MINUS
-    (36) operation -> . TIMES
-    (37) operation -> . DIVIDE
-    (38) operation -> . MOD
-    (39) operation -> . SUP
-    (40) operation -> . EQUAL
-    (41) operation -> . INF
-    (42) operation -> . SUPEQUAL
-    (43) operation -> . INFEQUAL
+    (31) operation -> . PLUS
+    (32) operation -> . MINUS
+    (33) operation -> . TIMES
+    (34) operation -> . DIVIDE
+    (35) operation -> . MOD
+    (36) operation -> . SUP
+    (37) operation -> . EQUAL
+    (38) operation -> . INF
+    (39) operation -> . SUPEQUAL
+    (40) operation -> . INFEQUAL
     (29) int -> . INT
     (30) float -> . FLOAT
 
-    ELSE            shift and go to state 48
-    THEN            shift and go to state 49
+    ELSE            shift and go to state 44
+    THEN            shift and go to state 45
     COMMENT         shift and go to state 4
     DO              shift and go to state 6
     PONTO           shift and go to state 7
@@ -2389,32 +2173,30 @@ state 45
     PONTOSTRING     shift and go to state 9
     EMIT            shift and go to state 10
     CHAR            shift and go to state 11
-    COLON           shift and go to state 15
-    WORD            shift and go to state 16
-    IF              shift and go to state 17
-    1PLUS           shift and go to state 18
-    1MINUS          shift and go to state 19
-    2PLUS           shift and go to state 20
-    2MINUS          shift and go to state 21
-    2TIMES          shift and go to state 22
-    2DIVIDE         shift and go to state 23
-    DUP             shift and go to state 24
-    2DUP            shift and go to state 25
-    DROP            shift and go to state 26
-    SWAP            shift and go to state 27
-    DEPTH           shift and go to state 28
-    PLUS            shift and go to state 29
-    MINUS           shift and go to state 30
-    TIMES           shift and go to state 31
-    DIVIDE          shift and go to state 32
-    MOD             shift and go to state 33
-    SUP             shift and go to state 34
-    EQUAL           shift and go to state 35
-    INF             shift and go to state 36
-    SUPEQUAL        shift and go to state 37
-    INFEQUAL        shift and go to state 38
-    INT             shift and go to state 39
-    FLOAT           shift and go to state 40
+    IF              shift and go to state 15
+    1PLUS           shift and go to state 16
+    1MINUS          shift and go to state 17
+    2PLUS           shift and go to state 18
+    2MINUS          shift and go to state 19
+    2TIMES          shift and go to state 20
+    2DIVIDE         shift and go to state 21
+    DUP             shift and go to state 22
+    2DUP            shift and go to state 23
+    DROP            shift and go to state 24
+    SWAP            shift and go to state 25
+    DEPTH           shift and go to state 26
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    SUP             shift and go to state 32
+    EQUAL           shift and go to state 33
+    INF             shift and go to state 34
+    SUPEQUAL        shift and go to state 35
+    INFEQUAL        shift and go to state 36
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
 
     line                           shift and go to state 3
     conditional                    shift and go to state 5
@@ -2422,7 +2204,7 @@ state 45
     int                            shift and go to state 13
     float                          shift and go to state 14
 
-state 46
+state 43
 
     (7) line -> DO axioma LOOP .
 
@@ -2433,8 +2215,6 @@ state 46
     PONTOSTRING     reduce using rule 7 (line -> DO axioma LOOP .)
     EMIT            reduce using rule 7 (line -> DO axioma LOOP .)
     CHAR            reduce using rule 7 (line -> DO axioma LOOP .)
-    COLON           reduce using rule 7 (line -> DO axioma LOOP .)
-    WORD            reduce using rule 7 (line -> DO axioma LOOP .)
     IF              reduce using rule 7 (line -> DO axioma LOOP .)
     1PLUS           reduce using rule 7 (line -> DO axioma LOOP .)
     1MINUS          reduce using rule 7 (line -> DO axioma LOOP .)
@@ -2465,143 +2245,96 @@ state 46
     THEN            reduce using rule 7 (line -> DO axioma LOOP .)
 
 
-state 47
-
-    (31) line -> COLON WORD CODE .
-
-    COMMENT         reduce using rule 31 (line -> COLON WORD CODE .)
-    DO              reduce using rule 31 (line -> COLON WORD CODE .)
-    PONTO           reduce using rule 31 (line -> COLON WORD CODE .)
-    CR              reduce using rule 31 (line -> COLON WORD CODE .)
-    PONTOSTRING     reduce using rule 31 (line -> COLON WORD CODE .)
-    EMIT            reduce using rule 31 (line -> COLON WORD CODE .)
-    CHAR            reduce using rule 31 (line -> COLON WORD CODE .)
-    COLON           reduce using rule 31 (line -> COLON WORD CODE .)
-    WORD            reduce using rule 31 (line -> COLON WORD CODE .)
-    IF              reduce using rule 31 (line -> COLON WORD CODE .)
-    1PLUS           reduce using rule 31 (line -> COLON WORD CODE .)
-    1MINUS          reduce using rule 31 (line -> COLON WORD CODE .)
-    2PLUS           reduce using rule 31 (line -> COLON WORD CODE .)
-    2MINUS          reduce using rule 31 (line -> COLON WORD CODE .)
-    2TIMES          reduce using rule 31 (line -> COLON WORD CODE .)
-    2DIVIDE         reduce using rule 31 (line -> COLON WORD CODE .)
-    DUP             reduce using rule 31 (line -> COLON WORD CODE .)
-    2DUP            reduce using rule 31 (line -> COLON WORD CODE .)
-    DROP            reduce using rule 31 (line -> COLON WORD CODE .)
-    SWAP            reduce using rule 31 (line -> COLON WORD CODE .)
-    DEPTH           reduce using rule 31 (line -> COLON WORD CODE .)
-    PLUS            reduce using rule 31 (line -> COLON WORD CODE .)
-    MINUS           reduce using rule 31 (line -> COLON WORD CODE .)
-    TIMES           reduce using rule 31 (line -> COLON WORD CODE .)
-    DIVIDE          reduce using rule 31 (line -> COLON WORD CODE .)
-    MOD             reduce using rule 31 (line -> COLON WORD CODE .)
-    SUP             reduce using rule 31 (line -> COLON WORD CODE .)
-    EQUAL           reduce using rule 31 (line -> COLON WORD CODE .)
-    INF             reduce using rule 31 (line -> COLON WORD CODE .)
-    SUPEQUAL        reduce using rule 31 (line -> COLON WORD CODE .)
-    INFEQUAL        reduce using rule 31 (line -> COLON WORD CODE .)
-    INT             reduce using rule 31 (line -> COLON WORD CODE .)
-    FLOAT           reduce using rule 31 (line -> COLON WORD CODE .)
-    $end            reduce using rule 31 (line -> COLON WORD CODE .)
-    LOOP            reduce using rule 31 (line -> COLON WORD CODE .)
-    ELSE            reduce using rule 31 (line -> COLON WORD CODE .)
-    THEN            reduce using rule 31 (line -> COLON WORD CODE .)
-
-
-state 48
+state 44
 
     (5) conditional -> IF axioma ELSE . axioma THEN axioma
     (1) axioma -> . axioma line
     (2) axioma -> . empty
-    (44) empty -> .
+    (41) empty -> .
 
-    THEN            reduce using rule 44 (empty -> .)
-    COMMENT         reduce using rule 44 (empty -> .)
-    DO              reduce using rule 44 (empty -> .)
-    PONTO           reduce using rule 44 (empty -> .)
-    CR              reduce using rule 44 (empty -> .)
-    PONTOSTRING     reduce using rule 44 (empty -> .)
-    EMIT            reduce using rule 44 (empty -> .)
-    CHAR            reduce using rule 44 (empty -> .)
-    COLON           reduce using rule 44 (empty -> .)
-    WORD            reduce using rule 44 (empty -> .)
-    IF              reduce using rule 44 (empty -> .)
-    1PLUS           reduce using rule 44 (empty -> .)
-    1MINUS          reduce using rule 44 (empty -> .)
-    2PLUS           reduce using rule 44 (empty -> .)
-    2MINUS          reduce using rule 44 (empty -> .)
-    2TIMES          reduce using rule 44 (empty -> .)
-    2DIVIDE         reduce using rule 44 (empty -> .)
-    DUP             reduce using rule 44 (empty -> .)
-    2DUP            reduce using rule 44 (empty -> .)
-    DROP            reduce using rule 44 (empty -> .)
-    SWAP            reduce using rule 44 (empty -> .)
-    DEPTH           reduce using rule 44 (empty -> .)
-    PLUS            reduce using rule 44 (empty -> .)
-    MINUS           reduce using rule 44 (empty -> .)
-    TIMES           reduce using rule 44 (empty -> .)
-    DIVIDE          reduce using rule 44 (empty -> .)
-    MOD             reduce using rule 44 (empty -> .)
-    SUP             reduce using rule 44 (empty -> .)
-    EQUAL           reduce using rule 44 (empty -> .)
-    INF             reduce using rule 44 (empty -> .)
-    SUPEQUAL        reduce using rule 44 (empty -> .)
-    INFEQUAL        reduce using rule 44 (empty -> .)
-    INT             reduce using rule 44 (empty -> .)
-    FLOAT           reduce using rule 44 (empty -> .)
+    THEN            reduce using rule 41 (empty -> .)
+    COMMENT         reduce using rule 41 (empty -> .)
+    DO              reduce using rule 41 (empty -> .)
+    PONTO           reduce using rule 41 (empty -> .)
+    CR              reduce using rule 41 (empty -> .)
+    PONTOSTRING     reduce using rule 41 (empty -> .)
+    EMIT            reduce using rule 41 (empty -> .)
+    CHAR            reduce using rule 41 (empty -> .)
+    IF              reduce using rule 41 (empty -> .)
+    1PLUS           reduce using rule 41 (empty -> .)
+    1MINUS          reduce using rule 41 (empty -> .)
+    2PLUS           reduce using rule 41 (empty -> .)
+    2MINUS          reduce using rule 41 (empty -> .)
+    2TIMES          reduce using rule 41 (empty -> .)
+    2DIVIDE         reduce using rule 41 (empty -> .)
+    DUP             reduce using rule 41 (empty -> .)
+    2DUP            reduce using rule 41 (empty -> .)
+    DROP            reduce using rule 41 (empty -> .)
+    SWAP            reduce using rule 41 (empty -> .)
+    DEPTH           reduce using rule 41 (empty -> .)
+    PLUS            reduce using rule 41 (empty -> .)
+    MINUS           reduce using rule 41 (empty -> .)
+    TIMES           reduce using rule 41 (empty -> .)
+    DIVIDE          reduce using rule 41 (empty -> .)
+    MOD             reduce using rule 41 (empty -> .)
+    SUP             reduce using rule 41 (empty -> .)
+    EQUAL           reduce using rule 41 (empty -> .)
+    INF             reduce using rule 41 (empty -> .)
+    SUPEQUAL        reduce using rule 41 (empty -> .)
+    INFEQUAL        reduce using rule 41 (empty -> .)
+    INT             reduce using rule 41 (empty -> .)
+    FLOAT           reduce using rule 41 (empty -> .)
 
-    axioma                         shift and go to state 50
+    axioma                         shift and go to state 46
     empty                          shift and go to state 2
 
-state 49
+state 45
 
     (6) conditional -> IF axioma THEN . axioma
     (1) axioma -> . axioma line
     (2) axioma -> . empty
-    (44) empty -> .
+    (41) empty -> .
 
-    COMMENT         reduce using rule 44 (empty -> .)
-    DO              reduce using rule 44 (empty -> .)
-    PONTO           reduce using rule 44 (empty -> .)
-    CR              reduce using rule 44 (empty -> .)
-    PONTOSTRING     reduce using rule 44 (empty -> .)
-    EMIT            reduce using rule 44 (empty -> .)
-    CHAR            reduce using rule 44 (empty -> .)
-    COLON           reduce using rule 44 (empty -> .)
-    WORD            reduce using rule 44 (empty -> .)
-    IF              reduce using rule 44 (empty -> .)
-    1PLUS           reduce using rule 44 (empty -> .)
-    1MINUS          reduce using rule 44 (empty -> .)
-    2PLUS           reduce using rule 44 (empty -> .)
-    2MINUS          reduce using rule 44 (empty -> .)
-    2TIMES          reduce using rule 44 (empty -> .)
-    2DIVIDE         reduce using rule 44 (empty -> .)
-    DUP             reduce using rule 44 (empty -> .)
-    2DUP            reduce using rule 44 (empty -> .)
-    DROP            reduce using rule 44 (empty -> .)
-    SWAP            reduce using rule 44 (empty -> .)
-    DEPTH           reduce using rule 44 (empty -> .)
-    PLUS            reduce using rule 44 (empty -> .)
-    MINUS           reduce using rule 44 (empty -> .)
-    TIMES           reduce using rule 44 (empty -> .)
-    DIVIDE          reduce using rule 44 (empty -> .)
-    MOD             reduce using rule 44 (empty -> .)
-    SUP             reduce using rule 44 (empty -> .)
-    EQUAL           reduce using rule 44 (empty -> .)
-    INF             reduce using rule 44 (empty -> .)
-    SUPEQUAL        reduce using rule 44 (empty -> .)
-    INFEQUAL        reduce using rule 44 (empty -> .)
-    INT             reduce using rule 44 (empty -> .)
-    FLOAT           reduce using rule 44 (empty -> .)
-    $end            reduce using rule 44 (empty -> .)
-    LOOP            reduce using rule 44 (empty -> .)
-    ELSE            reduce using rule 44 (empty -> .)
-    THEN            reduce using rule 44 (empty -> .)
+    COMMENT         reduce using rule 41 (empty -> .)
+    DO              reduce using rule 41 (empty -> .)
+    PONTO           reduce using rule 41 (empty -> .)
+    CR              reduce using rule 41 (empty -> .)
+    PONTOSTRING     reduce using rule 41 (empty -> .)
+    EMIT            reduce using rule 41 (empty -> .)
+    CHAR            reduce using rule 41 (empty -> .)
+    IF              reduce using rule 41 (empty -> .)
+    1PLUS           reduce using rule 41 (empty -> .)
+    1MINUS          reduce using rule 41 (empty -> .)
+    2PLUS           reduce using rule 41 (empty -> .)
+    2MINUS          reduce using rule 41 (empty -> .)
+    2TIMES          reduce using rule 41 (empty -> .)
+    2DIVIDE         reduce using rule 41 (empty -> .)
+    DUP             reduce using rule 41 (empty -> .)
+    2DUP            reduce using rule 41 (empty -> .)
+    DROP            reduce using rule 41 (empty -> .)
+    SWAP            reduce using rule 41 (empty -> .)
+    DEPTH           reduce using rule 41 (empty -> .)
+    PLUS            reduce using rule 41 (empty -> .)
+    MINUS           reduce using rule 41 (empty -> .)
+    TIMES           reduce using rule 41 (empty -> .)
+    DIVIDE          reduce using rule 41 (empty -> .)
+    MOD             reduce using rule 41 (empty -> .)
+    SUP             reduce using rule 41 (empty -> .)
+    EQUAL           reduce using rule 41 (empty -> .)
+    INF             reduce using rule 41 (empty -> .)
+    SUPEQUAL        reduce using rule 41 (empty -> .)
+    INFEQUAL        reduce using rule 41 (empty -> .)
+    INT             reduce using rule 41 (empty -> .)
+    FLOAT           reduce using rule 41 (empty -> .)
+    $end            reduce using rule 41 (empty -> .)
+    LOOP            reduce using rule 41 (empty -> .)
+    ELSE            reduce using rule 41 (empty -> .)
+    THEN            reduce using rule 41 (empty -> .)
 
-    axioma                         shift and go to state 51
+    axioma                         shift and go to state 47
     empty                          shift and go to state 2
 
-state 50
+state 46
 
     (5) conditional -> IF axioma ELSE axioma . THEN axioma
     (1) axioma -> axioma . line
@@ -2618,9 +2351,6 @@ state 50
     (26) line -> . float line
     (27) line -> . int
     (28) line -> . float
-    (31) line -> . COLON WORD CODE
-    (32) line -> . COLON WORD
-    (33) line -> . WORD
     (5) conditional -> . IF axioma ELSE axioma THEN axioma
     (6) conditional -> . IF axioma THEN axioma
     (14) operation -> . 1PLUS
@@ -2634,20 +2364,20 @@ state 50
     (22) operation -> . DROP
     (23) operation -> . SWAP
     (24) operation -> . DEPTH
-    (34) operation -> . PLUS
-    (35) operation -> . MINUS
-    (36) operation -> . TIMES
-    (37) operation -> . DIVIDE
-    (38) operation -> . MOD
-    (39) operation -> . SUP
-    (40) operation -> . EQUAL
-    (41) operation -> . INF
-    (42) operation -> . SUPEQUAL
-    (43) operation -> . INFEQUAL
+    (31) operation -> . PLUS
+    (32) operation -> . MINUS
+    (33) operation -> . TIMES
+    (34) operation -> . DIVIDE
+    (35) operation -> . MOD
+    (36) operation -> . SUP
+    (37) operation -> . EQUAL
+    (38) operation -> . INF
+    (39) operation -> . SUPEQUAL
+    (40) operation -> . INFEQUAL
     (29) int -> . INT
     (30) float -> . FLOAT
 
-    THEN            shift and go to state 52
+    THEN            shift and go to state 48
     COMMENT         shift and go to state 4
     DO              shift and go to state 6
     PONTO           shift and go to state 7
@@ -2655,32 +2385,30 @@ state 50
     PONTOSTRING     shift and go to state 9
     EMIT            shift and go to state 10
     CHAR            shift and go to state 11
-    COLON           shift and go to state 15
-    WORD            shift and go to state 16
-    IF              shift and go to state 17
-    1PLUS           shift and go to state 18
-    1MINUS          shift and go to state 19
-    2PLUS           shift and go to state 20
-    2MINUS          shift and go to state 21
-    2TIMES          shift and go to state 22
-    2DIVIDE         shift and go to state 23
-    DUP             shift and go to state 24
-    2DUP            shift and go to state 25
-    DROP            shift and go to state 26
-    SWAP            shift and go to state 27
-    DEPTH           shift and go to state 28
-    PLUS            shift and go to state 29
-    MINUS           shift and go to state 30
-    TIMES           shift and go to state 31
-    DIVIDE          shift and go to state 32
-    MOD             shift and go to state 33
-    SUP             shift and go to state 34
-    EQUAL           shift and go to state 35
-    INF             shift and go to state 36
-    SUPEQUAL        shift and go to state 37
-    INFEQUAL        shift and go to state 38
-    INT             shift and go to state 39
-    FLOAT           shift and go to state 40
+    IF              shift and go to state 15
+    1PLUS           shift and go to state 16
+    1MINUS          shift and go to state 17
+    2PLUS           shift and go to state 18
+    2MINUS          shift and go to state 19
+    2TIMES          shift and go to state 20
+    2DIVIDE         shift and go to state 21
+    DUP             shift and go to state 22
+    2DUP            shift and go to state 23
+    DROP            shift and go to state 24
+    SWAP            shift and go to state 25
+    DEPTH           shift and go to state 26
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    SUP             shift and go to state 32
+    EQUAL           shift and go to state 33
+    INF             shift and go to state 34
+    SUPEQUAL        shift and go to state 35
+    INFEQUAL        shift and go to state 36
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
 
     line                           shift and go to state 3
     conditional                    shift and go to state 5
@@ -2688,7 +2416,7 @@ state 50
     int                            shift and go to state 13
     float                          shift and go to state 14
 
-state 51
+state 47
 
     (6) conditional -> IF axioma THEN axioma .
     (1) axioma -> axioma . line
@@ -2705,9 +2433,6 @@ state 51
     (26) line -> . float line
     (27) line -> . int
     (28) line -> . float
-    (31) line -> . COLON WORD CODE
-    (32) line -> . COLON WORD
-    (33) line -> . WORD
     (5) conditional -> . IF axioma ELSE axioma THEN axioma
     (6) conditional -> . IF axioma THEN axioma
     (14) operation -> . 1PLUS
@@ -2721,16 +2446,16 @@ state 51
     (22) operation -> . DROP
     (23) operation -> . SWAP
     (24) operation -> . DEPTH
-    (34) operation -> . PLUS
-    (35) operation -> . MINUS
-    (36) operation -> . TIMES
-    (37) operation -> . DIVIDE
-    (38) operation -> . MOD
-    (39) operation -> . SUP
-    (40) operation -> . EQUAL
-    (41) operation -> . INF
-    (42) operation -> . SUPEQUAL
-    (43) operation -> . INFEQUAL
+    (31) operation -> . PLUS
+    (32) operation -> . MINUS
+    (33) operation -> . TIMES
+    (34) operation -> . DIVIDE
+    (35) operation -> . MOD
+    (36) operation -> . SUP
+    (37) operation -> . EQUAL
+    (38) operation -> . INF
+    (39) operation -> . SUPEQUAL
+    (40) operation -> . INFEQUAL
     (29) int -> . INT
     (30) float -> . FLOAT
 
@@ -2741,8 +2466,6 @@ state 51
   ! shift/reduce conflict for PONTOSTRING resolved as shift
   ! shift/reduce conflict for EMIT resolved as shift
   ! shift/reduce conflict for CHAR resolved as shift
-  ! shift/reduce conflict for COLON resolved as shift
-  ! shift/reduce conflict for WORD resolved as shift
   ! shift/reduce conflict for IF resolved as shift
   ! shift/reduce conflict for 1PLUS resolved as shift
   ! shift/reduce conflict for 1MINUS resolved as shift
@@ -2778,32 +2501,30 @@ state 51
     PONTOSTRING     shift and go to state 9
     EMIT            shift and go to state 10
     CHAR            shift and go to state 11
-    COLON           shift and go to state 15
-    WORD            shift and go to state 16
-    IF              shift and go to state 17
-    1PLUS           shift and go to state 18
-    1MINUS          shift and go to state 19
-    2PLUS           shift and go to state 20
-    2MINUS          shift and go to state 21
-    2TIMES          shift and go to state 22
-    2DIVIDE         shift and go to state 23
-    DUP             shift and go to state 24
-    2DUP            shift and go to state 25
-    DROP            shift and go to state 26
-    SWAP            shift and go to state 27
-    DEPTH           shift and go to state 28
-    PLUS            shift and go to state 29
-    MINUS           shift and go to state 30
-    TIMES           shift and go to state 31
-    DIVIDE          shift and go to state 32
-    MOD             shift and go to state 33
-    SUP             shift and go to state 34
-    EQUAL           shift and go to state 35
-    INF             shift and go to state 36
-    SUPEQUAL        shift and go to state 37
-    INFEQUAL        shift and go to state 38
-    INT             shift and go to state 39
-    FLOAT           shift and go to state 40
+    IF              shift and go to state 15
+    1PLUS           shift and go to state 16
+    1MINUS          shift and go to state 17
+    2PLUS           shift and go to state 18
+    2MINUS          shift and go to state 19
+    2TIMES          shift and go to state 20
+    2DIVIDE         shift and go to state 21
+    DUP             shift and go to state 22
+    2DUP            shift and go to state 23
+    DROP            shift and go to state 24
+    SWAP            shift and go to state 25
+    DEPTH           shift and go to state 26
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    SUP             shift and go to state 32
+    EQUAL           shift and go to state 33
+    INF             shift and go to state 34
+    SUPEQUAL        shift and go to state 35
+    INFEQUAL        shift and go to state 36
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
 
   ! COMMENT         [ reduce using rule 6 (conditional -> IF axioma THEN axioma .) ]
   ! DO              [ reduce using rule 6 (conditional -> IF axioma THEN axioma .) ]
@@ -2812,8 +2533,6 @@ state 51
   ! PONTOSTRING     [ reduce using rule 6 (conditional -> IF axioma THEN axioma .) ]
   ! EMIT            [ reduce using rule 6 (conditional -> IF axioma THEN axioma .) ]
   ! CHAR            [ reduce using rule 6 (conditional -> IF axioma THEN axioma .) ]
-  ! COLON           [ reduce using rule 6 (conditional -> IF axioma THEN axioma .) ]
-  ! WORD            [ reduce using rule 6 (conditional -> IF axioma THEN axioma .) ]
   ! IF              [ reduce using rule 6 (conditional -> IF axioma THEN axioma .) ]
   ! 1PLUS           [ reduce using rule 6 (conditional -> IF axioma THEN axioma .) ]
   ! 1MINUS          [ reduce using rule 6 (conditional -> IF axioma THEN axioma .) ]
@@ -2845,55 +2564,53 @@ state 51
     int                            shift and go to state 13
     float                          shift and go to state 14
 
-state 52
+state 48
 
     (5) conditional -> IF axioma ELSE axioma THEN . axioma
     (1) axioma -> . axioma line
     (2) axioma -> . empty
-    (44) empty -> .
+    (41) empty -> .
 
-    COMMENT         reduce using rule 44 (empty -> .)
-    DO              reduce using rule 44 (empty -> .)
-    PONTO           reduce using rule 44 (empty -> .)
-    CR              reduce using rule 44 (empty -> .)
-    PONTOSTRING     reduce using rule 44 (empty -> .)
-    EMIT            reduce using rule 44 (empty -> .)
-    CHAR            reduce using rule 44 (empty -> .)
-    COLON           reduce using rule 44 (empty -> .)
-    WORD            reduce using rule 44 (empty -> .)
-    IF              reduce using rule 44 (empty -> .)
-    1PLUS           reduce using rule 44 (empty -> .)
-    1MINUS          reduce using rule 44 (empty -> .)
-    2PLUS           reduce using rule 44 (empty -> .)
-    2MINUS          reduce using rule 44 (empty -> .)
-    2TIMES          reduce using rule 44 (empty -> .)
-    2DIVIDE         reduce using rule 44 (empty -> .)
-    DUP             reduce using rule 44 (empty -> .)
-    2DUP            reduce using rule 44 (empty -> .)
-    DROP            reduce using rule 44 (empty -> .)
-    SWAP            reduce using rule 44 (empty -> .)
-    DEPTH           reduce using rule 44 (empty -> .)
-    PLUS            reduce using rule 44 (empty -> .)
-    MINUS           reduce using rule 44 (empty -> .)
-    TIMES           reduce using rule 44 (empty -> .)
-    DIVIDE          reduce using rule 44 (empty -> .)
-    MOD             reduce using rule 44 (empty -> .)
-    SUP             reduce using rule 44 (empty -> .)
-    EQUAL           reduce using rule 44 (empty -> .)
-    INF             reduce using rule 44 (empty -> .)
-    SUPEQUAL        reduce using rule 44 (empty -> .)
-    INFEQUAL        reduce using rule 44 (empty -> .)
-    INT             reduce using rule 44 (empty -> .)
-    FLOAT           reduce using rule 44 (empty -> .)
-    $end            reduce using rule 44 (empty -> .)
-    LOOP            reduce using rule 44 (empty -> .)
-    ELSE            reduce using rule 44 (empty -> .)
-    THEN            reduce using rule 44 (empty -> .)
+    COMMENT         reduce using rule 41 (empty -> .)
+    DO              reduce using rule 41 (empty -> .)
+    PONTO           reduce using rule 41 (empty -> .)
+    CR              reduce using rule 41 (empty -> .)
+    PONTOSTRING     reduce using rule 41 (empty -> .)
+    EMIT            reduce using rule 41 (empty -> .)
+    CHAR            reduce using rule 41 (empty -> .)
+    IF              reduce using rule 41 (empty -> .)
+    1PLUS           reduce using rule 41 (empty -> .)
+    1MINUS          reduce using rule 41 (empty -> .)
+    2PLUS           reduce using rule 41 (empty -> .)
+    2MINUS          reduce using rule 41 (empty -> .)
+    2TIMES          reduce using rule 41 (empty -> .)
+    2DIVIDE         reduce using rule 41 (empty -> .)
+    DUP             reduce using rule 41 (empty -> .)
+    2DUP            reduce using rule 41 (empty -> .)
+    DROP            reduce using rule 41 (empty -> .)
+    SWAP            reduce using rule 41 (empty -> .)
+    DEPTH           reduce using rule 41 (empty -> .)
+    PLUS            reduce using rule 41 (empty -> .)
+    MINUS           reduce using rule 41 (empty -> .)
+    TIMES           reduce using rule 41 (empty -> .)
+    DIVIDE          reduce using rule 41 (empty -> .)
+    MOD             reduce using rule 41 (empty -> .)
+    SUP             reduce using rule 41 (empty -> .)
+    EQUAL           reduce using rule 41 (empty -> .)
+    INF             reduce using rule 41 (empty -> .)
+    SUPEQUAL        reduce using rule 41 (empty -> .)
+    INFEQUAL        reduce using rule 41 (empty -> .)
+    INT             reduce using rule 41 (empty -> .)
+    FLOAT           reduce using rule 41 (empty -> .)
+    $end            reduce using rule 41 (empty -> .)
+    LOOP            reduce using rule 41 (empty -> .)
+    ELSE            reduce using rule 41 (empty -> .)
+    THEN            reduce using rule 41 (empty -> .)
 
-    axioma                         shift and go to state 53
+    axioma                         shift and go to state 49
     empty                          shift and go to state 2
 
-state 53
+state 49
 
     (5) conditional -> IF axioma ELSE axioma THEN axioma .
     (1) axioma -> axioma . line
@@ -2910,9 +2627,6 @@ state 53
     (26) line -> . float line
     (27) line -> . int
     (28) line -> . float
-    (31) line -> . COLON WORD CODE
-    (32) line -> . COLON WORD
-    (33) line -> . WORD
     (5) conditional -> . IF axioma ELSE axioma THEN axioma
     (6) conditional -> . IF axioma THEN axioma
     (14) operation -> . 1PLUS
@@ -2926,16 +2640,16 @@ state 53
     (22) operation -> . DROP
     (23) operation -> . SWAP
     (24) operation -> . DEPTH
-    (34) operation -> . PLUS
-    (35) operation -> . MINUS
-    (36) operation -> . TIMES
-    (37) operation -> . DIVIDE
-    (38) operation -> . MOD
-    (39) operation -> . SUP
-    (40) operation -> . EQUAL
-    (41) operation -> . INF
-    (42) operation -> . SUPEQUAL
-    (43) operation -> . INFEQUAL
+    (31) operation -> . PLUS
+    (32) operation -> . MINUS
+    (33) operation -> . TIMES
+    (34) operation -> . DIVIDE
+    (35) operation -> . MOD
+    (36) operation -> . SUP
+    (37) operation -> . EQUAL
+    (38) operation -> . INF
+    (39) operation -> . SUPEQUAL
+    (40) operation -> . INFEQUAL
     (29) int -> . INT
     (30) float -> . FLOAT
 
@@ -2946,8 +2660,6 @@ state 53
   ! shift/reduce conflict for PONTOSTRING resolved as shift
   ! shift/reduce conflict for EMIT resolved as shift
   ! shift/reduce conflict for CHAR resolved as shift
-  ! shift/reduce conflict for COLON resolved as shift
-  ! shift/reduce conflict for WORD resolved as shift
   ! shift/reduce conflict for IF resolved as shift
   ! shift/reduce conflict for 1PLUS resolved as shift
   ! shift/reduce conflict for 1MINUS resolved as shift
@@ -2983,32 +2695,30 @@ state 53
     PONTOSTRING     shift and go to state 9
     EMIT            shift and go to state 10
     CHAR            shift and go to state 11
-    COLON           shift and go to state 15
-    WORD            shift and go to state 16
-    IF              shift and go to state 17
-    1PLUS           shift and go to state 18
-    1MINUS          shift and go to state 19
-    2PLUS           shift and go to state 20
-    2MINUS          shift and go to state 21
-    2TIMES          shift and go to state 22
-    2DIVIDE         shift and go to state 23
-    DUP             shift and go to state 24
-    2DUP            shift and go to state 25
-    DROP            shift and go to state 26
-    SWAP            shift and go to state 27
-    DEPTH           shift and go to state 28
-    PLUS            shift and go to state 29
-    MINUS           shift and go to state 30
-    TIMES           shift and go to state 31
-    DIVIDE          shift and go to state 32
-    MOD             shift and go to state 33
-    SUP             shift and go to state 34
-    EQUAL           shift and go to state 35
-    INF             shift and go to state 36
-    SUPEQUAL        shift and go to state 37
-    INFEQUAL        shift and go to state 38
-    INT             shift and go to state 39
-    FLOAT           shift and go to state 40
+    IF              shift and go to state 15
+    1PLUS           shift and go to state 16
+    1MINUS          shift and go to state 17
+    2PLUS           shift and go to state 18
+    2MINUS          shift and go to state 19
+    2TIMES          shift and go to state 20
+    2DIVIDE         shift and go to state 21
+    DUP             shift and go to state 22
+    2DUP            shift and go to state 23
+    DROP            shift and go to state 24
+    SWAP            shift and go to state 25
+    DEPTH           shift and go to state 26
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    SUP             shift and go to state 32
+    EQUAL           shift and go to state 33
+    INF             shift and go to state 34
+    SUPEQUAL        shift and go to state 35
+    INFEQUAL        shift and go to state 36
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
 
   ! COMMENT         [ reduce using rule 5 (conditional -> IF axioma ELSE axioma THEN axioma .) ]
   ! DO              [ reduce using rule 5 (conditional -> IF axioma ELSE axioma THEN axioma .) ]
@@ -3017,8 +2727,6 @@ state 53
   ! PONTOSTRING     [ reduce using rule 5 (conditional -> IF axioma ELSE axioma THEN axioma .) ]
   ! EMIT            [ reduce using rule 5 (conditional -> IF axioma ELSE axioma THEN axioma .) ]
   ! CHAR            [ reduce using rule 5 (conditional -> IF axioma ELSE axioma THEN axioma .) ]
-  ! COLON           [ reduce using rule 5 (conditional -> IF axioma ELSE axioma THEN axioma .) ]
-  ! WORD            [ reduce using rule 5 (conditional -> IF axioma ELSE axioma THEN axioma .) ]
   ! IF              [ reduce using rule 5 (conditional -> IF axioma ELSE axioma THEN axioma .) ]
   ! 1PLUS           [ reduce using rule 5 (conditional -> IF axioma ELSE axioma THEN axioma .) ]
   ! 1MINUS          [ reduce using rule 5 (conditional -> IF axioma ELSE axioma THEN axioma .) ]
@@ -3059,8 +2767,6 @@ WARNING: shift/reduce conflict for CR in state 13 resolved as shift
 WARNING: shift/reduce conflict for PONTOSTRING in state 13 resolved as shift
 WARNING: shift/reduce conflict for EMIT in state 13 resolved as shift
 WARNING: shift/reduce conflict for CHAR in state 13 resolved as shift
-WARNING: shift/reduce conflict for COLON in state 13 resolved as shift
-WARNING: shift/reduce conflict for WORD in state 13 resolved as shift
 WARNING: shift/reduce conflict for IF in state 13 resolved as shift
 WARNING: shift/reduce conflict for 1PLUS in state 13 resolved as shift
 WARNING: shift/reduce conflict for 1MINUS in state 13 resolved as shift
@@ -3092,8 +2798,6 @@ WARNING: shift/reduce conflict for CR in state 14 resolved as shift
 WARNING: shift/reduce conflict for PONTOSTRING in state 14 resolved as shift
 WARNING: shift/reduce conflict for EMIT in state 14 resolved as shift
 WARNING: shift/reduce conflict for CHAR in state 14 resolved as shift
-WARNING: shift/reduce conflict for COLON in state 14 resolved as shift
-WARNING: shift/reduce conflict for WORD in state 14 resolved as shift
 WARNING: shift/reduce conflict for IF in state 14 resolved as shift
 WARNING: shift/reduce conflict for 1PLUS in state 14 resolved as shift
 WARNING: shift/reduce conflict for 1MINUS in state 14 resolved as shift
@@ -3118,69 +2822,65 @@ WARNING: shift/reduce conflict for SUPEQUAL in state 14 resolved as shift
 WARNING: shift/reduce conflict for INFEQUAL in state 14 resolved as shift
 WARNING: shift/reduce conflict for INT in state 14 resolved as shift
 WARNING: shift/reduce conflict for FLOAT in state 14 resolved as shift
-WARNING: shift/reduce conflict for COMMENT in state 51 resolved as shift
-WARNING: shift/reduce conflict for DO in state 51 resolved as shift
-WARNING: shift/reduce conflict for PONTO in state 51 resolved as shift
-WARNING: shift/reduce conflict for CR in state 51 resolved as shift
-WARNING: shift/reduce conflict for PONTOSTRING in state 51 resolved as shift
-WARNING: shift/reduce conflict for EMIT in state 51 resolved as shift
-WARNING: shift/reduce conflict for CHAR in state 51 resolved as shift
-WARNING: shift/reduce conflict for COLON in state 51 resolved as shift
-WARNING: shift/reduce conflict for WORD in state 51 resolved as shift
-WARNING: shift/reduce conflict for IF in state 51 resolved as shift
-WARNING: shift/reduce conflict for 1PLUS in state 51 resolved as shift
-WARNING: shift/reduce conflict for 1MINUS in state 51 resolved as shift
-WARNING: shift/reduce conflict for 2PLUS in state 51 resolved as shift
-WARNING: shift/reduce conflict for 2MINUS in state 51 resolved as shift
-WARNING: shift/reduce conflict for 2TIMES in state 51 resolved as shift
-WARNING: shift/reduce conflict for 2DIVIDE in state 51 resolved as shift
-WARNING: shift/reduce conflict for DUP in state 51 resolved as shift
-WARNING: shift/reduce conflict for 2DUP in state 51 resolved as shift
-WARNING: shift/reduce conflict for DROP in state 51 resolved as shift
-WARNING: shift/reduce conflict for SWAP in state 51 resolved as shift
-WARNING: shift/reduce conflict for DEPTH in state 51 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 51 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 51 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 51 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 51 resolved as shift
-WARNING: shift/reduce conflict for MOD in state 51 resolved as shift
-WARNING: shift/reduce conflict for SUP in state 51 resolved as shift
-WARNING: shift/reduce conflict for EQUAL in state 51 resolved as shift
-WARNING: shift/reduce conflict for INF in state 51 resolved as shift
-WARNING: shift/reduce conflict for SUPEQUAL in state 51 resolved as shift
-WARNING: shift/reduce conflict for INFEQUAL in state 51 resolved as shift
-WARNING: shift/reduce conflict for INT in state 51 resolved as shift
-WARNING: shift/reduce conflict for FLOAT in state 51 resolved as shift
-WARNING: shift/reduce conflict for COMMENT in state 53 resolved as shift
-WARNING: shift/reduce conflict for DO in state 53 resolved as shift
-WARNING: shift/reduce conflict for PONTO in state 53 resolved as shift
-WARNING: shift/reduce conflict for CR in state 53 resolved as shift
-WARNING: shift/reduce conflict for PONTOSTRING in state 53 resolved as shift
-WARNING: shift/reduce conflict for EMIT in state 53 resolved as shift
-WARNING: shift/reduce conflict for CHAR in state 53 resolved as shift
-WARNING: shift/reduce conflict for COLON in state 53 resolved as shift
-WARNING: shift/reduce conflict for WORD in state 53 resolved as shift
-WARNING: shift/reduce conflict for IF in state 53 resolved as shift
-WARNING: shift/reduce conflict for 1PLUS in state 53 resolved as shift
-WARNING: shift/reduce conflict for 1MINUS in state 53 resolved as shift
-WARNING: shift/reduce conflict for 2PLUS in state 53 resolved as shift
-WARNING: shift/reduce conflict for 2MINUS in state 53 resolved as shift
-WARNING: shift/reduce conflict for 2TIMES in state 53 resolved as shift
-WARNING: shift/reduce conflict for 2DIVIDE in state 53 resolved as shift
-WARNING: shift/reduce conflict for DUP in state 53 resolved as shift
-WARNING: shift/reduce conflict for 2DUP in state 53 resolved as shift
-WARNING: shift/reduce conflict for DROP in state 53 resolved as shift
-WARNING: shift/reduce conflict for SWAP in state 53 resolved as shift
-WARNING: shift/reduce conflict for DEPTH in state 53 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 53 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 53 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 53 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 53 resolved as shift
-WARNING: shift/reduce conflict for MOD in state 53 resolved as shift
-WARNING: shift/reduce conflict for SUP in state 53 resolved as shift
-WARNING: shift/reduce conflict for EQUAL in state 53 resolved as shift
-WARNING: shift/reduce conflict for INF in state 53 resolved as shift
-WARNING: shift/reduce conflict for SUPEQUAL in state 53 resolved as shift
-WARNING: shift/reduce conflict for INFEQUAL in state 53 resolved as shift
-WARNING: shift/reduce conflict for INT in state 53 resolved as shift
-WARNING: shift/reduce conflict for FLOAT in state 53 resolved as shift
+WARNING: shift/reduce conflict for COMMENT in state 47 resolved as shift
+WARNING: shift/reduce conflict for DO in state 47 resolved as shift
+WARNING: shift/reduce conflict for PONTO in state 47 resolved as shift
+WARNING: shift/reduce conflict for CR in state 47 resolved as shift
+WARNING: shift/reduce conflict for PONTOSTRING in state 47 resolved as shift
+WARNING: shift/reduce conflict for EMIT in state 47 resolved as shift
+WARNING: shift/reduce conflict for CHAR in state 47 resolved as shift
+WARNING: shift/reduce conflict for IF in state 47 resolved as shift
+WARNING: shift/reduce conflict for 1PLUS in state 47 resolved as shift
+WARNING: shift/reduce conflict for 1MINUS in state 47 resolved as shift
+WARNING: shift/reduce conflict for 2PLUS in state 47 resolved as shift
+WARNING: shift/reduce conflict for 2MINUS in state 47 resolved as shift
+WARNING: shift/reduce conflict for 2TIMES in state 47 resolved as shift
+WARNING: shift/reduce conflict for 2DIVIDE in state 47 resolved as shift
+WARNING: shift/reduce conflict for DUP in state 47 resolved as shift
+WARNING: shift/reduce conflict for 2DUP in state 47 resolved as shift
+WARNING: shift/reduce conflict for DROP in state 47 resolved as shift
+WARNING: shift/reduce conflict for SWAP in state 47 resolved as shift
+WARNING: shift/reduce conflict for DEPTH in state 47 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 47 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 47 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 47 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 47 resolved as shift
+WARNING: shift/reduce conflict for MOD in state 47 resolved as shift
+WARNING: shift/reduce conflict for SUP in state 47 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 47 resolved as shift
+WARNING: shift/reduce conflict for INF in state 47 resolved as shift
+WARNING: shift/reduce conflict for SUPEQUAL in state 47 resolved as shift
+WARNING: shift/reduce conflict for INFEQUAL in state 47 resolved as shift
+WARNING: shift/reduce conflict for INT in state 47 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 47 resolved as shift
+WARNING: shift/reduce conflict for COMMENT in state 49 resolved as shift
+WARNING: shift/reduce conflict for DO in state 49 resolved as shift
+WARNING: shift/reduce conflict for PONTO in state 49 resolved as shift
+WARNING: shift/reduce conflict for CR in state 49 resolved as shift
+WARNING: shift/reduce conflict for PONTOSTRING in state 49 resolved as shift
+WARNING: shift/reduce conflict for EMIT in state 49 resolved as shift
+WARNING: shift/reduce conflict for CHAR in state 49 resolved as shift
+WARNING: shift/reduce conflict for IF in state 49 resolved as shift
+WARNING: shift/reduce conflict for 1PLUS in state 49 resolved as shift
+WARNING: shift/reduce conflict for 1MINUS in state 49 resolved as shift
+WARNING: shift/reduce conflict for 2PLUS in state 49 resolved as shift
+WARNING: shift/reduce conflict for 2MINUS in state 49 resolved as shift
+WARNING: shift/reduce conflict for 2TIMES in state 49 resolved as shift
+WARNING: shift/reduce conflict for 2DIVIDE in state 49 resolved as shift
+WARNING: shift/reduce conflict for DUP in state 49 resolved as shift
+WARNING: shift/reduce conflict for 2DUP in state 49 resolved as shift
+WARNING: shift/reduce conflict for DROP in state 49 resolved as shift
+WARNING: shift/reduce conflict for SWAP in state 49 resolved as shift
+WARNING: shift/reduce conflict for DEPTH in state 49 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 49 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 49 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 49 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 49 resolved as shift
+WARNING: shift/reduce conflict for MOD in state 49 resolved as shift
+WARNING: shift/reduce conflict for SUP in state 49 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 49 resolved as shift
+WARNING: shift/reduce conflict for INF in state 49 resolved as shift
+WARNING: shift/reduce conflict for SUPEQUAL in state 49 resolved as shift
+WARNING: shift/reduce conflict for INFEQUAL in state 49 resolved as shift
+WARNING: shift/reduce conflict for INT in state 49 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 49 resolved as shift
