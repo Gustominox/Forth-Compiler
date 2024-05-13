@@ -8,14 +8,8 @@ yacc.debug = True
 from forth_lex import tokens
 from forth_lex import defined_words
 
-# Assembly code output
-assembly_code = []
-
 # stack de dados
 stack = []
-
-# Dictionary to store defined words
-#defined_words = {}
 
 if_counter = 0
 regist_counter = 0
@@ -217,8 +211,12 @@ def p_operation_dup(p):
 def p_operation_2dup(p):
     '''operation : 2DUP'''
     global regist_counter
-    val1 = stack.pop()
-    val2 = stack.pop()
+    try:
+        val1 = stack.pop()  
+        val2 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using '2DUP'\033[0m\n") 
     stack.append(val2)
     stack.append(val1)
     stack.append(val2)
@@ -228,13 +226,21 @@ def p_operation_2dup(p):
     
 def p_operation_drop(p):
     '''operation : DROP'''
-    stack.pop()
+    try:
+        val1 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using 'DROP'\033[0m\n") 
     p[0] = f'POP 1\n'
 
 def p_operation_swap(p):        
     '''operation : SWAP'''
-    val1 = stack.pop()
-    val2 = stack.pop()
+    try:
+        val1 = stack.pop()  
+        val2 = stack.pop()
+    except IndexError as e:
+        p_err_1(p)
+        raise Exception(f"\n\t\033[91m ERROR :: Stack Empty :: Using 'SWAP'\033[0m\n") 
     stack.append(val1)
     stack.append(val2)
     p[0] = f'SWAP\n'
@@ -266,28 +272,6 @@ def p_float(p):
     '''float : FLOAT'''
     stack.append("FLOAT")
     p[0] = f'PUSHF {p[1]}\n'
-
-#def p_line_definition(p):
-#    '''line : COLON WORD CODE'''
- #   if p[2] in defined_words:
-  #      p_err_2(p)
- #       raise Exception(f"\n\t\033[91m ERROR :: Word redefenition :: Word {p[2]} \033[0m\n")        
-  #  else:
-   #     defined_words[p[2]] = p[3]
-    #    p[0] = ''
-
-#def p_line_definition_error(p):
-#    '''line : COLON WORD'''
-#    p_err_2(p)
-#    raise Exception(f"\n\t\033[91m ERROR :: No code in function defenition :: Check if missing function comment description\033[0m\n")        
-    
-#def p_line_word(p):
-#    '''line : WORD'''
- #   if p[1] in defined_words:
-  #      p[0] = p[1] + "\n"
-  #  else:
-  #      p_err_1(p)
-   #     raise Exception(f"\n\t\033[91m ERROR :: Undefined Word :: \"{p[1]}\" \033[0m\n")        
 
 def p_operation_plus(p):
     '''operation : PLUS'''
@@ -473,8 +457,7 @@ def find_column(input, tokenLexpos):
     line_start = input.rfind('\n', 0, tokenLexpos) + 1
     return (tokenLexpos - line_start) + 1
 
-
-vars = ''
+vars = '' # string wiht pushs of registers
 
 def loop_vars():
     global regist_counter,vars
@@ -484,15 +467,11 @@ def loop_vars():
         
 # Build the parser
 parser = yacc.yacc()
+    
+with open("input.4th", "r") as file:
+    data = file.read()
 
-# Test the parser
-data=''': maior2 ( -- ) 2dup > if drop else swap drop then ;
-    : maior3 ( -- ) maior2 maior2 ;
-    : maiorN ( -- ) depth 1 do maior2 loop ;
-    2 11 3 4 45 8 19 maiorN .
-    '''
-
-func_call_pattern = r':\s([a-zA-Z_][a-zA-Z0-9_]*)\s\([^)]*\)\s([^;]+)\s;'
+func_call_pattern = r':\s([a-zA-Z_][a-zA-Z0-9_]*)\s([^;]+)\s;'
 
 matches = []
 for match in re.finditer(func_call_pattern, data):
@@ -517,8 +496,8 @@ while replaced:
         if count > 0:
             replaced = True 
 
-print(defined_words)
-print(data)
+with open("output.o4th", "w") as file:
+    file.write(data)
 
 try:
     r = parser.parse(data)
@@ -532,5 +511,8 @@ result += "\nSTART\n\n"
 result += r
 result += "\nSTOP\n"
 
-# Print the generated assembly code            
-print(result)
+with open("output.asm4th", "w") as file:
+    file.write(vars)
+    file.write("START\n\n")
+    file.write(result)
+    file.write("\nSTOP")

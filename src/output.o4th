@@ -1,0 +1,1 @@
+    2 11 3 4 45 8 19 ( -- ) depth 1 do 2dup > if drop else swap drop then loop .
