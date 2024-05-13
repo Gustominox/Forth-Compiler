@@ -1,1 +1,15 @@
-    2 11 3 4 45 8 19 ( -- ) depth 1 do 2dup > if drop else swap drop then loop .
+( May the Forth be with you)
+
+
+
+
+
+
+
+
+
+
+
+
+
+CR ."      " 5 0 DO 42 EMIT LOOP CR ."      " 42 EMIT CR ."      " 5 0 DO 42 EMIT LOOP CR ."      " 42 EMIT CR ."      " 42 EMIT CR CR ."      " 5 0 DO 42 EMIT LOOP CR ."      " 42 EMIT 3 ."      " 42 EMIT CR ."      " 42 EMIT 3 ."      " 42 EMIT CR ."      " 42 EMIT 3 ."      " 42 EMIT CR ."      " 5 0 DO 42 EMIT LOOP CR CR ."      " 5 0 DO 42 EMIT LOOP CR ."      " 42 EMIT 3 ."      " 42 EMIT CR ."      " 5 0 DO 42 EMIT LOOP CR ."      " 42 EMIT 42 EMIT 3 ."      " CR ."      " 42 EMIT 3 ."      " 42 EMIT CR CR ."      " 5 0 DO 42 EMIT LOOP CR ."      " 2 ."      " 42 EMIT 2 ."      " CR ."      " 2 ."      " 42 EMIT 2 ."      " CR ."      " 2 ."      " 42 EMIT 2 ."      " CR ."      " 2 ."      " 42 EMIT 2 ."      " CR CR ."      " 42 EMIT 3 ."      " 42 EMIT CR ."      " 42 EMIT 3 ."      " 42 EMIT CR ."      " 5 0 DO 42 EMIT LOOP CR ."      " 42 EMIT 3 ."      " 42 EMIT CR ."      " 42 EMIT 3 ."      " 42 EMIT CR

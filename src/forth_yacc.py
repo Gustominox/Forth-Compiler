@@ -465,7 +465,6 @@ def loop_vars():
         stack.append('INT')
         vars += 'PUSHI 0\n'
         
-# Build the parser
 parser = yacc.yacc()
     
 with open("input.4th", "r") as file:
@@ -489,12 +488,17 @@ replaced = True
 while replaced:
     replaced = False  
     for func_name, func_content in defined_words.items():
-        
-        func_call_pattern = re.compile(r'\b' + func_name + r'\b')
+
+        func_call_pattern = r'\b' + re.escape(func_name) + r'\b'
+
+        if re.search(r'\([^)]*' + func_call_pattern + r'[^)]*\)', data):
+            continue  # Skip replacement if is comment
+
+        func_call_pattern = re.compile(func_call_pattern)
         data, count = re.subn(func_call_pattern, func_content, data)
 
         if count > 0:
-            replaced = True 
+            replaced = True
 
 with open("output.o4th", "w") as file:
     file.write(data)
@@ -512,7 +516,4 @@ result += r
 result += "\nSTOP\n"
 
 with open("output.asm4th", "w") as file:
-    file.write(vars)
-    file.write("START\n\n")
     file.write(result)
-    file.write("\nSTOP")
